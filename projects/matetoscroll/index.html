@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MateToScroll: case study · Med BM</title>
+    <meta name="description" content="How I built MateToScroll, an Android app that locks distracting apps until you earn screen time back by solving chess puzzles: a Kotlin Accessibility Service, a minutes-bank economy and 30,000 offline puzzles.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="MateToScroll: case study">
+    <meta property="og:description" content="Scroll less, play more chess. An Android screen-time blocker built with React Native, Expo and a custom Kotlin module.">
+    <meta property="og:site_name" content="Med BM">
+    <meta property="og:url" content="https://medbm5.github.io/projects/matetoscroll/">
+    <meta property="og:image" content="https://medbm5.github.io/img/matetoscroll/lock-screen-spend-bank.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="../../main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="nav wrap-wide">
+        <a href="../../" class="logo" data-pop aria-label="Med BM, home">
+            <span>Med</span><span>B</span><span>M</span>
+        </a>
+        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+            <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="main-nav">
+            <a href="../../#work" data-pop>Projects</a>
+            <a href="../../#road" data-pop>The Road So Far</a>
+            <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
+            <a href="../../#connect" data-pop>Connect</a>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+        <button class="mobile-close">(close this thing)</button>
+        <a href="../../#work">Projects</a>
+        <a href="../../#road">The Road So Far</a>
+        <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="../../#connect">Connect</a>
+    </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="cs-hero">
+    <div class="wrap">
+        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> All projects</a>
+        <div class="cs-hero-grid">
+            <div>
+                <p class="hand cs-kicker">Case study &middot; Android app</p>
+                <h1 class="cs-title"><img src="../../img/matetoscroll/icon.png" alt="" width="64" height="64"> MateToScroll</h1>
+                <p class="hand big cs-pitch">Scroll less, play more chess. Your worst apps lock when today's time runs out, and you earn minutes back by solving puzzles.</p>
+                <ul class="badges">
+                    <li>Pre-release</li>
+                    <li>Play Store release planned</li>
+                    <li>Offline &middot; no account</li>
+                </ul>
+            </div>
+            <dl class="meta">
+                <div><dt>My role</dt><dd>Solo personal project. I wrote the specs, made the product and design decisions and tested every slice on a real phone, with Claude Code as an AI coding assistant.</dd></div>
+                <div><dt>Timeline</dt><dd>10 &ndash; 14 Oct 2026 &middot; 5 days, 25 commits, 21 slices</dd></div>
+                <div><dt>Platform</dt><dd>Android (React Native + a custom Kotlin native module)</dd></div>
+                <div><dt>Stack</dt><dd>React Native 0.86, Expo SDK 57, TypeScript (strict), Kotlin, Expo Router, Reanimated 4, chess.js, Zustand, MMKV, expo-sqlite, Jest, JUnit</dd></div>
+            </dl>
+        </div>
+        <div class="cs-hero-shot" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:2.5rem;max-width:62rem;margin-inline:auto">
+            <div class="shot-frame" style="max-width:18rem;margin-inline:auto"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/matetoscroll/home-level-bank-continue.png" width="390" height="844" alt="MateToScroll home screen: level 5, a 25:30 minutes bank and a Continue button."></div>
+            <div class="shot-frame" style="max-width:18rem;margin-inline:auto"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/matetoscroll/lock-screen-spend-bank.png" width="390" height="844" alt="Lock screen: 'Instagram is locked', with buttons to spend 5, 10 or 15 minutes from the bank."></div>
+            <div class="shot-frame" style="max-width:18rem;margin-inline:auto"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/matetoscroll/tactics-puzzle-board.png" width="390" height="844" alt="A tactics puzzle on the chess board in dark mode."></div>
+        </div>
+        <p class="note-inline hand">Home, the lock screen, and a puzzle. Real screenshots from the release build.</p>
+    </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v38c-120 34-240 50-360 30S840 6 720 26 480 88 360 78 120 20 0 40z"/></svg>
+
+<main class="cs">
+
+    <!-- ============ TL;DR ============ -->
+    <section class="section" aria-labelledby="tldr-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The 30-second version</p>
+            <h2 id="tldr-heading">A screen-time blocker where the unlock key is a chess puzzle.</h2>
+            <p class="lede">
+                MateToScroll blocks the apps you pick, Instagram for example, once your daily limit runs out. Solving chess exercises fills a
+                <strong>minutes bank</strong>: +1:00 per solved exercise, +5:00 per beaten boss, &minus;0:30 per miss. You spend from the bank on the
+                lock screen to reopen a blocked app. Blocking and time-keeping run natively in a <strong>Kotlin Accessibility Service</strong>, and the
+                chess side is a full training game with 30,000 offline puzzles, 33 opening courses and calculation drills.
+            </p>
+            <ul class="stats">
+                <li class="stat stat-yellow"><span class="stat-num">168 ms</span><span class="stat-label">from hitting the limit to the lock screen, measured on device</span></li>
+                <li class="stat stat-blue"><span class="stat-num">30,000</span><span class="stat-label">Lichess puzzles bundled offline in 8.1 MB</span></li>
+                <li class="stat stat-pink"><span class="stat-num">188</span><span class="stat-label">Jest tests passing, plus 33 Kotlin JUnit tests</span></li>
+                <li class="stat stat-white"><span class="stat-num">5 days</span><span class="stat-label">first commit to v2 release build (25 commits)</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="section cs-yellow" aria-labelledby="problem-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">The problem</p>
+                <h2 id="problem-heading">Blockers take time away. They don't give anything back.</h2>
+            </div>
+            <div class="prose">
+                <p>Screen-time blockers like Opal stop you from opening an app, but the time you win back usually goes nowhere useful. MateToScroll is for people who scroll too much and would like to get better at chess: unlocking a blocked app costs time, and you earn that time by training.</p>
+                <p>It's the mobile version of my desktop trainer, <a href="../chess-terminal/">Chess Terminal</a>, and reuses its design system, opening content and calculation drills. The rules I set:</p>
+                <ul class="checks">
+                    <li>no account and no server: nothing leaves the phone,</li>
+                    <li>the blocker must keep counting even when the app itself isn't running,</li>
+                    <li>never charge you for screen time it didn't actually see,</li>
+                    <li>and it has to pass Google Play's review of Accessibility apps.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" aria-labelledby="features-heading">
+        <div class="wrap">
+            <p class="hand cs-label">What I built</p>
+            <h2 id="features-heading">A blocker on one side, a chess trainer on the other.</h2>
+
+            <div class="features">
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/matetoscroll/lock-screen-spend-bank.png" width="390" height="844" alt="Lock screen for Instagram with spend 5, 10 or 15 minutes buttons and ways to earn more" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Native blocker &amp; lock screen</h3>
+                        <p>A custom Kotlin Expo module runs an Accessibility Service that reads <strong>only the foreground app's package name</strong>. When a blocked app hits the limit, it opens the lock screen through a deep link; on device that took 168&nbsp;ms. From there you spend 5, 10 or 15 minutes from the bank and the app reopens.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/matetoscroll/blocker-minutes-bank.png" width="390" height="844" alt="Blocker tab with time left today, the bank, emergency unlocks and blocked apps" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>The minutes-bank economy</h3>
+                        <p>Earned time rolls over across days, with a 30-minute daily earning cap, a 60-second cooldown after 2 misses in a row, 2 emergency unlocks a day, and no time earned when you use a hint. The rules live in Kotlin as the source of truth and are <strong>mirrored in TypeScript</strong> for the UI, with unit tests on both sides.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/matetoscroll/tactics-puzzle-board.png" width="390" height="844" alt="Tactics puzzle board in dark mode" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Tactics on an animated board</h3>
+                        <p>A custom SVG board with tap and drag input: pieces slide in 200&nbsp;ms, captures fade, castling moves both pieces, and promotion uses a picker, with sound and haptics when a piece lands. Puzzles are picked <strong>near your Glicko-2 rating</strong>, skipping the last 500 you saw.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/matetoscroll/puzzle-level-map.png" width="390" height="844" alt="Puzzle level map for world 6, Sacrifice Peaks, with numbered levels and a boss" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>A puzzle level map</h3>
+                        <p>10 worlds by rating band, from 600 to 2600. Each world is a winding path of 12 levels plus a boss, <strong>130 nodes</strong> in all. A level is 5 puzzles with 1&ndash;3 stars; a boss is 10 puzzles with at most one mistake, worth +5:00.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/matetoscroll/openings-map.png" width="390" height="844" alt="Openings map with Italian Game and London System in the Beginner tier" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Openings &amp; calculation drills</h3>
+                        <p>33 openings in tiers from Beginner to Master, each a chain of Learn &rarr; Deviations &rarr; Traps &rarr; Plans &rarr; Boss, played against a book bot with three styles and a coach note on every move. The Calculate tab has four drills: a whole line on a frozen board, checks-captures-threats, find the move, and blindfold visualization.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/matetoscroll/onboarding-pitch.png" width="390" height="844" alt="Onboarding screen: 'Scroll less. Play more chess.' with a Get Started button" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Onboarding &amp; progression</h3>
+                        <p>A short questionnaire leads to a projection of your phone time, <strong>with the math shown</strong>, then a plan. A privacy disclosure always comes before the Accessibility settings, and battery tips are tailored to the phone maker. Your chess level sets your starting rating; XP, ranks from Iron to Master, daily challenges and stats track progress.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section class="section cs-dark" aria-labelledby="arch-heading">
+        <div class="wrap">
+            <p class="hand cs-label">How it's built</p>
+            <h2 id="arch-heading">Kotlin keeps the clock. TypeScript plays the chess.</h2>
+            <p class="lede">Anything that has to survive the app being killed lives in native Kotlin. The chess logic is pure TypeScript with no React imports, enforced by a lint rule. The two talk through a small Expo module of methods and events.</p>
+
+            <div class="arch" role="img" aria-label="Architecture: 24 Expo Router screens use a pure TypeScript chess core, an animated SVG board and bundled SQLite databases. They call a custom Kotlin Expo module, whose Accessibility Service reports the foreground app to a BlockerEngine that owns time, the bank and limits, persists them, and opens the lock screen through a deep link.">
+                <div class="arch-box arch-main">
+                    <p class="arch-tag">React Native + Expo Router</p>
+                    <p>24 screens: five tabs (Home, Puzzles, Openings, Calculate, Blocker) plus quizzes, drills, levels, the lock screen, onboarding and stats.</p>
+                </div>
+                <div class="arch-arrow" aria-hidden="true">&darr;</div>
+                <div class="arch-box arch-renderer">
+                    <p class="arch-tag">TypeScript</p>
+                    <p>SVG board animated with Reanimated on the UI thread; feature modules for tactics, levels, openings, drills, blocker and progress.</p>
+                    <div class="arch-core">
+                        <p class="arch-tag">src/chess &middot; pure TypeScript, ~1,200 lines, 90% coverage gate</p>
+                        <ul>
+                            <li>puzzle sessions</li><li>Glicko-2</li><li>opening sessions</li><li>UCI parsing</li><li>drill generators</li><li>chess.js</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="arch-arrow" aria-hidden="true">&darr;&uarr;</div>
+                <p class="arch-tag" style="text-align:center;margin:0 0 .5rem">recordResult &middot; spendFromBank &middot; onStateChanged</p>
+                <div class="arch-row">
+                    <div class="arch-box arch-side"><p class="arch-tag">Kotlin module</p><p>An Accessibility Service feeds a BlockerEngine that owns time, the bank and limits, saved in SharedPreferences.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Bundled SQLite</p><p>30,000 puzzles (8.1&nbsp;MB) and 3,865 opening lines (582&nbsp;kB), read-only; your attempts in a separate user database.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Build scripts</p><p>Lichess dump to SQLite, opening lines, SVG pieces, synthesized sounds, icons, and a config plugin for Play signing.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CHALLENGES ============ -->
+    <section class="section" aria-labelledby="challenges-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The interesting parts</p>
+            <h2 id="challenges-heading">Android doesn't make blocking apps easy.</h2>
+
+            <div class="problems">
+                <article class="problem">
+                    <p class="hand problem-num">01</p>
+                    <h3>Never charge time the app didn't see</h3>
+                    <p><strong>Problem:</strong> the Accessibility Service can be killed, the screen can turn off, or a tick can arrive late. Subtracting "now minus last event" could cost you minutes you never spent in the app.</p>
+                    <p><strong>Fix:</strong> the engine charges at most 30&nbsp;s per step and nothing across a service restart; screen-off stops the clock, and a 15&nbsp;s tick runs only while a blocked app is open. Counters are saved, and on device they survived a forced crash.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">02</p>
+                    <h3>An Accessibility Service Google Play will accept</h3>
+                    <p><strong>Problem:</strong> Play reviews Accessibility use and the "see all installed apps" permission closely, and a blocker needs both kinds of information.</p>
+                    <p><strong>Fix:</strong> the service listens only to window changes, can't read window content, and reads only the package name. The app list comes from a launcher-intent query instead of the all-packages permission, and a clear disclosure always comes before the system settings.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">03</p>
+                    <h3>Smooth pieces on a mid-range phone</h3>
+                    <p><strong>Problem:</strong> SVG pieces sliding across the board dropped frames.</p>
+                    <p><strong>Fix:</strong> pieces cached as GPU textures, Reanimated's synchronous UI-props flag turned on, dragging handled entirely on the UI thread, and sounds played on landing. In a release build on a Samsung A17: <strong>0 missed vsyncs over 8 moves</strong>.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">04</p>
+                    <h3>A 307&nbsp;MB puzzle dump in an 8.1&nbsp;MB file</h3>
+                    <p><strong>Problem:</strong> the Lichess dump is far too big to ship, and a random sample would cluster around common ratings.</p>
+                    <p><strong>Fix:</strong> a script streams the dump, keeps popular puzzles, takes a <strong>seeded sample of 1,500 per 100-point band</strong> from 600 to 2599, and replays every line with the app's own chess core. Finding the next puzzle answered in under 50&nbsp;ms on the real database in a test.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">05</p>
+                    <h3>Same position, different move order</h3>
+                    <p><strong>Problem:</strong> in opening training you can play a move that isn't the book move but reaches the same position, and rejecting it feels wrong.</p>
+                    <p><strong>Fix:</strong> a different move is accepted only if it reaches the exact book position at that move. A move order that only converges later is still rejected, and that limit is written down in the changelog.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">06</p>
+                    <h3>Details Android and colorblind users notice</h3>
+                    <p><strong>Problem:</strong> the design's angled orange button relied on a CSS-style skew, which Android ignores, and the green/orange "over the limit" chart failed a red-blind color check.</p>
+                    <p><strong>Fix:</strong> the button is drawn as an SVG parallelogram, and the chart uses a single color with a dashed limit line instead of relying on hue.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ QUALITY ============ -->
+    <section class="section cs-dark" aria-labelledby="quality-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">Quality</p>
+                <h2 id="quality-heading">Tested in code and on a real phone.</h2>
+            </div>
+            <div class="prose">
+                <ul class="checks">
+                    <li><strong>188 Jest tests in 29 files, all passing:</strong> the chess core, the economy and progression rules, screens and navigation with React Native Testing Library, and checks against the real bundled databases (all 130 map nodes get distinct puzzles, all 33 opening trees replay legally).</li>
+                    <li><strong>33 Kotlin JUnit tests</strong> for the blocker engine and the economy rules.</li>
+                    <li><strong>Coverage gate:</strong> 90% on the pure chess core, enforced in the Jest config.</li>
+                    <li><strong>Strict checks:</strong> strict TypeScript, ESLint with a purity rule for the chess core, and Prettier.</li>
+                    <li><strong>On-device checks:</strong> every slice was verified on a USB-connected Samsung phone, with results logged in the changelog.</li>
+                    <li><strong>Privacy:</strong> no network calls at all. Crash reporting was left out on purpose, because it would have been the only traffic leaving the phone.</li>
+                    <li><strong>Not yet:</strong> no CI pipeline; release builds are signed locally with a config plugin.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section cs-yellow" aria-labelledby="process-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">How I worked</p>
+                <h2 id="process-heading">Plan in slices, check every one on a phone.</h2>
+            </div>
+            <div class="prose">
+                <p>I wrote a build plan first and split it into numbered slices, each with acceptance criteria. A slice was done when it had tests, had been checked on a real phone, and had its own commit and changelog entry.</p>
+                <ul class="checks">
+                    <li><strong>v1, slices 0&ndash;11:</strong> the blocker, the board and the puzzle loop.</li>
+                    <li><strong>v2, slices V0&ndash;V8:</strong> after v1, I wrote a second plan that redesigned it as the mobile version of Chess Terminal and replaced the unlock-per-win model with the minutes bank.</li>
+                    <li><strong>Decisions written down:</strong> no account, no chess engine, a rollover bank, the earn and penalty rates.</li>
+                    <li><strong>AI as an assistant:</strong> I used Claude Code to write much of the code. I wrote the specs, made the product and design decisions, reviewed the work and tested every slice on a device.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNED / NEXT ============ -->
+    <section class="section" aria-labelledby="learned-heading">
+        <div class="wrap">
+            <h2 id="learned-heading" class="sr-only">What I learned and what's next</h2>
+            <div class="cards">
+                <div class="card card-blue card-static">
+                    <p class="hand card-kicker">What I learned</p>
+                    <ul class="card-list">
+                        <li>Time-keeping that must survive the app dying belongs in native code, with a mirror for the UI, and both sides need tests for the same rules.</li>
+                        <li>Android's rules shape the product: Accessibility policy, background launches, and phone makers' battery killers.</li>
+                        <li>A data pipeline that's seeded and checked by the app's own logic avoids shipping broken puzzles.</li>
+                        <li>Small slices, each checked on a real device, kept a 5-day build under control.</li>
+                    </ul>
+                </div>
+                <div class="card card-yellow card-static">
+                    <p class="hand card-kicker">What's next</p>
+                    <ul class="card-list">
+                        <li>Run the full loop on device with the Accessibility service on: blocked app, lock, spend or earn, reopen.</li>
+                        <li>Start a Google Play closed test and record the Accessibility demo video.</li>
+                        <li>Theme the system navigation bar.</li>
+                        <li>The threat-finding drill and an engine-backed boss wait for a chess engine.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="connect" aria-labelledby="cta-heading">
+        <div class="wrap">
+            <h2 id="cta-heading">Need someone who ships on mobile too?</h2>
+            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering.</p>
+            <div class="connect-links">
+                <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
+                <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
+                <a href="../nur/" class="btn btn-ghost" data-pop>Next project: NUR <span aria-hidden="true">&rarr;</span></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="wrap footer-inner">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
+        <ul class="socials" aria-label="Social links and email">
+            <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>

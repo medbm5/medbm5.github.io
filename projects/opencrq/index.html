@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenCRQ: case study · Med BM</title>
+    <meta name="description" content="How I built OpenCRQ, a cyber risk quantification app: a vectorised Monte Carlo engine (100,000 simulated years × 4 scenarios in ~489 ms), a Bayesian network from MITRE ATT&CK, and a provenance trace behind every euro figure.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="OpenCRQ: case study">
+    <meta property="og:description" content="Cyber risk in euros, where every figure links back to its source data. FastAPI, NumPy, pgmpy, React.">
+    <meta property="og:site_name" content="Med BM">
+    <meta property="og:url" content="https://medbm5.github.io/projects/opencrq/">
+    <meta property="og:image" content="https://medbm5.github.io/img/opencrq/results-loss-curve.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="../../main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="nav wrap-wide">
+        <a href="../../" class="logo" data-pop aria-label="Med BM, home">
+            <span>Med</span><span>B</span><span>M</span>
+        </a>
+        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+            <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="main-nav">
+            <a href="../../#work" data-pop>Projects</a>
+            <a href="../../#road" data-pop>The Road So Far</a>
+            <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
+            <a href="../../#connect" data-pop>Connect</a>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+        <button class="mobile-close">(close this thing)</button>
+        <a href="../../#work">Projects</a>
+        <a href="../../#road">The Road So Far</a>
+        <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="../../#connect">Connect</a>
+    </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="cs-hero">
+    <div class="wrap">
+        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> All projects</a>
+        <div class="cs-hero-grid">
+            <div>
+                <p class="hand cs-kicker">Case study &middot; Risk modelling web app</p>
+                <h1 class="cs-title"><img src="../../img/opencrq/icon.svg" alt="" width="64" height="64"> OpenCRQ</h1>
+                <p class="hand big cs-pitch">How much could a cyber attack cost you in a bad year? And where did that number come from?</p>
+                <div class="connect-links">
+                    <a href="https://github.com/medbm5/open-CQR" target="_blank" rel="noopener" class="btn" data-pop>Source code <span aria-hidden="true">&nearr;</span></a>
+                </div>
+                <ul class="badges">
+                    <li>Prototype</li>
+                    <li>Runs locally</li>
+                    <li>EN &middot; FR</li>
+                </ul>
+            </div>
+            <dl class="meta">
+                <div><dt>My role</dt><dd>Solo, AI-assisted. I covered the whole stack (simulation engine, Bayesian model, data ingestion, API, frontend, tests, CI and deploy config) working with Claude Code as a coding assistant.</dd></div>
+                <div><dt>Timeline</dt><dd>14&ndash;18 Aug 2026 &middot; 5 days, 12 commits</dd></div>
+                <div><dt>Status</dt><dd>Portfolio prototype. Not deployed; Docker image and configs for Fly.io, Render and Vercel are in the repo.</dd></div>
+                <div><dt>Stack</dt><dd>Python 3.12, FastAPI, NumPy, pgmpy, DuckDB, Polars, SQLite, React 18, TypeScript, TanStack Query, Recharts, Docker</dd></div>
+            </dl>
+        </div>
+        <div class="cs-hero-shot">
+            <div class="shot-frame">
+                <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                <img src="../../img/opencrq/results-loss-curve.png" width="1440" height="816" alt="OpenCRQ results: a loss exceedance curve on a log scale, with markers for the 1-in-20 and 1-in-100 year losses.">
+            </div>
+            <p class="note-inline hand">The loss curve for a fictional demo company.</p>
+        </div>
+    </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v38c-120 34-240 50-360 30S840 6 720 26 480 88 360 78 120 20 0 40z"/></svg>
+
+<main class="cs">
+
+    <!-- ============ TL;DR ============ -->
+    <section class="section" aria-labelledby="tldr-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The 30-second version</p>
+            <h2 id="tldr-heading">A cyber risk number you can click on and argue with.</h2>
+            <p class="lede">
+                OpenCRQ turns a company profile, a 20-question control assessment and a set of loss scenarios into an
+                <strong>annual loss distribution</strong>: the expected annual loss, a 1-in-20-year loss (VaR95) and a 1-in-100-year loss (VaR99).
+                It uses the FAIR risk model, simulated with a fully vectorised Monte Carlo engine. What sets it apart is
+                <strong>traceability</strong>: click any number and see its derivation chain back to a dated public data snapshot or a named assumption.
+                A test fails if any simulation parameter isn't grounded that way.
+            </p>
+            <ul class="stats">
+                <li class="stat stat-yellow"><span class="stat-num">489 ms</span><span class="stat-label">for 100,000 simulated years &times; 4 scenarios</span></li>
+                <li class="stat stat-blue"><span class="stat-num">374</span><span class="stat-label">backend tests passing, plus 133 frontend</span></li>
+                <li class="stat stat-pink"><span class="stat-num">89%</span><span class="stat-label">backend line coverage at last measurement</span></li>
+                <li class="stat stat-white"><span class="stat-num">167</span><span class="stat-label">traced steps behind the demo's 1-in-20-year loss</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="section cs-yellow" aria-labelledby="problem-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">The problem</p>
+                <h2 id="problem-heading">Boards ask about the bad year. Most tools only know the average.</h2>
+            </div>
+            <div class="prose">
+                <p>Cyber risk tools based on FAIR (Factor Analysis of Information Risk) often reduce how often attacks happen and how much they cost to single numbers, then multiply them. That gives a usable average, but says nothing reliable about the tail, and the tail is what a board asks about.</p>
+                <p>Those numbers are also hard to challenge, because you can't see which inputs are measured and which are someone's guess. OpenCRQ is for the people who have to defend a cyber risk figure, the CISO, the risk manager, the CFO, so it:</p>
+                <ul class="checks">
+                    <li>samples the <strong>full distribution</strong>, not just the average,</li>
+                    <li>shows <strong>where every number came from</strong>, down to the source data,</li>
+                    <li>and says plainly which parameters are <strong>uncalibrated assumptions</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" aria-labelledby="features-heading">
+        <div class="wrap">
+            <p class="hand cs-label">What I built</p>
+            <h2 id="features-heading">From a questionnaire to a loss curve you can trace.</h2>
+
+            <div class="features">
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/landing-demo-profiles.png" width="1440" height="816" alt="Landing page with three demo company profiles and their expected annual loss" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>One-click demo profiles</h3>
+                        <p>The landing page offers three fictional companies (a manufacturer, an e-commerce platform and a hospital group), each <strong>already simulated</strong>. A visitor reaches a real loss curve in one click, without filling anything in.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/provenance-trace-var95.png" width="1440" height="816" alt="Side panel 'Where this number came from' showing the derivation steps behind the 1-in-20 year loss" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>"Where this number came from"</h3>
+                        <p>Click a figure and a derivation graph opens, down to dated source snapshots (ATT&amp;CK, KEV, sector base rates), your answers and named assumptions, with the <strong>uncalibrated ones in amber</strong>. The demo's 1-in-20-year loss traces through 167 steps: 28 from data, 50 assumed.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/what-if-control-comparison.png" width="1440" height="816" alt="What-if comparison: proposing a control change and seeing the change in expected and tail losses with 95% intervals" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>What-if, without the noise</h3>
+                        <p>Raise a control's maturity and enter its yearly cost. The app runs a real simulation <strong>on the same random draws</strong> as the baseline and reports the change with 95% intervals. In the demo, segmenting the plants cuts expected annual loss by &euro;1.04M (95% CI &minus;&euro;1.15M to &minus;&euro;941k) for &euro;380k a year.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/sensitivity-what-moves-the-number.png" width="1440" height="816" alt="Input sensitivity chart ranking inputs by rank correlation with annual loss, with a warning that the ranking is not reliable" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>What moves the number</h3>
+                        <p>Inputs are ranked by Spearman rank correlation with annual loss, with bootstrap intervals, separately for the average and the tail. When the two halves of the sample disagree, the app <strong>says the ranking isn't reliable</strong>, as it does for this demo run.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/control-posture-questionnaire.png" width="1440" height="816" alt="Control posture questionnaire with a 1 to 5 scale and an 'I don't know' option" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>An honest questionnaire</h3>
+                        <p>Twenty questions on a 1&ndash;5 scale, with an explicit <strong>"I don't know"</strong> that widens the uncertainty instead of counting as a middle score. Answers feed a Bayesian network built from ATT&amp;CK mitigation-to-technique mappings.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/threat-landscape-attack-kev.png" width="1440" height="816" alt="Threat landscape: sector incident rate marked low confidence, and a table of ATT&CK actor groups" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Threat landscape, with dates</h3>
+                        <p>ATT&amp;CK groups and CISA KEV / EPSS vulnerabilities, each with its snapshot date, plus a sector incident rate marked <strong>low confidence</strong> where the data is thin. Results come with a plain-language summary for the board, CFO or CISO, in English or French, and a PDF board memo.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section class="section cs-dark" aria-labelledby="arch-heading">
+        <div class="wrap">
+            <p class="hand cs-label">How it's built</p>
+            <h2 id="arch-heading">Data flows one way, in four layers.</h2>
+            <p class="lede">Public data is fetched offline into dated snapshots, never at request time. The model turns snapshots and answers into distributions and samples them. Provenance is recorded alongside, and the engine never imports it, which a test enforces.</p>
+
+            <div class="arch" role="img" aria-label="Architecture: five public data sources are ingested offline into dated Parquet snapshots. The model layer runs a Bayesian network, builds parameters and samples them with a vectorised Monte Carlo engine, then runs sensitivity and what-if analysis. Provenance records a derivation graph, an explanation layer writes verified prose, and FastAPI serves a React front end.">
+                <div class="arch-box arch-main">
+                    <p class="arch-tag">1 &middot; Ingestion (offline)</p>
+                    <p>MITRE ATT&amp;CK, CISA KEV, FIRST EPSS, VERIS VCDB and Eurostat SBS become dated, immutable Parquet snapshots, with a DuckDB manifest of checksums, row counts and dates.</p>
+                </div>
+                <div class="arch-arrow" aria-hidden="true">&darr;</div>
+                <div class="arch-box arch-renderer">
+                    <p class="arch-tag">2 &middot; Model</p>
+                    <p>Profile and control answers go into a Bayesian network (control &rarr; mitigation &rarr; technique &rarr; kill-chain stage, noisy-OR). A parameter builder turns everything into distributions.</p>
+                    <div class="arch-core">
+                        <p class="arch-tag">Vectorised Monte Carlo engine &middot; NumPy</p>
+                        <ul>
+                            <li>attack frequency</li><li>attacker capability</li><li>resistance per stage</li><li>loss severity</li><li>sensitivity</li><li>what-if</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="arch-arrow" aria-hidden="true">&darr;</div>
+                <div class="arch-row">
+                    <div class="arch-box arch-side"><p class="arch-tag">3 &middot; Provenance</p><p>A derivation graph of source, assumption, user-input and computed nodes, recorded as parameters are built.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">3 &middot; Explanations</p><p>An optional OpenAI-compatible model, or a deterministic template, writes the prose. A verifier checks every number in it.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">4 &middot; API &amp; UI</p><p>FastAPI REST and SSE with one schema file as the contract. React and TypeScript use types generated from it.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MODELLING ============ -->
+    <section class="section" aria-labelledby="model-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">The maths</p>
+                <h2 id="model-heading">Simulate the year, then read the tail.</h2>
+            </div>
+            <div class="prose">
+                <ul class="checks">
+                    <li><strong>Monte Carlo over FAIR:</strong> each iteration is one simulated year. Draw how often attacks happen, compare the attacker's capability with each kill-chain stage's resistance, draw the number of loss events, then a lognormal loss size plus a secondary loss. The metrics are read off the resulting distribution.</li>
+                    <li><strong>Bayesian network</strong> (pgmpy, noisy-OR): its shape comes from ATT&amp;CK mitigation-to-technique mappings. Its probabilities are elicited judgement and are <strong>not calibrated</strong>, and all 15 registered assumptions are flagged that way in the app.</li>
+                    <li><strong>Convergence:</strong> expected annual loss and VaR95 settle within 1% by 25,000 iterations, while VaR99 needs 250,000.</li>
+                    <li><strong>LLM explanations, kept honest:</strong> the model does no arithmetic. Every figure it may use is precomputed, and with no API key a deterministic template writes the text instead. On five runs of its eval suite on 16 Aug 2026 it scored 90, 85, 85, 85 and 80% against its own 85% bar, so one run failed.</li>
+                    <li><strong>Nothing is trained:</strong> no model is fitted to data, and loss severity is lognormal by assumption.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CHALLENGES ============ -->
+    <section class="section cs-yellow" aria-labelledby="challenges-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The interesting parts</p>
+            <h2 id="challenges-heading">Making a stochastic number trustworthy.</h2>
+
+            <div class="problems">
+                <article class="problem">
+                    <p class="hand problem-num">01</p>
+                    <h3>Measuring a control's effect, not the seed's</h3>
+                    <p><strong>Problem:</strong> the difference between two separately seeded Monte Carlo runs carries the noise of both. For a heavy-tailed VaR, that noise can be bigger than the effect of the control you're measuring.</p>
+                    <p><strong>Fix:</strong> the what-if run reuses the baseline's seed, with one random generator per scenario and fixed random consumption. Scenarios the change doesn't touch come out bit-identical, and a test requires the paired difference to vary at least 5&times; less than with independent runs.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">02</p>
+                    <h3>Keeping the LLM from inventing numbers</h3>
+                    <p><strong>Problem:</strong> generated explanations of risk figures can misstate or invent numbers, and a board memo can't contain a wrong euro figure.</p>
+                    <p><strong>Fix:</strong> every figure is precomputed, so checking the output is a lookup. A verifier pulls every number from the text (English and French formats, "1.8M" or "1,8 million") and checks it. One failure triggers a retry naming the bad number; a second falls back to the template. Unverified text is never shown.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">03</p>
+                    <h3>Tracing every parameter without slowing the engine</h3>
+                    <p><strong>Problem:</strong> tagging every random draw with where it came from would break vectorisation.</p>
+                    <p><strong>Fix:</strong> provenance is attached to parameters, not samples. A test fails if any parameter's lineage doesn't end at a source, an assumption or a user answer, and another rejects orphan nodes. Measured cost of recording it: &minus;2.90&nbsp;ms, inside a &plusmn;33.8&nbsp;ms noise band.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">04</p>
+                    <h3>Profiling, with bit-identical output as the gate</h3>
+                    <p><strong>Problem:</strong> the realistic workload (100,000 years &times; 4 scenarios, 7-stage kill chain) took 552&nbsp;ms.</p>
+                    <p><strong>Fix:</strong> I wrote a hypothesis before profiling, and 3 of its 5 predictions were wrong: Beta draws took 47% of the time, not ~20%. Three changes got it to 488.6&nbsp;ms (&minus;11.5%) and memory from 21.4 to 16.3&nbsp;MB, with <strong>bit-identical output</strong>. I rejected a faster sampler because it moved VaR95 by 1%.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">05</p>
+                    <h3>Base rates from mismatched data</h3>
+                    <p><strong>Problem:</strong> incident counts come from VCDB, a global sample of publicly disclosed incidents, while firm counts come from Eurostat EU27. They don't describe the same population.</p>
+                    <p><strong>Fix:</strong> base rates are labelled as relative ordering only, and rates backed by fewer than 30 incidents are marked low confidence with wider intervals. The caveat travels with the data, all the way to a banner on the threats screen.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ QUALITY ============ -->
+    <section class="section cs-dark" aria-labelledby="quality-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">Quality</p>
+                <h2 id="quality-heading">Tests that check the maths, not just the code.</h2>
+            </div>
+            <div class="prose">
+                <ul class="checks">
+                    <li><strong>Tests (run 15 Oct 2026):</strong> 374 backend tests passing (1 skipped: the live LLM eval, which needs an API key) and 133 frontend tests passing in 8 files.</li>
+                    <li><strong>Coverage at the last measurement:</strong> 89% backend lines, 88.6% frontend lines (77.8% branches).</li>
+                    <li><strong>What's tested:</strong> each model and ingestion module against real data samples, provenance completeness, bit-identical and variance-reduction checks for what-if, the engine against a simple reference implementation, the API, and keyboard and chart accessibility in the front end.</li>
+                    <li><strong>CI:</strong> a 6-job GitHub Actions workflow covers lint, strict mypy, tests, API type drift, a benchmark that fails on a 25% slowdown, a secret scan and a Docker build check. It's set to run on <code>main</code> while the repo uses <code>master</code>, so these checks were run locally.</li>
+                    <li><strong>Ships as one Docker image</strong> with the three demos already simulated, plus health and readiness endpoints, rate limiting and JSON logs.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section cs-yellow" aria-labelledby="process-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">How I worked</p>
+                <h2 id="process-heading">Measure first, write it down, slice by slice.</h2>
+            </div>
+            <div class="prose">
+                <p>I built it in vertical slices over 5 days, each commit adding one capability end to end: the UI on fixtures first, then the assessment API, the Monte Carlo engine, the Bayesian model, provenance, sensitivity and what-if, explanations, performance work, deployment and the PDF memo.</p>
+                <ul class="checks">
+                    <li><strong>8 Architecture Decision Records</strong>, each with alternatives and a stated downside: Monte Carlo over closed form, dated snapshots over live feeds, provenance on parameters rather than samples, "the LLM does no arithmetic".</li>
+                    <li><strong>Limitations written down:</strong> a LIMITATIONS file with eight sections, each paired with what would fix it.</li>
+                    <li><strong>Measurement before optimisation:</strong> I published the profiling hypothesis and what it got wrong, and rejected speed-ups that changed results.</li>
+                    <li><strong>AI-assisted:</strong> built with Claude Code as a coding assistant. I directed the work slice by slice.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNED / NEXT ============ -->
+    <section class="section" aria-labelledby="learned-heading">
+        <div class="wrap">
+            <h2 id="learned-heading" class="sr-only">What I learned and what's next</h2>
+            <div class="cards">
+                <div class="card card-blue card-static">
+                    <p class="hand card-kicker">What I learned</p>
+                    <ul class="card-list">
+                        <li>To compare two stochastic runs, use common random numbers. Subtracting two independent results mostly measures the seed.</li>
+                        <li>For a risk number, reproducibility comes before speed. A faster sampler that moves VaR95 by 1% is a regression.</li>
+                        <li>An LLM that does no arithmetic is an LLM whose output you can check.</li>
+                        <li>Profiling intuition is unreliable: the biggest cost was one I'd dismissed as "just the inputs".</li>
+                    </ul>
+                </div>
+                <div class="card card-yellow card-static">
+                    <p class="hand card-kicker">What's next</p>
+                    <ul class="card-list">
+                        <li>Calibrate the 15 assumptions and the network's probabilities against real loss data.</li>
+                        <li>Model correlation between scenarios. They're independent today, which understates the tail.</li>
+                        <li>Fit loss severity to data instead of assuming lognormal.</li>
+                        <li>Database migrations, tests for the ingest CLI, and scheduled snapshot refreshes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="connect" aria-labelledby="cta-heading">
+        <div class="wrap">
+            <h2 id="cta-heading">Need numbers people can trust?</h2>
+            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering.</p>
+            <div class="connect-links">
+                <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
+                <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
+                <a href="../chess-terminal/" class="btn btn-ghost" data-pop>Next project: Chess Terminal <span aria-hidden="true">&rarr;</span></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="wrap footer-inner">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
+        <ul class="socials" aria-label="Social links and email">
+            <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>

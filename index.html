@@ -220,6 +220,106 @@
                 </figure>
             </article>
 
+            <article class="project" aria-labelledby="sec-analyst-heading">
+                <div class="project-copy">
+                    <p class="hand project-kicker">LLM agents &middot; RAG + knowledge graph</p>
+                    <h3 id="sec-analyst-heading"><img src="img/sec-analyst/icon.png" alt="" width="48" height="48"> <a href="projects/sec-analyst/" class="project-title-link">SEC Filing Analyst</a></h3>
+                    <p class="project-body">
+                        Ask plain-English questions across Apple, NVIDIA, AMD, Microsoft and Tesla's annual reports (10-K) and get answers that cite the filing section. Vector search is combined with a Neo4j knowledge graph built by an LLM extraction pipeline, so it can answer cross-company questions like "which two companies share a supplier?". Four LangGraph agents draft and check every answer.
+                    </p>
+                    <ul class="facts">
+                        <li><strong>78%</strong> factual correctness on a 151-question eval</li>
+                        <li><strong>12/12</strong> unanswerable questions correctly refused</li>
+                        <li><strong>Hybrid retrieval</strong>: pgvector + Neo4j graph</li>
+                        <li><strong>616</strong> automated test cases</li>
+                    </ul>
+                    <ul class="tags" aria-label="Built with">
+                        <li>Python</li><li>LangGraph</li><li>FastAPI</li><li>pgvector</li><li>Neo4j</li><li>Next.js</li>
+                    </ul>
+                    <div class="project-links">
+                        <a class="btn" href="projects/sec-analyst/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn btn-ghost" href="https://github.com/medbm5/sec-analyst" target="_blank" rel="noopener" data-pop>Code <span aria-hidden="true">&nearr;</span></a>
+                    </div>
+                </div>
+
+                <figure class="shots" aria-roledescription="carousel" aria-label="SEC Filing Analyst screenshots" tabindex="0">
+                    <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
+                    <div class="shot-frame">
+                        <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                        <img src="img/sec-analyst/graph-traversal-shared-supplier.png" width="1440" height="816" alt="" class="shot-img">
+                    </div>
+                    <div class="shot-controls">
+                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <span class="shot-count"></span>
+                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                    <script type="application/json" class="shot-data">
+                        [
+                            {"src": "img/sec-analyst/graph-traversal-shared-supplier.png", "alt": "Graph traversal showing AMD and NVIDIA both depend on TSMC and Samsung", "caption": "Which two share a supplier? The graph knows."},
+                            {"src": "img/sec-analyst/cited-answer-with-agent-trace.png", "alt": "A cited answer with the vector results and live agent trace", "caption": "Every answer cites its filing."},
+                            {"src": "img/sec-analyst/risk-exposure-matrix.png", "alt": "Company by risk exposure matrix", "caption": "Risks across companies, counted."},
+                            {"src": "img/sec-analyst/eval-dashboard.png", "alt": "Evaluation dashboard with accuracy by question type", "caption": "Measured on 151 questions."},
+                            {"src": "img/sec-analyst/admin-corpus-freshness.png", "alt": "Admin page checking filings against SEC EDGAR", "caption": "Ingestion is gated, on purpose."},
+                            {"src": "img/sec-analyst/chat-start-and-corpus.png", "alt": "Start screen with the five indexed 10-K filings", "caption": "Five 10-Ks, ready to question."}
+                        ]
+                    </script>
+                </figure>
+            </article>
+
+            <article class="project" aria-labelledby="opencrq-heading">
+                <div class="project-copy">
+                    <p class="hand project-kicker">Risk modelling &middot; Monte Carlo</p>
+                    <h3 id="opencrq-heading"><img src="img/opencrq/icon.svg" alt="" width="48" height="48"> <a href="projects/opencrq/" class="project-title-link">OpenCRQ</a></h3>
+                    <p class="project-body">
+                        How much could a cyber attack cost a company in a bad year? OpenCRQ turns a 20-question control assessment and a set of loss scenarios into an annual loss distribution: the expected loss, a 1-in-20-year loss and a 1-in-100-year loss. Click any figure and it traces back to dated public data or a named assumption.
+                    </p>
+                    <ul class="facts">
+                        <li><strong>489 ms</strong> for 100,000 simulated years &times; 4 scenarios</li>
+                        <li><strong>Every figure traceable</strong> to source data or a named assumption</li>
+                        <li><strong>What-if on the same random draws</strong>, so the seed doesn't decide</li>
+                        <li><strong>374</strong> backend + <strong>133</strong> frontend tests passing</li>
+                    </ul>
+                    <ul class="tags" aria-label="Built with">
+                        <li>Python</li><li>FastAPI</li><li>NumPy</li><li>pgmpy</li><li>React</li><li>TypeScript</li>
+                    </ul>
+                    <div class="project-links">
+                        <a class="btn" href="projects/opencrq/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn btn-ghost" href="https://github.com/medbm5/open-CQR" target="_blank" rel="noopener" data-pop>Code <span aria-hidden="true">&nearr;</span></a>
+                    </div>
+                </div>
+
+                <figure class="shots" aria-roledescription="carousel" aria-label="OpenCRQ screenshots" tabindex="0">
+                    <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
+                    <div class="shot-frame">
+                        <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                        <img src="img/opencrq/results-loss-curve.png" width="1440" height="816" alt="" class="shot-img">
+                    </div>
+                    <div class="shot-controls">
+                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <span class="shot-count"></span>
+                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                    <script type="application/json" class="shot-data">
+                        [
+                            {"src": "img/opencrq/results-loss-curve.png", "alt": "Loss exceedance curve on a log scale", "caption": "The bad year, not just the average."},
+                            {"src": "img/opencrq/provenance-trace-var95.png", "alt": "Derivation trace behind the 1-in-20 year loss", "caption": "Click a number, see where it came from."},
+                            {"src": "img/opencrq/what-if-control-comparison.png", "alt": "What-if comparison of a control change with 95% intervals", "caption": "What would this control save?"},
+                            {"src": "img/opencrq/sensitivity-what-moves-the-number.png", "alt": "Inputs ranked by rank correlation with annual loss", "caption": "What actually moves the number."},
+                            {"src": "img/opencrq/landing-demo-profiles.png", "alt": "Three demo company profiles", "caption": "Three demo companies, one click each."},
+                            {"src": "img/opencrq/threat-landscape-attack-kev.png", "alt": "Threat landscape with ATT&CK groups and a low-confidence base rate", "caption": "Threat data, dated and caveated."}
+                        ]
+                    </script>
+                </figure>
+            </article>
+
             <article class="project" aria-labelledby="chess-heading">
                 <div class="project-copy">
                     <p class="hand project-kicker">Desktop app &middot; Windows, macOS, Linux</p>
@@ -272,34 +372,35 @@
                 </figure>
             </article>
 
-            <h3 class="more-heading">More things I've built.</h3>
-            <p class="hand mid sub">Smaller write-ups for now. Case studies coming.</p>
-            <div class="minis">
-                <article class="mini">
-                    <p class="hand mini-kicker">Cyber risk &middot; Monte Carlo</p>
-                    <h4>OpenCRQ</h4>
-                    <p>A cyber risk quantification platform (FAIR). A vectorised NumPy Monte Carlo engine runs <strong>100,000 simulated years &times; 4 scenarios in ~489&nbsp;ms</strong>, reporting expected annual loss, VaR95/99 and loss exceedance curves. A Bayesian network built from MITRE ATT&amp;CK, and every number traceable to its source data.</p>
-                    <ul class="tags"><li>FastAPI</li><li>NumPy</li><li>pgmpy</li><li>React</li></ul>
-                    <p class="mini-facts">89% test coverage &middot; strict mypy &middot; 8 ADRs</p>
-                    <a class="arrow-link" href="https://github.com/medbm5/open-CQR" target="_blank" rel="noopener" data-pop>Code <span aria-hidden="true">&nearr;</span></a>
-                </article>
-                <article class="mini">
-                    <p class="hand mini-kicker">LLM agents &middot; evaluation</p>
-                    <h4>SEC Filing Analyst</h4>
-                    <p>Ask plain-English questions across companies' annual reports and get answers with sources. An agentic pipeline with typed stages and resumable state in Postgres, plus a <strong>verification step that rejects any claim not tied to its source</strong>.</p>
-                    <ul class="tags"><li>Python</li><li>LangGraph</li><li>FastAPI</li><li>pgvector</li></ul>
-                    <p class="mini-facts">151-question evaluation &middot; auto vs. human grading agreement (Cohen's kappa)</p>
-                    <a class="arrow-link" href="https://github.com/medbm5/sec-analyst" target="_blank" rel="noopener" data-pop>Code <span aria-hidden="true">&nearr;</span></a>
-                </article>
-                <article class="mini">
-                    <p class="hand mini-kicker">Android &middot; native module</p>
-                    <h4>MateToScroll</h4>
-                    <p>A chess-powered screen-time blocker. A custom Kotlin Expo module uses an Android Accessibility Service to <strong>lock chosen apps until you earn time back by solving puzzles</strong>, with 30K puzzles in a bundled 8&nbsp;MB SQLite file.</p>
-                    <ul class="tags"><li>React Native</li><li>Expo</li><li>Kotlin</li><li>SQLite</li></ul>
-                    <p class="mini-facts">90% coverage gate on core logic</p>
-                </article>
-            </div>
-            <p class="also"><span class="hand">Also:</span> a self-healing ML serving platform (Kubernetes, Argo Rollouts canary, PSI drift detection, MLflow) and a flight-delay lakehouse on Databricks (PySpark, Delta Lake, Auto Loader, 30M+ flights).</p>
+            <article class="project" aria-labelledby="matetoscroll-heading">
+                <div class="project-copy">
+                    <p class="hand project-kicker">Android app &middot; React Native + Kotlin</p>
+                    <h3 id="matetoscroll-heading"><img src="img/matetoscroll/icon.png" alt="" width="48" height="48"> <a href="projects/matetoscroll/" class="project-title-link">MateToScroll</a></h3>
+                    <p class="project-body">
+                        An Android app that locks your distracting apps when today's time runs out. Solving chess puzzles fills a minutes bank you can spend to unlock them again. Blocking and time-keeping run in a custom Kotlin Accessibility Service, and the chess side is a full trainer with 30,000 offline puzzles, 33 opening courses and calculation drills.
+                    </p>
+                    <ul class="facts">
+                        <li><strong>Kotlin Accessibility Service</strong> reads only the app's package name</li>
+                        <li><strong>168 ms</strong> from hitting the limit to the lock screen, on device</li>
+                        <li><strong>30,000 puzzles</strong> bundled offline in 8.1 MB</li>
+                        <li><strong>188</strong> Jest tests + <strong>33</strong> Kotlin JUnit tests</li>
+                    </ul>
+                    <ul class="tags" aria-label="Built with">
+                        <li>React Native</li><li>Expo</li><li>Kotlin</li><li>TypeScript</li><li>SQLite</li><li>Reanimated</li>
+                    </ul>
+                    <div class="project-links">
+                        <a class="btn" href="projects/matetoscroll/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </div>
+
+                <figure class="phones" aria-label="MateToScroll screenshots">
+                    <img src="img/matetoscroll/lock-screen-spend-bank.png" alt="Lock screen offering to spend banked minutes to unlock an app" loading="lazy">
+                    <img src="img/matetoscroll/tactics-puzzle-board.png" alt="A tactics puzzle on the chess board" loading="lazy">
+                    <img src="img/matetoscroll/home-level-bank-continue.png" alt="Home screen with level, minutes bank and continue button" loading="lazy">
+                    <figcaption class="hand">Out of time? Solve your way back in.</figcaption>
+                </figure>
+            </article>
+            <p class="also"><span class="hand">Also built:</span> a self-healing ML serving platform (Kubernetes, Argo Rollouts canary, PSI drift detection, MLflow) and a flight-delay lakehouse on Databricks (PySpark, Delta Lake, Auto Loader, 30M+ flights).</p>
         </div>
     </section>
 
