@@ -135,7 +135,7 @@ h2 { font-size: clamp(2rem, 4.5vw, 2.75rem); max-width: 26ch; }
     transition: transform .3s var(--ease), border-radius .6s var(--ease);
     cursor: pointer;
 }
-.head img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 50% 30%; }
+.head img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 50% 40%; }
 .head:hover { transform: rotate(2deg) scale(1.02); border-radius: 55% 45% 52% 48% / 45% 55% 45% 55%; }
 .head.ouch { animation: wobble .45s var(--ease); }
 @keyframes wobble {
