@@ -509,9 +509,36 @@ code {
 /* Projects after the first get a dashed divider; every other one puts the screenshots on the left */
 .project + .project { margin-top: 6rem; padding-top: 6rem; border-top: 3px dashed rgb(0 47 60 / .25); }
 @media (min-width: 960px) {
-    .project-flip { grid-template-columns: 7fr 5fr; }
-    .project-flip .project-copy { order: 2; }
+    article.project:nth-of-type(even) { grid-template-columns: 7fr 5fr; }
+    article.project:nth-of-type(even) .project-copy { order: 2; }
 }
+
+/* Pipeline diagram: numbered stages, a row on wide screens */
+.pipeline {
+    list-style: none; padding: 0; margin: 3.5rem 0 0;
+    display: grid; gap: 1rem; counter-reset: none;
+}
+@media (min-width: 640px) { .pipeline { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1100px) { .pipeline { grid-template-columns: repeat(6, 1fr); } }
+.pipeline li {
+    position: relative;
+    border: 3px solid var(--aqua); border-radius: .75rem;
+    padding: 1.25rem 1rem 1rem;
+    line-height: 1.5; font-size: .95rem;
+}
+.pipeline li:nth-child(4), .pipeline li:nth-child(5) { background: var(--yellow); color: var(--blue-deep); border-color: var(--yellow); }
+.pipeline li:nth-child(4) .arch-tag, .pipeline li:nth-child(5) .arch-tag { color: var(--blue-deep); }
+.pipe-num {
+    position: absolute; top: -.9rem; left: .75rem;
+    width: 1.8rem; height: 1.8rem; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--red); color: var(--white);
+    font-family: var(--font-display); font-size: .95rem;
+}
+.arch-row-after { margin-top: 2rem; max-width: none; }
+
+/* A phone screenshot inside a features list */
+.feature-phone .shot-frame { max-width: 18rem; justify-self: center; }
 
 /* Links under each project on the home page */
 .project-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
