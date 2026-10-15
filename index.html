@@ -1,551 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>I'm Mohamed El Baamrani and I build software that thinks.</title>
+    <meta name="description" content="Software & AI engineer in Paris. I build intelligent systems and the apps around them, from idea to deploy.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="I'm Mohamed El Baamrani and I build software that thinks.">
+    <meta property="og:description" content="Software & AI engineer in Paris. I build intelligent systems and the apps around them, from idea to deploy.">
+    <meta property="og:url" content="https://medbm5.github.io/">
+    <meta property="og:image" content="https://medbm5.github.io/img/me.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
 </head>
-<body class="main-content">
-    <header class="container header active" id="home">
-        <div class="header-content">
-            <div class="left-header">
-                <div class="h-shape"></div>
-                <div class="image">
-                    <img src="img/hero.png" alt="">
-                </div>
-            </div>
-            <div class="right-header">
-                <h1 class="name">
-                    Hi, I'm <span>Mohamed El Baamrani.</span>
-                   
-                </h1>
-                <h1> Software|AI engineer.</h1>
-                <p>
-                    I'm a Software & AI Engineer with a Master's in Machine Learning and professional experience in software development.
-                    I specialize in Generative AI, Machine Learning, and full-cycle software engineering—from ideation to deployment. 
-                    Whether it's building intelligent systems, developing scalable applications, or managing agile projects, 
-                    I bring technical expertise and strategic vision to drive innovation.
-                   </p>
-                <div class="btn-con">
-                    <a href="files/Mohamed-El-Baamrani-v2.pdf" class="main-btn">
-                        <span class="btn-text">Download CV</span>
-                        <span class="btn-icon"><i class="fas fa-download"></i></span>
-                    </a>
-                </div>
-            </div>
+<body>
+
+<header class="site-header">
+    <nav class="nav wrap-wide">
+        <a href="#top" class="logo" data-pop aria-label="Home">
+            <span>M</span><span>E</span><span>B</span>
+        </a>
+        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+            <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="main-nav">
+            <a href="#work" data-pop>Projects</a>
+            <a href="#road" data-pop>The Road So Far</a>
+            <a href="files/Mohamed-El-Baamrani-v2.pdf" target="_blank" rel="noopener" data-pop>CV</a>
+            <a href="#connect" data-pop>Connect</a>
         </div>
-    </header>
-    <main>
-        <section class="container about" id="about">
-            <div class="main-title">
-                <h2>About <span>me</span><span class="bg-text">my stats</span></h2>
-            </div>
-            <div class="about-container">
-                <div class="left-about">
-                    <h4>About me</h4>
-                    <p>
-                        I’m a technology-agnostic Software & AI Engineer with a strong foundation in innovation, 
-                        software development, and machine learning. Holding an engineering diploma in Innovation & AMOA and a Master’s in Machine Learning, 
-                        I specialize in full-stack development, Generative AI, and agile project management.
+    </nav>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+        <button class="mobile-close">(close this thing)</button>
+        <a href="#work">Projects</a>
+        <a href="#road">The Road So Far</a>
+        <a href="files/Mohamed-El-Baamrani-v2.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="#connect">Connect</a>
+    </div>
+</header>
 
+<section class="hero" id="top">
+    <div class="wrap hero-inner">
+        <div class="hero-photo">
+            <button class="head" type="button" aria-label="Poke Mohamed's photo">
+                <img src="img/me.png" width="519" height="480" alt="Mohamed El Baamrani, smiling at the camera, with a computer screen behind him.">
+            </button>
+            <p class="speech" aria-live="polite"></p>
+            <p class="note note-me">That's me!</p>
+            <p class="note note-glasses">The glasses add +10 to debugging. Scientifically proven. Probably.</p>
+            <p class="note note-screen">Something is definitely training on that screen back there.</p>
+        </div>
+        <div class="hero-copy">
+            <h1>I build software that thinks a&nbsp;little.</h1>
+            <p class="hand big">Software &amp; AI engineer in Paris. I take ideas all the way from the whiteboard to production.</p>
+            <a href="#work" class="arrow-link" data-pop>See what I'm building <span aria-hidden="true">&darr;</span></a>
+        </div>
+    </div>
+</section>
 
-                </p>
-                <p>With professional  perience as a software engineer, I thrive in both front-end and back-end development, 
-                    leveraging the latest technologies to build scalable, intelligent systems. I have a keen interest in product development, blockchain, and emerging technologies, 
-                    constantly exploring new ways to innovate.
-                             </p>
+<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v38c-120 34-240 50-360 30S840 6 720 26 480 88 360 78 120 20 0 40z"/></svg>
 
-                             <p>
-                                As a polymath, I bring a multidisciplinary approach to problem-solving,
-                     combining technical expertise with strategic thinking to drive impactful solutions from ideation to deployment..
-               
-                             </p>
-                    <div class="btn-con">
-                        <a href="files/Mohamed-El-Baamrani-v2.pdf" class="main-btn">
-                            <span class="btn-text">Download CV</span>
-                            <span class="btn-icon"><i class="fas fa-download"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="right-about">
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">5+</p>
-                            <p class="small-text">Projects <br /> Completed</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">3+</p>
-                            <p class="small-text">Years of <br /> experience</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">20+</p>
-                            <p class="small-text">Mastred <br /> technologies</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">60</p>
-                            <p class="small-text">Leetcode <br /> problems</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="about-stats">
-                <h4 class="stat-title">My Skills</h4>
-                <div class="progress-bars">
-                    <div class="progress-bar">
-                        <p class="prog-title">Python</p>
-                        <div class="progress-con">
-                            <p class="prog-text">80%</p>
-                            <div class="progress">
-                                <span class="html"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Javascript/Typescript</p>
-                        <div class="progress-con">
-                            <p class="prog-text">95%</p>
-                            <div class="progress">
-                                <span class="css"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Generative AI</p>
-                        <div class="progress-con">
-                            <p class="prog-text">75%</p>
-                            <div class="progress">
-                                <span class="js"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">ReactJS</p>
-                        <div class="progress-con">
-                            <p class="prog-text">80%</p>
-                            <div class="progress">
-                                <span class="react"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Data Science /Machine Learning</p>
-                        <div class="progress-con">
-                            <p class="prog-text">87%</p>
-                            <div class="progress">
-                                <span class="node"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Project Managment</p>
-                        <div class="progress-con">
-                            <p class="prog-text">70%</p>
-                            <div class="progress">
-                                <span class="python"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h4 class="stat-title">My Timeline</h4>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2017 - 2019</p>
-                    <h5>MPSI<span> - CPGE</span></h5>
-                    <p>
-Studied intense mathematics and physics for two Years                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2019 - 2022</p>
-                    <h5>Innovation and AMOA<span> - INPT.</span></h5>
-                    <p>
-Studied Computer science and Innovation for 3 years in engineering school                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">6 months</p>
-                    <h5>Software engineer <span> - We beautiful minds</span></h5>
-                    <p>
-Worked on a saas web app as part of an internship with ReactJS and Spring boot under the supervision of a Scrum master              </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2 Years</p>
-                    <h5>Software Engineer<span> - Masarat App</span></h5>
-                    <p>
-                        Worked as a part of a team on health care integration projects and also backend Engineering using PHP/ LARAVEL and Javascript
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2023 - 2024</p>
-                    <h5>Master in machine learning for data science<span> - Paris Cité University</span></h5>
-                    <p>
-                        Studied intense machine learning and data science courses and theory behind every concept 
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">6 months</p>
-                    <h5>AI Engineer<span> - Allianz global investors</span></h5>
-                    <p>
-                        Worked on genrative AI platform using ReactJS,Flask,Azure Cloud,& Azure Open AI
-                    </p>
-                </div>
-            </div>
-        </section>
-        <section class="container" id="portfolio">
-            <div class="main-title">
-                <h2>My <span>Portfolio</span><span class="bg-text">My Work</span></h2>
-            </div>
-            <p class="port-text">
-                Here is some of my work that I've done in various programming languages.
+<main>
+    <section class="section intro" aria-labelledby="intro-heading">
+        <div class="wrap">
+            <h2 id="intro-heading">Half software engineer, half machine-learning nerd, all&nbsp;in.</h2>
+            <p class="lede">
+                <strong>I started with two years of hard maths and physics,</strong> went on to engineering school for
+                computer science and innovation, then did a Master's in Machine Learning at Université Paris Cité.
+                Along the way I shipped SaaS apps with React and Spring Boot, built healthcare integrations and
+                Laravel backends, and worked on a generative AI platform at Allianz Global Investors on Azure&nbsp;OpenAI.
             </p>
-            <div class="portfolios">
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port1.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="https://github.com/medbm5/financial-article-gnerator" class="icon" target="_blanks">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <h3>Financial article generator</h3>
+            <p class="hand mid">Still learning. Still shipping.</p>
 
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port2.jpg" alt="">
+            <div class="cards">
+                <a href="#work" class="card card-blue">
+                    <p class="hand card-kicker">Software engineering</p>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" width="72" height="72"><path d="M22 18 8 32l14 14M42 18l14 14-14 14M36 12 28 52" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="https://github.com/medbm5/cover-letter-generator" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+                    <p class="card-body">Full-stack, front to back. TypeScript, React, Node, Python, Java, PHP. I like typed code, honest tests and apps that feel quick.</p>
+                    <p class="card-cta"><span>See the projects</span> <span aria-hidden="true">&darr;</span></p>
+                </a>
+                <a href="files/Mohamed-El-Baamrani-v2.pdf" target="_blank" rel="noopener" class="card card-yellow">
+                    <p class="hand card-kicker">AI engineering</p>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" width="72" height="72"><circle cx="32" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="5"/><path d="M32 6v12M32 46v12M6 32h12M46 32h12M14 14l8 8M42 42l8 8M50 14l-8 8M22 42l-8 8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
                     </div>
-                    <h3>Cover letter generator</h3>
-
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port3.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="https://colab.research.google.com/drive/16nA1NxCWs8DDhCuTdtVdj3ZfcHtUEW9f?usp=sharing" class="icon" target="_blank">
-                                <i class="fab fa-brands fa-google"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <h3>Credit Score Prediction</h3>
-
-                </div>
-               <!--  <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port4.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port5.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port2.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image">
-                        <img src="img/port7.jpg" alt="">
-                    </div>
-                    <div class="hover-items">
-                        <h3>Project Source</h3>
-                        <div class="icons">
-                            <a href="#" class="icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                            <a href="#" class="icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
+                    <p class="card-body">Generative AI, LLM apps, machine learning and data science. TensorFlow, scikit-learn, Azure OpenAI. I care about the model and the product around it.</p>
+                    <p class="card-cta"><span>Grab my CV</span> <span aria-hidden="true">&nearr;</span></p>
+                </a>
             </div>
-        </section>
-        <!-- <section class="container" id="blogs">
-            <div class="blogs-content">
-                <div class="main-title">
-                    <h2>My <span>Blogs</span><span class="bg-text">My Blogs</span></h2>
-                </div>
-                <div class="blogs">
-                    <div class="blog">
-                        <img src="img/port6.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                How to Create Your Own Website
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog1.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                How to Become an Expert in Web Design
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog2.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                Become a Web Designer in 10 Days
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/blog3.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                Debbuging made easy with Web Inspector
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/port1.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                Get started with Web Design and UI Design
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="img/port3.jpg" alt="">
-                        <div class="blog-text">
-                            <h4>
-                                This is what you need to know about Web Design
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                Doloribus natus voluptas, eos obcaecati recusandae amet?
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <section class="container contact" id="contact">
-            <div class="contact-container">
-                <div class="main-title">
-                    <h2>Contact <span>Me</span><span class="bg-text">Contact</span></h2>
-                </div>
-                <div class="contact-content-con">
-                    <div class="left-contact">
-                        <h4>Contact me here</h4>
-                        <p>
-                            I'm looking for a CDI in Paris in software/AI engineering if you have any offers for me please reach out
-                        </p>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Location</span>
-                                </div>
-                                <p>
-                                    Paris, France
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>Email</span>
-                                </div>
-                                <p>
-                                    <span>medbaamrani0@gmail.com</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <span>Education</span>
-                                </div>
-                                <p>
-                                    <span>Université Paris Cité</span>
-                                </p>
-                            </div>
-                        <!--     <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <span>Mobile Number</span>
-                                </div>
-                                <p>
-                                    <span>: 07522670617</span>
-                                </p>
-                            </div> -->
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-globe-africa"></i>
-                                    <span>Languages</span>
-                                </div>
-                                <p>
-                                    <span>Arabic, English, French</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="contact-icons">
-                            <div class="contact-icon">
-                                <a href="https://github.com/medbm5" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/medbm/" target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-              <!--       <div class="right-contact">
-                        <form action="" class="contact-form">
-                            <div class="input-control i-c-2">
-                                <input type="text" required placeholder="YOUR NAME">
-                                <input type="email" required placeholder="YOUR EMAIL">
-                            </div>
-                            <div class="input-control">
-                                <input type="text" required placeholder="ENTER SUBJECT">
-                            </div>
-                            <div class="input-control">
-                                <textarea name="" id="" cols="15" rows="8" placeholder="Message Here..."></textarea>
-                            </div>
-                            <div class="submit-btn">
-                                <a href="#" class="main-btn">
-                                    <span class="btn-text">Download CV</span>
-                                    <span class="btn-icon"><i class="fas fa-download"></i></span>
-                                </a>
-                            </div>
-                        </form>
-                    </div> -->
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <div class="controls">
-        <div class="control active-btn" data-id="home" >
-            <i class="fas fa-home"></i>
+    <section class="section work" id="work" aria-labelledby="work-heading">
+        <div class="wrap">
+            <h2 id="work-heading">Stuff I've built.</h2>
+            <p class="hand mid sub">More coming soon. My keyboard is warm.</p>
+
+            <!-- One <article class="project"> per project. Copy this block to add another one. -->
+            <article class="project" aria-labelledby="chess-heading">
+                <div class="project-copy">
+                    <p class="hand project-kicker">Desktop app &middot; Windows, macOS, Linux</p>
+                    <h3 id="chess-heading"><img src="img/chess/icon.png" alt="" width="48" height="48"> Chess Terminal</h3>
+                    <p class="project-body">
+                        Learn chess openings like a game. A coach explains every move, memory tests unlock the next level,
+                        puzzles come from the positions you actually play, and there's a boss at the end of every opening.
+                        It runs entirely on your computer: no account, no server, no telemetry.
+                    </p>
+                    <ul class="facts">
+                        <li><strong>33 openings</strong>, Beginner to Master</li>
+                        <li><strong>Stockfish</strong> running locally (WASM)</li>
+                        <li><strong>Glicko-2</strong> puzzle rating</li>
+                        <li><strong>SM-2</strong> spaced repetition</li>
+                    </ul>
+                    <ul class="tags" aria-label="Built with">
+                        <li>TypeScript</li><li>Electron</li><li>Stockfish</li><li>SQLite</li><li>Vitest</li>
+                    </ul>
+                    <a class="arrow-link" href="https://github.com/medbm5/Chess-Terminal" target="_blank" rel="noopener" data-pop>Check out the code <span aria-hidden="true">&nearr;</span></a>
+                </div>
+
+                <figure class="shots" aria-roledescription="carousel" aria-label="Chess Terminal screenshots" tabindex="0">
+                    <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
+                    <div class="shot-frame">
+                        <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                        <img src="img/chess/menu.png" width="1442" height="817" alt="" class="shot-img">
+                    </div>
+                    <div class="shot-controls">
+                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <span class="shot-count"></span>
+                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                    <script type="application/json" class="shot-data">
+                        [
+                            {"src": "img/chess/menu.png", "alt": "Chess Terminal main menu", "caption": "The main menu. Pick your poison."},
+                            {"src": "img/chess/coach.png", "alt": "The coach explaining an opening move", "caption": "The coach explains every single move."},
+                            {"src": "img/chess/coach-dark.png", "alt": "The coach in dark mode with a switch alert", "caption": "Dark mode. Obviously."},
+                            {"src": "img/chess/openings.png", "alt": "The openings map with difficulty tiers", "caption": "Beat the boss, unlock the next tier."},
+                            {"src": "img/chess/memory-test.png", "alt": "A memory test with no hints", "caption": "No hints. One mistake and you're out."},
+                            {"src": "img/chess/puzzles.png", "alt": "A Lichess puzzle on the board", "caption": "Puzzles from the openings you play."}
+                        ]
+                    </script>
+                </figure>
+            </article>
         </div>
-        <div class="control" data-id="about">
-            <i class="fas fa-user"></i>
+    </section>
+
+    <section class="section road" id="road" aria-labelledby="road-heading">
+        <div class="wrap">
+            <h2 id="road-heading">The road so far.</h2>
+            <p class="lede">Lots of maths, then lots of code, then a lot of models. Arabic, English and French along the way.</p>
+            <ol class="timeline">
+                <li class="stop">
+                    <p class="hand when">2017 &ndash; 2019</p>
+                    <h3>MPSI &middot; CPGE</h3>
+                    <p>Two years of intense maths and physics. This is where I learned to love hard problems.</p>
+                </li>
+                <li class="stop">
+                    <p class="hand when">2019 &ndash; 2022</p>
+                    <h3>Engineering degree &middot; INPT</h3>
+                    <p>Computer science and innovation (AMOA). Learned to build things and how to plan them.</p>
+                </li>
+                <li class="stop">
+                    <p class="hand when">6 months</p>
+                    <h3>Software Engineer &middot; We Beautiful Minds</h3>
+                    <p>Built a SaaS web app with React and Spring Boot, in a team with a Scrum master.</p>
+                </li>
+                <li class="stop">
+                    <p class="hand when">2 years</p>
+                    <h3>Software Engineer &middot; Masarat App</h3>
+                    <p>Healthcare integration projects and backend work with PHP, Laravel and JavaScript.</p>
+                </li>
+                <li class="stop">
+                    <p class="hand when">2023 &ndash; 2024</p>
+                    <h3>Master's in ML for Data Science &middot; Université Paris Cité</h3>
+                    <p>Machine learning and data science, plus the theory behind every concept.</p>
+                </li>
+                <li class="stop">
+                    <p class="hand when">6 months</p>
+                    <h3>AI Engineer &middot; Allianz Global Investors</h3>
+                    <p>Worked on a generative AI platform with React, Flask, Azure Cloud and Azure OpenAI.</p>
+                </li>
+            </ol>
         </div>
-        <div class="control" data-id="portfolio">
-            <i class="fas fa-briefcase"></i>
+    </section>
+
+    <section class="connect" id="connect" aria-labelledby="connect-heading">
+        <div class="wrap">
+            <h2 id="connect-heading">Let's build something.</h2>
+            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering in Paris. Got one? I'd love to hear about it.</p>
+            <div class="connect-links">
+                <a href="mailto:medbaamrani0@gmail.com" class="btn" data-pop>medbaamrani0@gmail.com</a>
+                <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
+                <a href="https://github.com/medbm5" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>GitHub <span aria-hidden="true">&nearr;</span></a>
+            </div>
         </div>
-        <!-- <div class="control" data-id="blogs">
-            <i class="far fa-newspaper"></i>
-        </div> -->
-        <div class="control" data-id="contact">
-            <i class="fas fa-envelope-open"></i>
-        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="wrap footer-inner">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built in Paris, no templates harmed.</p>
+        <ul class="socials" aria-label="Social links and email">
+            <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
+            <li><a href="mailto:medbaamrani0@gmail.com"><span class="sr-only">Email</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
+        </ul>
     </div>
-    <div class="theme-btn">
-        <i class="fas fa-adjust"></i>
-    </div>
-    <script src="app.js"></script>
+</footer>
+
 </body>
 </html>
