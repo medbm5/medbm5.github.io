@@ -496,6 +496,23 @@ code {
 .card-static { gap: 1.25rem; }
 .card-list { margin: 0; padding-left: 1.25rem; display: grid; gap: .75rem; font-size: 1.05rem; line-height: 1.7rem; }
 
+/* Status badges in case study heroes */
+.badges { list-style: none; padding: 0; margin: 2rem 0 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+.badges li {
+    font-family: var(--font-mono); font-weight: 700; font-style: italic; font-size: .85rem;
+    border: 2px solid var(--yellow); color: var(--yellow);
+    padding: .35rem .8rem; border-radius: 999px;
+}
+.badges li:nth-child(odd) { transform: rotate(-2deg); }
+.badges li:nth-child(even) { transform: rotate(2deg); background: var(--yellow); color: var(--blue-deep); }
+
+/* Projects after the first get a dashed divider; every other one puts the screenshots on the left */
+.project + .project { margin-top: 6rem; padding-top: 6rem; border-top: 3px dashed rgb(0 47 60 / .25); }
+@media (min-width: 960px) {
+    .project-flip { grid-template-columns: 7fr 5fr; }
+    .project-flip .project-copy { order: 2; }
+}
+
 /* Links under each project on the home page */
 .project-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
 .project-links .btn { font-size: .9rem; }

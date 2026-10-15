@@ -104,7 +104,60 @@
 
             <!-- One <article class="project"> per project. Copy this block to add another one,
                  and copy the projects/chess-terminal/ folder to give it a case study page. -->
-            <article class="project" aria-labelledby="chess-heading">
+            <article class="project" aria-labelledby="nur-heading">
+                <div class="project-copy">
+                    <p class="hand project-kicker">Freelance client &middot; Web app (PWA)</p>
+                    <h3 id="nur-heading"><img src="img/nur/icon.png" alt="" width="48" height="48"> <a href="projects/nur/" class="project-title-link">NUR</a></h3>
+                    <p class="project-body">
+                        Interest-free tuition loans for students in Quebec, funded by partner mosques. The app combines
+                        several mosques' programs to cover what a student needs, and each mosque approves, pays the school
+                        and collects repayments straight into its own Stripe account. Built solo in 7 days, in French,
+                        English and Arabic.
+                    </p>
+                    <ul class="facts">
+                        <li><strong>Authorization in Postgres</strong>: row-level security everywhere</li>
+                        <li><strong>Stripe Connect</strong>: repayments go straight to each mosque</li>
+                        <li><strong>914</strong> database test assertions + <strong>238</strong> unit tests</li>
+                        <li><strong>Arabic</strong> fully right-to-left</li>
+                    </ul>
+                    <ul class="tags" aria-label="Built with">
+                        <li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>Postgres</li><li>Stripe</li><li>Playwright</li>
+                    </ul>
+                    <div class="project-links">
+                        <a class="btn" href="projects/nur/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </div>
+
+                <figure class="shots" aria-roledescription="carousel" aria-label="NUR screenshots" tabindex="0">
+                    <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
+                    <div class="shot-frame">
+                        <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                        <img src="img/nur/landing-hero.png" width="1440" height="816" alt="" class="shot-img">
+                    </div>
+                    <div class="shot-controls">
+                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <span class="shot-count"></span>
+                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                    <script type="application/json" class="shot-data">
+                        [
+                            {"src": "img/nur/landing-hero.png", "alt": "NUR landing page with an example loan combination", "caption": "Zero interest. That's the whole pitch."},
+                            {"src": "img/nur/funding-finder-combinations.png", "alt": "Funding finder with five loan combinations", "caption": "Type an amount, get combinations."},
+                            {"src": "img/nur/student-request-timeline.png", "alt": "A student's loan request timeline", "caption": "Updates live when the mosque acts."},
+                            {"src": "img/nur/mosque-request-decision.png", "alt": "Mosque staff deciding on a loan request", "caption": "The mosque decides in one click."},
+                            {"src": "img/nur/mosque-portfolio.png", "alt": "Mosque portfolio dashboard", "caption": "Every dollar out, every dollar back."},
+                            {"src": "img/nur/student-budget.png", "alt": "Student monthly budget page", "caption": "A budget tool for students, too."},
+                            {"src": "img/nur/arabic-rtl-loans.png", "alt": "Student loans page in Arabic, right-to-left", "caption": "And all of it in Arabic, mirrored."}
+                        ]
+                    </script>
+                </figure>
+            </article>
+
+            <article class="project project-flip" aria-labelledby="chess-heading">
                 <div class="project-copy">
                     <p class="hand project-kicker">Desktop app &middot; Windows, macOS, Linux</p>
                     <h3 id="chess-heading"><img src="img/chess/icon.png" alt="" width="48" height="48"> <a href="projects/chess-terminal/" class="project-title-link">Chess Terminal</a></h3>
