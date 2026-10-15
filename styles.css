@@ -81,7 +81,7 @@ h2 { font-size: clamp(2rem, 4.5vw, 2.75rem); max-width: 26ch; }
     text-decoration: none;
 }
 .logo span { display: inline-block; transition: transform .25s var(--ease); }
-.logo span:nth-child(2) { color: var(--aqua); }
+.logo span:nth-child(2) { color: var(--aqua); margin-left: .3em; }
 .logo span:nth-child(3) { color: var(--red); }
 .logo:hover span:nth-child(1) { transform: translateY(-6px) rotate(-10deg); }
 .logo:hover span:nth-child(2) { transform: translateY(4px) rotate(8deg); }
