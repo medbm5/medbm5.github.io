@@ -49,7 +49,7 @@ const head = document.querySelector('.head');
 const speech = document.querySelector('.speech');
 const ouches = ['Ouch!', 'Hey!', 'Rude.', 'Stop that.', 'Merci!', 'Bug found?', 'Hired?', 'Again?!'];
 let speechTimer;
-head.addEventListener('click', () => {
+head?.addEventListener('click', () => {
     head.classList.remove('ouch');
     void head.offsetWidth;
     head.classList.add('ouch');
