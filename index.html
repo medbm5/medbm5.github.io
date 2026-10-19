@@ -320,6 +320,59 @@
                 </figure>
             </article>
 
+            <article class="project" aria-labelledby="metamorphosis-heading">
+                <div class="project-copy">
+                    <p class="hand project-kicker">Desktop app &middot; Windows &amp; Linux</p>
+                    <h3 id="metamorphosis-heading"><img src="img/metamorphosis/icon.png" alt="" width="48" height="48"> <a href="projects/metamorphosis/" class="project-title-link">Metamorphosis</a></h3>
+                    <p class="project-body">
+                        Convert and edit files without opening an app. Start dragging a file, tap a key, and a ring of options opens under your cursor: drop it on PNG, Compress, Crop or Blur faces and the result lands next to the original, which is never touched. Free, open source and fully offline, with a matching command-line tool.
+                    </p>
+                    <ul class="facts">
+                        <li><strong>87</strong> operations: images, PDFs, video, audio, documents, archives</li>
+                        <li><strong>Local AI</strong>: face and text detection, OCR, background removal</li>
+                        <li><strong>Sandboxed recipes</strong> that can only write their own output</li>
+                        <li><strong>23</strong> releases, CI on Windows + Ubuntu, <strong>114</strong> Rust tests</li>
+                    </ul>
+                    <ul class="tags" aria-label="Built with">
+                        <li>Rust</li><li>Tauri</li><li>FFmpeg</li><li>PDFium</li><li>ONNX Runtime</li><li>GitHub Actions</li>
+                    </ul>
+                    <div class="project-links">
+                        <a class="btn" href="projects/metamorphosis/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn btn-ghost" href="https://medbm5.github.io/morph/" target="_blank" rel="noopener" data-pop>Website <span aria-hidden="true">&nearr;</span></a>
+                        <a class="btn btn-ghost" href="https://github.com/medbm5/morph" target="_blank" rel="noopener" data-pop>Code <span aria-hidden="true">&nearr;</span></a>
+                    </div>
+                </div>
+
+                <figure class="shots" aria-roledescription="carousel" aria-label="Metamorphosis screenshots" tabindex="0">
+                    <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
+                    <div class="shot-frame">
+                        <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                        <img src="img/metamorphosis/convert-ring-on-a-pdf.png" width="1440" height="816" alt="" class="shot-img">
+                    </div>
+                    <div class="shot-controls">
+                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <span class="shot-count"></span>
+                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                    <script type="application/json" class="shot-data">
+                        [
+                            {"src": "img/metamorphosis/convert-ring-on-a-pdf.png", "alt": "A PDF dragged onto the Convert ring, hovering PNG", "caption": "Drag, tap Shift, drop on PNG."},
+                            {"src": "img/metamorphosis/tools-ring-on-a-screenshot.png", "alt": "Tools ring on a screenshot with Compress, Crop, Annotate and Add BG", "caption": "Ctrl for tools."},
+                            {"src": "img/metamorphosis/actions-ring-multiple-files.png", "alt": "Actions ring with three files: Share, Float, Copy, Move, Copy path, Terminal", "caption": "Alt for actions, on many files at once."},
+                            {"src": "img/metamorphosis/crop-editor-in-the-app.png", "alt": "Crop editor with aspect presets and the output file name", "caption": "Some tools need a proper editor."},
+                            {"src": "img/metamorphosis/wayland-drop-dock.png", "alt": "Wayland drop dock expanded into the Tools ring", "caption": "Wayland says no to global keys. Fine: a dock."},
+                            {"src": "img/metamorphosis/settings.png", "alt": "Settings with the ring keys, colour, animations and language", "caption": "Settings in plain language."},
+                            {"src": "img/metamorphosis/website-hero.png", "alt": "The Metamorphosis website: Drag a file. Tap a key. Drop it on the ring.", "caption": "It has a website, too."},
+                            {"src": "img/metamorphosis/website-live-ring-demo.png", "alt": "A live, clickable ring demo on the website", "caption": "With the real ring, live on the page."}
+                        ]
+                    </script>
+                </figure>
+            </article>
+
             <article class="project" aria-labelledby="chess-heading">
                 <div class="project-copy">
                     <p class="hand project-kicker">Desktop app &middot; Windows, macOS, Linux</p>
@@ -398,6 +451,35 @@
                     <img src="img/matetoscroll/tactics-puzzle-board.png" alt="A tactics puzzle on the chess board" loading="lazy">
                     <img src="img/matetoscroll/home-level-bank-continue.png" alt="Home screen with level, minutes bank and continue button" loading="lazy">
                     <figcaption class="hand">Out of time? Solve your way back in.</figcaption>
+                </figure>
+            </article>
+
+            <article class="project" aria-labelledby="progressive-overload-heading">
+                <div class="project-copy">
+                    <p class="hand project-kicker">Mobile app &middot; React Native + Supabase</p>
+                    <h3 id="progressive-overload-heading"><img src="img/progressive-overload/icon.png" alt="" width="48" height="48"> <a href="projects/progressive-overload/" class="project-title-link">Progressive Overload</a></h3>
+                    <p class="project-body">
+                        A gym tracker that turns every workout into a match you win by beating your last session. Each exercise is a playing card, every set is scored live against your previous best, and wins feed a ranked ladder, weekly streaks and seasons with a body-weight goal. It works fully offline and syncs to Supabase in the background.
+                    </p>
+                    <ul class="facts">
+                        <li><strong>Live set scoring</strong> against your last best (estimated 1RM)</li>
+                        <li><strong>Offline-first sync</strong>: logging a set never waits on the network</li>
+                        <li><strong>Row-level security</strong> on every Supabase table</li>
+                        <li><strong>121</strong> Jest tests, built in <strong>1 day</strong> from a 22-slice plan</li>
+                    </ul>
+                    <ul class="tags" aria-label="Built with">
+                        <li>React Native</li><li>Expo</li><li>TypeScript</li><li>Supabase</li><li>Zustand</li><li>Reanimated</li>
+                    </ul>
+                    <div class="project-links">
+                        <a class="btn" href="projects/progressive-overload/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </div>
+
+                <figure class="phones" aria-label="Progressive Overload screenshots">
+                    <img src="img/progressive-overload/hand.png" alt="A workout as a hand of exercise cards, with last session's best and today's target" loading="lazy">
+                    <img src="img/progressive-overload/logging-sets.png" alt="Logging sets with a PR flag and a rest timer" loading="lazy">
+                    <img src="img/progressive-overload/victory.png" alt="Victory screen with rounds won, rank points and XP" loading="lazy">
+                    <figcaption class="hand">Beat last week. Win the match.</figcaption>
                 </figure>
             </article>
         </div>

@@ -374,6 +374,10 @@ code {
     background: rgb(0 47 60 / .08); padding: .1em .35em; border-radius: .25rem;
 }
 .cs-dark code, .card-blue code { background: rgb(255 255 255 / .12); }
+kbd {
+    font-family: var(--font-mono); font-size: .8em; font-weight: 700;
+    padding: .05em .4em; border: 2px solid currentColor; border-bottom-width: 3px; border-radius: .3rem;
+}
 
 .back-link {
     display: inline-block; margin-top: 1rem;

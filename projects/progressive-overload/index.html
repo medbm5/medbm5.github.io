@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Progressive Overload: case study · Med BM</title>
+    <meta name="description" content="How I built Progressive Overload, a gym tracker that turns every workout into a match you win by beating your last session: a pure TypeScript rules layer, offline-first Supabase sync and a card-game workout flow.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Progressive Overload: case study">
+    <meta property="og:description" content="Beat last week, win the match. A local-first workout tracker built with React Native, Expo and Supabase.">
+    <meta property="og:site_name" content="Med BM">
+    <meta property="og:url" content="https://medbm5.github.io/projects/progressive-overload/">
+    <meta property="og:image" content="https://medbm5.github.io/img/progressive-overload/logging-sets.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="../../main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="nav wrap-wide">
+        <a href="../../" class="logo" data-pop aria-label="Med BM, home">
+            <span>Med</span><span>B</span><span>M</span>
+        </a>
+        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+            <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="main-nav">
+            <a href="../../#work" data-pop>Projects</a>
+            <a href="../../#road" data-pop>The Road So Far</a>
+            <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
+            <a href="../../#connect" data-pop>Connect</a>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+        <button class="mobile-close">(close this thing)</button>
+        <a href="../../#work">Projects</a>
+        <a href="../../#road">The Road So Far</a>
+        <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="../../#connect">Connect</a>
+    </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="cs-hero">
+    <div class="wrap">
+        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> All projects</a>
+        <div class="cs-hero-grid">
+            <div>
+                <p class="hand cs-kicker">Case study &middot; Mobile app</p>
+                <h1 class="cs-title"><img src="../../img/progressive-overload/icon.png" alt="" width="64" height="64"> Progressive Overload</h1>
+                <p class="hand big cs-pitch">Every workout is a match, and you win it by beating what you lifted last time.</p>
+                <ul class="badges">
+                    <li>Private prototype</li>
+                    <li>Android &amp; iOS (Expo)</li>
+                    <li>Offline-first</li>
+                </ul>
+            </div>
+            <dl class="meta">
+                <div><dt>My role</dt><dd>Solo personal project. I came up with the product, wrote the specs and build plan, set the design direction, tested on real phones and reviewed every change, with Claude Code as an AI coding assistant.</dd></div>
+                <div><dt>Timeline</dt><dd>17 Oct 2026 &middot; 56 commits in one day, then device testing and polish on 18&ndash;19 Oct</dd></div>
+                <div><dt>Platform</dt><dd>React Native + Expo (Android and iOS); release builds tested on 3 Android phones</dd></div>
+                <div><dt>Stack</dt><dd>Expo SDK 58, React Native 0.88, React 19, TypeScript (strict), Expo Router, Zustand, AsyncStorage, Supabase, Reanimated 4, react-native-svg, Jest</dd></div>
+            </dl>
+        </div>
+        <div class="cs-hero-shot" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:2.5rem;max-width:62rem;margin-inline:auto">
+            <div class="shot-frame" style="max-width:18rem;margin-inline:auto"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/progressive-overload/hand.png" width="390" height="844" alt="A workout as a hand of cards: the Bench Press card shows last session's 65 kg &times; 4 and today's target of 67.5 kg &times; 4."></div>
+            <div class="shot-frame" style="max-width:18rem;margin-inline:auto"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/progressive-overload/logging-sets.png" width="390" height="844" alt="Logging bench press sets: the first set at 67.5 kg &times; 4 is marked as a PR and the screen says 'Overloaded, round won so far', with a rest timer running."></div>
+            <div class="shot-frame" style="max-width:18rem;margin-inline:auto"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/progressive-overload/victory.png" width="390" height="844" alt="Victory screen after a Push workout: 2 rounds won, 0 lost, 3 draws, +21 RR towards Gold II, +255 XP and 803 kg of volume."></div>
+        </div>
+        <p class="note-inline hand">Draw a card, beat last week, win the match. Real screenshots from the release build.</p>
+    </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v38c-120 34-240 50-360 30S840 6 720 26 480 88 360 78 120 20 0 40z"/></svg>
+
+<main class="cs">
+
+    <!-- ============ TL;DR ============ -->
+    <section class="section" aria-labelledby="tldr-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The 30-second version</p>
+            <h2 id="tldr-heading">A workout tracker with one rule: beat last time.</h2>
+            <p class="lede">
+                Progressive Overload turns training into a competitive game. Each workout is a <strong>match</strong>, each exercise is a
+                <strong>playing card</strong>, and every set you log is scored live against your previous best, so you know mid-set whether you're
+                winning the round. Wins and losses feed a ranked ladder from Iron to Apex, weekly streaks, seasons with a body-weight goal, and guilds.
+                It works <strong>fully offline</strong> and syncs to Supabase in the background.
+            </p>
+            <ul class="stats">
+                <li class="stat stat-yellow"><span class="stat-num">~21k</span><span class="stat-label">lines of strict TypeScript</span></li>
+                <li class="stat stat-blue"><span class="stat-num">121</span><span class="stat-label">Jest tests across 14 files, all passing</span></li>
+                <li class="stat stat-pink"><span class="stat-num">37</span><span class="stat-label">app screens</span></li>
+                <li class="stat stat-white"><span class="stat-num">1 day</span><span class="stat-label">to the first build: 56 commits, 22 planned slices</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="section cs-yellow" aria-labelledby="problem-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">The problem</p>
+                <h2 id="problem-heading">Most gym apps are spreadsheets.</h2>
+            </div>
+            <div class="prose">
+                <p>Progressive overload, adding a little weight or a rep over time, is the main driver of strength gains. But most tracking apps just record what you did and leave the comparison to you.</p>
+                <p>I built this first for my own training, for people who lift regularly and want a clear target for every set and a reason to come back. The rules I set:</p>
+                <ul class="checks">
+                    <li>every set has a target, and you see the verdict the moment you tick it,</li>
+                    <li>borrow the structure of competitive games (matches, ranks, seasons, cards) so "beat last week" is the goal,</li>
+                    <li>reward following your plan, not training every single day,</li>
+                    <li>and work in a gym with no signal: logging a set must never wait on the network.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" aria-labelledby="features-heading">
+        <div class="wrap">
+            <p class="hand cs-label">What I built</p>
+            <h2 id="features-heading">A training log that plays like a card game.</h2>
+
+            <div class="features">
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/progressive-overload/hand.png" width="390" height="844" alt="The Bench Press card in a hand of five, with the deck, the Finalize button and the graveyard below" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Workouts as a hand of cards</h3>
+                        <p>A saved deck, Push for example, is dealt into a hand. Each exercise card shows the muscles it trains, <strong>last session's best and today's target</strong>. Tap a card to play it, swipe to send it to the back, finished exercises go to the graveyard, and the Overload core finalizes the match.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/progressive-overload/logging-sets.png" width="390" height="844" alt="Set logging with last match's best, the target to beat, a PR flag and a rest timer" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Live set scoring</h3>
+                        <p>Sets are pre-filled with the suggested target. When you tick one, it's compared with the last match using <strong>estimated one-rep max (Epley)</strong>, so the screen says overloaded, held or below straight away, flags PRs and starts the rest timer. Finishing scores the match: rounds won, lost and drawn, rank points, XP, volume and the muscles hit.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/progressive-overload/home.png" width="390" height="844" alt="Home screen with Gold II rank, a 21-day streak, a bulk season from 78 to 82 kg, the training week and two spell cards" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Home dashboard</h3>
+                        <p>Rank and division, the streak, the current season's progress towards a target body weight, this week's training days, and the <strong>spell cards</strong> (Day Off, Streak Revive) you earn for staying on target.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/progressive-overload/exercise-charts.png" width="390" height="844" alt="Bench press charts: estimated 1RM rising to 74 kg, volume per session and best reps per set" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Progress per exercise</h3>
+                        <p>Every exercise has Info, History, Charts, PRs and Rank tabs. Charts show estimated 1RM over time, volume per session and best reps per set. The exercise rank is your strength <strong>relative to body weight</strong>, measured against a per-exercise standard.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/progressive-overload/profile.png" width="390" height="844" alt="Profile with level, body stats, current and peak rank, shortcuts and achievements" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Profile, ranks &amp; achievements</h3>
+                        <p>Level and XP, current and peak rank, body stats, the ranked ladder, season and match history, a <strong>69-exercise library</strong> and achievements like First Blood and PR Hunter.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/progressive-overload/season-forecast.png" width="390" height="844" alt="Season forecast: weight from 78 to 82 kg over 50 days, 19 matches, 3 matches a week" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Season planner</h3>
+                        <p>A 7-step wizard sets a goal (bulk, cut, maintain or freestyle), your current and target weight, a duration based on a <strong>safe weekly rate</strong>, days per week and a split. It then forecasts the weight curve and the number of matches.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section class="section cs-dark" aria-labelledby="arch-heading">
+        <div class="wrap">
+            <p class="hand cs-label">How it's built</p>
+            <h2 id="arch-heading">Local-first, with the rules kept pure.</h2>
+            <p class="lede">Screens never touch storage: they read through hooks and write through repositories. Every game rule lives in a pure TypeScript domain layer with no React and no I/O, and stats are recomputed from completed matches, so there's one source of truth.</p>
+
+            <div class="arch" role="img" aria-label="Architecture: 37 Expo Router screens call feature services, which use a pure TypeScript domain layer for scoring, targets, rank, XP and streaks. Data goes through repositories into one Zustand store persisted to AsyncStorage, and a background sync engine pushes and pulls records to Supabase, which has row-level security and guild RPC functions.">
+                <div class="arch-box arch-main">
+                    <p class="arch-tag">Expo Router</p>
+                    <p>37 thin screens: home, decks, the card table, set logging, seasons, profile, guilds, library.</p>
+                </div>
+                <div class="arch-arrow" aria-hidden="true">&darr;</div>
+                <div class="arch-box arch-renderer">
+                    <p class="arch-tag">src/features &middot; screens + services</p>
+                    <p>The match service saves the in-progress match on every edit, so a killed app resumes at the same card with the rest timer intact.</p>
+                    <div class="arch-core">
+                        <p class="arch-tag">src/domain &middot; pure TypeScript, 87 unit tests</p>
+                        <ul>
+                            <li>scoring</li><li>targets</li><li>rank</li><li>XP</li><li>streak</li><li>weekly</li><li>seasons</li><li>plates</li><li>units</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="arch-arrow" aria-hidden="true">&darr;</div>
+                <div class="arch-row">
+                    <div class="arch-box arch-side"><p class="arch-tag">Local store</p><p>Repositories over one Zustand store persisted to AsyncStorage, with batched writes.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Sync engine</p><p>Background push and pull with content hashes and tombstones. The UI never waits on it.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Supabase</p><p>Postgres with row-level security on all 6 tables, plus RPC functions for guilds.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CHALLENGES ============ -->
+    <section class="section" aria-labelledby="challenges-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The interesting parts</p>
+            <h2 id="challenges-heading">Games are hard. Gym Wi-Fi is worse.</h2>
+
+            <div class="problems">
+                <article class="problem">
+                    <p class="hand problem-num">01</p>
+                    <h3>Cards that went missing mid-animation</h3>
+                    <p><strong>Problem:</strong> drawing, burying and reviving cards are animated trips between the deck, the hand and the graveyard. A re-render during a trip could drop the completion callback, so a drawn card never arrived.</p>
+                    <p><strong>Fix:</strong> a stable completion callback, a fresh mount for each trip, the deck and graveyard locked while a card is in flight, and gestures memoised with stable callbacks. A lost card would have meant a lost exercise mid-workout.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">02</p>
+                    <h3>Offline-first sync that never blocks a set</h3>
+                    <p><strong>Problem:</strong> the app has to work in a gym with no signal, but guilds and backups need a server.</p>
+                    <p><strong>Fix:</strong> a 323-line sync engine keeps per-record content hashes, pulls then pushes, uses tombstones for deletes and lets device edits win. Upserts are idempotent on <code>(user_id, kind, id)</code>. It runs on start, after changes, on foreground and when the network returns, and <strong>the UI never waits on it</strong>.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">03</p>
+                    <h3>A streak that respects rest days</h3>
+                    <p><strong>Problem:</strong> a daily streak punishes planned rest days, and a simple weekly count can be gamed or lost unfairly in the first week.</p>
+                    <p><strong>Fix:</strong> a weekly rest budget (7 minus planned training days). Rest days keep the streak until the weekly target can no longer be met, and days before your first session don't spend the budget. The streak rewards following the plan.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">04</p>
+                    <h3>Fast logging as data grows</h3>
+                    <p><strong>Problem:</strong> typing reps and ticking sets rewrote the whole persisted store on every keystroke.</p>
+                    <p><strong>Fix:</strong> storage writes are batched and flushed when the app goes to the background, the 69-exercise library isn't persisted, set inputs are debounced, and the library grid is virtualized. The set screen is used one-handed between sets, so it has to stay instant.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">05</p>
+                    <h3>One layout for every phone, and a crash only a phone could find</h3>
+                    <p><strong>Problem:</strong> the UI was laid out in fixed points on one phone and looked off on others.</p>
+                    <p><strong>Fix:</strong> a scaling module compares the screen with a 360 &times; 740 dp baseline, clamps the factor to 0.8&ndash;1.25 and scales fonts less than boxes. It replaced <code>StyleSheet.create</code> in 66 files, and a lint rule now blocks the plain version. On a real phone that change crashed the card animations: the helper was being called inside Reanimated worklets on the UI thread, even though types, lint and tests all passed. The sizes moved into constants computed outside the worklets.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ QUALITY ============ -->
+    <section class="section cs-dark" aria-labelledby="quality-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">Quality</p>
+                <h2 id="quality-heading">Tested rules, locked-down data.</h2>
+            </div>
+            <div class="prose">
+                <ul class="checks">
+                    <li><strong>121 Jest tests in 14 files, all passing:</strong> 87 on the domain rules (scoring, targets, rank, exercise rank, weekly streak), 14 on the data layer, 15 on feature services and 4 on UI helpers.</li>
+                    <li><strong>Strict checks:</strong> strict TypeScript, ESLint with <code>no-explicit-any</code> as an error and a rule that enforces the scaling helper. The quality gate is <code>tsc --noEmit &amp;&amp; expo lint &amp;&amp; npm test</code>.</li>
+                    <li><strong>Security:</strong> row-level security on all 6 Supabase tables, with 17 policies scoped to the signed-in user. Guild create, join and leave go through RPC functions, all <code>security definer</code> with an empty <code>search_path</code>. Only the publishable key ships with the app.</li>
+                    <li><strong>Accessibility:</strong> labels and roles on touchable elements, Reduce Motion respected, and pickers a screen reader can adjust.</li>
+                    <li><strong>On device:</strong> release APKs built and run on three Android phones of different sizes (Galaxy S23, S22 and A17).</li>
+                    <li><strong>Not yet:</strong> no CI, no crash reporting, and no tests on the sync engine or the database policies. Users sign in anonymously, so there's no account recovery yet.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section cs-yellow" aria-labelledby="process-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">How I worked</p>
+                <h2 id="process-heading">Write the plan, build the slices, then go lift with it.</h2>
+            </div>
+            <div class="prose">
+                <p>I started from a 468-line build plan: ground rules, exact design values, the domain rules, 22 slices from scaffold to docs, and a definition of done.</p>
+                <ul class="checks">
+                    <li><strong>Slices first:</strong> the first 22 commits follow the plan one slice at a time.</li>
+                    <li><strong>Then iterate by using it:</strong> the next 34 commits added the card-deck flow, trading-card design, strength-based exercise ranks, seasons, weekly streaks, a muscle map, offline sync and guilds.</li>
+                    <li><strong>Then real phones:</strong> testing on three devices led to the scaling system, text Back / Next buttons in the wizards, and the worklet crash fix. A code audit of UX, accessibility, architecture and server capacity fed the roadmap.</li>
+                    <li><strong>AI as an assistant:</strong> I used Claude Code to write the code, and it co-authored every commit. I wrote the specs, set the direction, reviewed the changes and tested on devices.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNED / NEXT ============ -->
+    <section class="section" aria-labelledby="learned-heading">
+        <div class="wrap">
+            <h2 id="learned-heading" class="sr-only">What I learned and what's next</h2>
+            <div class="cards">
+                <div class="card card-blue card-static">
+                    <p class="hand card-kicker">What I learned</p>
+                    <ul class="card-list">
+                        <li>Keeping the game rules pure and tested made it cheap to change ranking, streak and scoring late in the build.</li>
+                        <li>Code that runs on the UI thread needs different discipline from React state: a plain helper inside a worklet crashed a phone that types, lint and tests had all passed.</li>
+                        <li>A slice-by-slice plan with exact design values works well with an AI coding agent: each slice became one reviewable commit.</li>
+                        <li>Real devices of different sizes catch what one development phone hides.</li>
+                    </ul>
+                </div>
+                <div class="card card-yellow card-static">
+                    <p class="hand card-kicker">What's next</p>
+                    <ul class="card-list">
+                        <li>Real accounts and friend search, so reinstalling doesn't lose your cloud data.</li>
+                        <li>Notifications for the rest timer, a streak at risk and the weekly review.</li>
+                        <li>From the audit: kg/lbs everywhere, a confirm before replacing a workout in progress, less frequent sync, and history in SQLite.</li>
+                        <li>Store readiness: licensed exercise media, a real app ID, crash reporting and store builds.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="connect" aria-labelledby="cta-heading">
+        <div class="wrap">
+            <h2 id="cta-heading">Want someone who ships fast and tests on real devices?</h2>
+            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering.</p>
+            <div class="connect-links">
+                <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
+                <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
+                <a href="../nur/" class="btn btn-ghost" data-pop>Next project: NUR <span aria-hidden="true">&rarr;</span></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="wrap footer-inner">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
+        <ul class="socials" aria-label="Social links and email">
+            <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>
