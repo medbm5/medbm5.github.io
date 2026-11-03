@@ -1,0 +1,134 @@
+/* ============================================================
+   Blueprint theme (inspired by Cairn's notebook / blueprint look)
+   Loaded after styles.css and only overrides it.
+   To go back to the original aqua/yellow theme, remove the
+   <link rel="stylesheet" href="...theme-blueprint.css"> line from the pages.
+   The doodles (hand-written notes, tilted cards, offset shadows) are kept.
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap");
+
+:root {
+    /* Same variable names as styles.css, new values */
+    --aqua: #eef4fa;        /* chalk: text on blueprint */
+    --blue-deep: #16365a;   /* blueprint blue */
+    --blue-pale: #eef4fa;
+    --blue-rad: #1d3a6b;    /* ink */
+    --yellow: #f6d743;      /* highlighter */
+    --orange: #f2a65a;
+    --red: #d2413a;         /* red pen */
+    --purple: #7a4fb3;
+    --white: #ffffff;
+
+    /* Blueprint-only tokens */
+    --paper: #fbfcfd;
+    --paper-tint: #f2f6fa;
+    --ink: #1d3a6b;
+    --graphite: #5e6670;
+    --grid: #d6e4f0;
+    --grid-strong: #b9cde0;
+    --bp-grid: #25507e;
+    --bp-grid-strong: #2f6094;
+
+    --font-display: "Architects Daughter", "Segoe Print", "Comic Sans MS", cursive;
+    --font-sans: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --shadow: 0 24px 50px -12px #16365a40;
+    --shadow-hover: 0 36px 64px -12px #16365a59;
+
+    /* 24px grid, every 5th line a bit stronger */
+    --notebook-grid:
+        linear-gradient(to right, var(--grid-strong) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-strong) 1px, transparent 1px),
+        linear-gradient(to right, var(--grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    --blueprint-grid:
+        linear-gradient(to right, var(--bp-grid-strong) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--bp-grid-strong) 1px, transparent 1px),
+        linear-gradient(to right, var(--bp-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--bp-grid) 1px, transparent 1px);
+    --grid-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+}
+
+/* ---------- Paper and blueprint surfaces ---------- */
+body {
+    background-color: var(--paper);
+    background-image: var(--notebook-grid);
+    background-size: var(--grid-size);
+    color: var(--ink);
+}
+
+.site-header, .hero, .cs-hero, .cs-dark, .footer, .toolbox {
+    background-color: var(--blue-deep);
+    background-image: var(--blueprint-grid);
+    background-size: var(--grid-size);
+}
+/* Header and hero share one continuous grid */
+.site-header + .hero, .site-header + .cs-hero { background-position: 0 -8rem; }
+
+.work, .cs-yellow {
+    background-color: var(--paper-tint);
+    background-image: var(--notebook-grid);
+    background-size: var(--grid-size);
+}
+.road { background: transparent; }
+.work::before, .road::before { display: none; }
+.toolbox::before { display: none; }
+.work, .road { border-top: 3px dashed var(--grid-strong); }
+
+/* ---------- Type ---------- */
+h1, h2, .project h3, .feature h3, .problem h3, .stop h3, .mini h4, .more-heading, .logo {
+    letter-spacing: .01em;
+}
+h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
+h1, h2, h3, h4, .stat-num, .logo { font-weight: 400; }
+.lede, .prose, .project-body, .card-body { color: inherit; }
+.cs-label, .mini-kicker, .stop .when { color: var(--red); }
+
+/* ---------- Drawn outlines on paper cards ---------- */
+.problem, .stop, .mini, .stat-white, .btn-ghost {
+    border: 2px solid var(--ink);
+}
+.card-yellow, .stat-yellow, .cred:last-child { border: 2px solid var(--ink); }
+.problem-num { color: var(--red); }
+
+/* Masking-tape on the timeline stops stays, in highlighter colours */
+.stop::before { background: color-mix(in srgb, var(--yellow) 75%, transparent); }
+
+/* ---------- Things that used hard-coded aqua ---------- */
+.meta {
+    background: rgb(238 244 250 / .05);
+    border: 2px dashed rgb(238 244 250 / .45);
+}
+.arch-box { border-color: rgb(238 244 250 / .85); }
+.arch-renderer, .pipeline li { background: rgb(238 244 250 / .05); }
+.pipeline li { border-color: rgb(238 244 250 / .85); }
+.arch-side { border-color: #ff7a70; }
+.arch-arrow { color: #ff7a70; }
+.tool-group li { border-color: rgb(238 244 250 / .5); }
+.project + .project, .more-heading { border-top-color: var(--grid-strong); }
+code { background: rgb(29 58 107 / .08); }
+
+/* Red pen reads better on blueprint in its lighter shade */
+.cs-dark .checks li::before, .card-blue .checks li::before { color: #ff7a70; }
+
+/* Screenshot frames: blueprint window chrome */
+.shot-bar i:nth-child(3) { background: var(--leaf, #7fd39a); }
+
+/* Contact block: a red-pen sheet on the blueprint */
+.connect h2 { color: var(--yellow); }
+.btn { border-color: var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+.btn:hover { box-shadow: 9px 9px 0 var(--ink); }
+.btn:active { box-shadow: 2px 2px 0 var(--ink); }
+
+/* Focus ring drawn as a dashed pen line */
+:focus-visible { outline: 2px dashed currentColor; outline-offset: 4px; border-radius: 6px; }
+
+/* The wave under the hero: same blueprint grid, cut to the wave shape */
+.wave {
+    fill: transparent;
+    background-color: var(--blue-deep);
+    background-image: var(--blueprint-grid);
+    background-size: var(--grid-size);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 90' preserveAspectRatio='none'%3E%3Cpath d='M0 0h1440v38c-120 34-240 50-360 30S840 6 720 26 480 88 360 78 120 20 0 40z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 90' preserveAspectRatio='none'%3E%3Cpath d='M0 0h1440v38c-120 34-240 50-360 30S840 6 720 26 480 88 360 78 120 20 0 40z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+}
