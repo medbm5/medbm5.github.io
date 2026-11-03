@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chess Terminal: case study · Med BM</title>
-    <meta name="description" content="How I built Chess Terminal, a local-first desktop app that teaches chess openings like a game, with Stockfish running in the app, 215 unit tests and installers for Windows, macOS and Linux.">
+    <meta name="description" content="Chess Terminal, an offline desktop app that teaches chess openings like a game.">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Chess Terminal: case study">
     <meta property="og:description" content="A local-first desktop app that teaches chess openings like a game. Electron, React, TypeScript, Stockfish WASM.">
@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../theme-blueprint.css">
     <script src="../../main.js" defer></script>
 </head>
 <body>
@@ -59,10 +60,10 @@
                 </div>
             </div>
             <dl class="meta">
-                <div><dt>My role</dt><dd>Product, design &amp; engineering (solo)</dd></div>
-                <div><dt>Timeline</dt><dd>October 2026 &middot; v0.1 &rarr; v0.3 in 3 days</dd></div>
+                <div><dt>My role</dt><dd>Solo</dd></div>
+                <div><dt>Timeline</dt><dd>Oct 2026, 3 days</dd></div>
                 <div><dt>Platforms</dt><dd>Windows, macOS, Linux</dd></div>
-                <div><dt>Stack</dt><dd>TypeScript, React 18, Electron, Stockfish (WASM), Dexie, Zustand, zod, Vitest</dd></div>
+                <div><dt>Stack</dt><dd>TypeScript, React, Electron, Stockfish</dd></div>
                 <div><dt>License</dt><dd>Open source, GPL-3.0</dd></div>
             </dl>
         </div>
@@ -84,18 +85,16 @@
     <section class="section" aria-labelledby="tldr-heading">
         <div class="wrap">
             <p class="hand cs-label">The 30-second version</p>
-            <h2 id="tldr-heading">A complete product, from blank repo to shipped installers.</h2>
+            <h2 id="tldr-heading">Learn chess openings like a game.</h2>
             <p class="lede">
-                Chess Terminal is a desktop app that turns learning chess openings into a game. It runs
-                <strong>entirely on your computer</strong>: the Stockfish chess engine runs inside the app, progress
-                is saved in a local database, and there's no account, no server and no tracking.
-                I designed the product, wrote the spec and shipped it with automated tests, CI and installers for three operating systems.
+                A desktop app that coaches you through openings, tests you from memory and turns your mistakes into review.
+                It runs <strong>entirely on your computer</strong>, with Stockfish built in and no account or server.
             </p>
             <ul class="stats">
-                <li class="stat stat-yellow"><span class="stat-num">33</span><span class="stat-label">openings, Beginner to Master</span></li>
-                <li class="stat stat-blue"><span class="stat-num">215</span><span class="stat-label">unit tests across 28 test files</span></li>
-                <li class="stat stat-pink"><span class="stat-num">~15k</span><span class="stat-label">lines of strict TypeScript</span></li>
-                <li class="stat stat-white"><span class="stat-num">96%</span><span class="stat-label">smaller app bundle (320&nbsp;MB &rarr; 12&nbsp;MB)</span></li>
+                <li class="stat stat-yellow"><span class="stat-num">33</span><span class="stat-label">openings</span></li>
+                <li class="stat stat-blue"><span class="stat-num">215</span><span class="stat-label">unit tests</span></li>
+                <li class="stat stat-pink"><span class="stat-num">~15k</span><span class="stat-label">lines of TypeScript</span></li>
+                <li class="stat stat-white"><span class="stat-num">96%</span><span class="stat-label">smaller app</span></li>
             </ul>
         </div>
     </section>
@@ -108,14 +107,11 @@
                 <h2 id="problem-heading">Opening theory is a wall of moves nobody explains.</h2>
             </div>
             <div class="prose">
-                <p>Most ways of learning openings come down to memorising long lists of moves. You learn <em>what</em> to play but not <em>why</em>, so the moment your opponent goes off-script you're lost, and the line you drilled last week is already gone.</p>
-                <p>I wanted a trainer that would:</p>
+                <p>Most opening training is memorising lists of moves. You learn <em>what</em> to play but not <em>why</em>, so you're lost as soon as your opponent goes off-script.</p>
                 <ul class="checks">
-                    <li>explain the idea behind every move, for both sides,</li>
-                    <li>test me from memory and punish mistakes (no undo button, anywhere),</li>
-                    <li>bring back what I forget at the right time,</li>
-                    <li>turn my own blunders into puzzles,</li>
-                    <li>and feel like a game, so I'd actually come back to it.</li>
+                    <li>Explain the idea behind every move.</li>
+                    <li>Test from memory and bring back what I forget.</li>
+                    <li>Feel like a game, so I keep coming back.</li>
                 </ul>
             </div>
         </div>
@@ -126,49 +122,48 @@
         <div class="wrap">
             <p class="hand cs-label">What I built</p>
             <h2 id="features-heading">Six ways to train, one loop.</h2>
-            <p class="lede">Learn a line with the coach, prove it in a memory test, beat the boss to unlock the next tier. Everything you get wrong comes back in review.</p>
 
             <div class="features">
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/chess/coach.png" width="1442" height="817" alt="Coach screen with an explanation of the last move and the next move to play" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Coach</h3>
-                        <p>Play an opening against the bot. Every book move comes with an explanation and the idea behind your next move. If the bot plays something that rules your opening out, a <strong>switch alert</strong> tells you what to play instead. When the book runs out, Stockfish takes over and grades every move (<code>!!</code> <code>!</code> <code>?!</code> <code>?</code> <code>??</code>).</p>
+                        <p>Play an opening against the bot, with an explanation for every move and Stockfish grading once the book runs out.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/chess/memory-test.png" width="1442" height="817" alt="Memory test showing the correct move after a mistake" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Memory test</h3>
-                        <p>Play the line with no hints. One wrong move ends the run and shows the right move and why. The bot learns where you fail: branches you got wrong come up <strong>three times more often</strong>.</p>
+                        <p>No hints, one mistake ends the run, and the lines you miss come up more often.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/chess/openings.png" width="1442" height="817" alt="Openings map grouped by difficulty tier" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Openings map</h3>
-                        <p>33 openings in five tiers. Each one goes Learn &rarr; Deviations &rarr; Traps &rarr; Plans &rarr; Boss. Beat any boss in a tier to unlock the next. Stars, XP, ranks and three daily challenges keep it feeling like a game.</p>
+                        <p>33 openings in five tiers, each ending with a boss that unlocks the next tier.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/chess/puzzles.png" width="1442" height="817" alt="A puzzle on the board with theme and opening filters" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Puzzles</h3>
-                        <p>Up to 30,000 Lichess puzzles filtered by theme or by your openings, plus puzzles <strong>mined from your own games</strong>: blunders and missed wins found by background analysis. Rated with Glicko-2.</p>
+                        <p>Lichess puzzles plus puzzles <strong>mined from your own games</strong>.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/chess/calculations.png" width="1442" height="817" alt="Calculation drill with a frozen board" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Calculations</h3>
-                        <p>Drills for thinking before you move: enter a whole line on a frozen board, find the opponent's threat, list every check, capture and threat, or follow moves with the pieces hidden.</p>
+                        <p>Drills for thinking ahead, like playing a whole line on a frozen board.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/chess/stats.png" width="1442" height="817" alt="Stats screen with the opening passport and puzzle rating history" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Review &amp; stats</h3>
-                        <p>Missed moves and failed puzzles become spaced-repetition cards (SM-2). An <strong>opening passport</strong> shows score, accuracy trend and the exact positions where you usually leave the book.</p>
+                        <p>Mistakes become spaced-repetition cards, and stats show where you usually leave the book.</p>
                     </div>
                 </article>
             </div>
@@ -180,29 +175,29 @@
         <div class="wrap">
             <p class="hand cs-label">How it's built</p>
             <h2 id="arch-heading">Pure logic in the middle, everything else at the edges.</h2>
-            <p class="lede">All the chess and training rules live in <code>src/core</code> as small, pure, tested TypeScript functions. The React screens stay thin. The engine, the database and the content plug in around them.</p>
+            <p class="lede">The chess and training rules are small, pure, tested functions. The React screens stay thin.</p>
 
-            <div class="arch" role="img" aria-label="Architecture: the Electron main process serves a sandboxed React renderer through a custom app:// scheme. The renderer's screens call pure core modules, which use two Stockfish Web Workers, a Dexie IndexedDB database and opening content validated with zod.">
+            <div class="arch" role="img" aria-label="Architecture: Electron serves a sandboxed React UI whose screens call pure core modules, backed by two Stockfish workers, a local IndexedDB database and validated opening files.">
                 <div class="arch-box arch-main">
-                    <p class="arch-tag">Electron main process</p>
-                    <p>Custom <code>app://</code> scheme &middot; sandboxed window &middot; no Node in the UI</p>
+                    <p class="arch-tag">Electron</p>
+                    <p>Sandboxed window, no Node in the UI.</p>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-box arch-renderer">
-                    <p class="arch-tag">Renderer &middot; React 18 + Zustand</p>
-                    <p>10 screens: Coach, Memory test, Map, Puzzles, Calculations, Review, Stats&hellip;</p>
+                    <p class="arch-tag">React 18 + Zustand</p>
+                    <p>10 screens: Coach, Memory test, Map, Puzzles and more.</p>
                     <div class="arch-core">
-                        <p class="arch-tag">src/core &middot; pure TypeScript</p>
+                        <p class="arch-tag">src/core</p>
                         <ul>
-                            <li>chess</li><li>coach</li><li>engine</li><li>training</li><li>puzzles</li><li>calc</li><li>progress</li><li>db</li>
+                            <li>chess</li><li>coach</li><li>engine</li><li>training</li><li>puzzles</li><li>progress</li>
                         </ul>
                     </div>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-row">
-                    <div class="arch-box arch-side"><p class="arch-tag">Stockfish 19 &times; 2</p><p>WASM in Web Workers. One grades your moves, one plays.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">Dexie / IndexedDB</p><p>Games, runs, failures, review cards, ratings.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">Content</p><p>33 opening files in JSON, checked by zod and a line replayer.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Stockfish &times; 2</p><p>One grades, one plays.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">IndexedDB</p><p>Games, reviews, ratings.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Content</p><p>33 validated opening files.</p></div>
                 </div>
             </div>
         </div>
@@ -211,45 +206,24 @@
     <!-- ============ CHALLENGES ============ -->
     <section class="section" aria-labelledby="challenges-heading">
         <div class="wrap">
-            <p class="hand cs-label">The interesting parts</p>
-            <h2 id="challenges-heading">Problems I had to solve along the way.</h2>
+            <p class="hand cs-label">The hard parts</p>
+            <h2 id="challenges-heading">Problems I had to solve.</h2>
 
             <div class="problems">
                 <article class="problem">
                     <p class="hand problem-num">01</p>
-                    <h3>Getting Stockfish to run inside a packaged app</h3>
-                    <p><strong>Problem:</strong> packaged Electron apps load pages from <code>file://</code>, which can't fetch WebAssembly and is unreliable for Web Workers, and Stockfish needs both.</p>
-                    <p><strong>Fix:</strong> the main process registers a privileged <code>app://</code> scheme that serves the UI and refuses any path outside its folder. I picked the single-threaded Stockfish build so it needs no <code>SharedArrayBuffer</code> or special headers, and a headless <code>--smoke</code> mode checks the engine loads <em>in the installed app</em>, not just in dev.</p>
+                    <h3>Stockfish in a packaged app</h3>
+                    <p>Packaged Electron apps can't load WebAssembly from <code>file://</code>. I serve the UI through a custom <code>app://</code> scheme and check the engine loads in the installed app.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">02</p>
-                    <h3>Shrinking the app from 320&nbsp;MB to 12&nbsp;MB</h3>
-                    <p><strong>Problem:</strong> electron-builder copied every runtime dependency into the app archive, including the 200&nbsp;MB Stockfish package with every build.</p>
-                    <p><strong>Fix:</strong> Vite already bundles everything the UI uses, so I moved all packages to dev dependencies and shipped only the two engine files the app needs. The app archive went from 320&nbsp;MB to about 12&nbsp;MB.</p>
+                    <h3>320&nbsp;MB down to 12&nbsp;MB</h3>
+                    <p>The installer was copying every Stockfish build. Now it ships only the two engine files the app needs.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">03</p>
-                    <h3>Importing 300&nbsp;MB of Lichess puzzles without touching disk</h3>
-                    <p><strong>Problem:</strong> the Lichess dump is compressed with pzstd, which puts a skippable frame before every data frame. Node's built-in zstd decoder rejects those frames and stops after the first one.</p>
-                    <p><strong>Fix:</strong> a small frame decoder that reads each frame's size from its header and decompresses frame by frame, streaming. The script keeps puzzles that match the app's openings plus an even spread across 16 rating buckets, and stops early once every bucket is full.</p>
-                </article>
-                <article class="problem">
-                    <p class="hand problem-num">04</p>
-                    <h3>Grading moves the way a coach would</h3>
-                    <p><strong>Problem:</strong> raw engine scores mean nothing to a learner, and grading book gambits at depth 12 would contradict the coach.</p>
-                    <p><strong>Fix:</strong> grades from centipawn loss (evals clamped, mates handled), accuracy from the Lichess win% formula, <code>!!</code> only for an "only move", and a one-line refutation such as <em>"Now Qxb2 wins a pawn"</em>. Book moves aren't graded. Analysis and the bot's moves run in two separate workers, so a slow analysis never holds up the bot's reply.</p>
-                </article>
-                <article class="problem">
-                    <p class="hand problem-num">05</p>
-                    <h3>Progress that can't go out of sync</h3>
-                    <p><strong>Problem:</strong> unlocks, stars and XP stored as counters will eventually disagree with the actual history.</p>
-                    <p><strong>Fix:</strong> progress is <em>calculated</em> from the stored games and runs every time it's needed. Snapshots are saved for convenience but never treated as the truth. The Glicko-2 puzzle rating is checked against the worked example in Glickman's paper.</p>
-                </article>
-                <article class="problem">
-                    <p class="hand problem-num">06</p>
-                    <h3>Opening content you can trust</h3>
-                    <p><strong>Problem:</strong> one typo in a hand-written opening line breaks the coach in a way you might only notice mid-game.</p>
-                    <p><strong>Fix:</strong> a validator replays every line of every opening and rejects illegal or non-standard notation, missing explanations, duplicate moves, dead ends and unknown fields. It runs before every test run and in CI, and the app checks the content again at startup and skips a broken file instead of crashing.</p>
+                    <h3>Content you can trust</h3>
+                    <p>A validator replays every opening line and rejects illegal moves or missing explanations, in CI and at startup.</p>
                 </article>
             </div>
         </div>
@@ -260,16 +234,14 @@
         <div class="wrap cs-two">
             <div>
                 <p class="hand cs-label">How I worked</p>
-                <h2 id="process-heading">Spec first, small slices, every commit green.</h2>
+                <h2 id="process-heading">Spec first, small slices.</h2>
             </div>
             <div class="prose">
-                <p>I started by writing a detailed product and engineering spec: the features, the fixed tech stack, the folder structure and the rules of the game. Then I built it with an AI coding agent in <strong>15 vertical slices</strong>, from scaffold to packaging, each one a working feature in its own commit.</p>
                 <ul class="checks">
-                    <li><strong>Quality gate on every commit:</strong> typecheck, lint and tests had to pass before anything was committed.</li>
-                    <li><strong>Decision log:</strong> every judgement call is written down with its reason in <code>DECISIONS.md</code>.</li>
-                    <li><strong>CI/CD:</strong> GitHub Actions runs the quality gate on every push and builds the Windows, macOS and Linux installers on each version tag.</li>
-                    <li><strong>Visual checks:</strong> a script drives the built app headlessly and takes screenshots. The ones on this page are real captures.</li>
-                    <li><strong>Product iteration:</strong> the look went from a terminal UI, to a cosy fantasy game, to the current "Studio" game-menu style after I decided the first versions felt like dashboards.</li>
+                    <li>Wrote the spec first, then built it in 15 slices with an AI coding agent.</li>
+                    <li>Typecheck, lint and tests had to pass before every commit.</li>
+                    <li>CI builds Windows, macOS and Linux installers on each tag.</li>
+                    <li>Redesigned twice, because the first versions felt like dashboards.</li>
                 </ul>
             </div>
         </div>
@@ -282,19 +254,17 @@
                 <div class="card card-blue card-static">
                     <p class="hand card-kicker">What I learned</p>
                     <ul class="card-list">
-                        <li>Keeping the rules pure and the UI thin made 215 tests cheap to write and the redesigns cheap to do.</li>
-                        <li>Check things where they really run. The engine worked in dev long before it worked in the installer.</li>
-                        <li>Writing decisions down as you go is faster than rediscovering them later.</li>
-                        <li>A learning tool has to be fun to open, or nobody opens it twice.</li>
+                        <li>Pure logic and a thin UI make tests and redesigns cheap.</li>
+                        <li>Test where it really runs: the engine worked in dev long before the installer.</li>
+                        <li>A learning tool has to be fun, or nobody opens it twice.</li>
                     </ul>
                 </div>
                 <div class="card card-yellow card-static">
                     <p class="hand card-kicker">What's next</p>
                     <ul class="card-list">
-                        <li>Save calculation drill results and show them in stats.</li>
-                        <li>Sign the installers for Windows and macOS.</li>
-                        <li>More openings and deeper lines. The content pipeline is ready.</li>
-                        <li>Let people import their own games from Lichess or Chess.com.</li>
+                        <li>Sign the Windows and macOS installers.</li>
+                        <li>More openings and deeper lines.</li>
+                        <li>Import games from Lichess or Chess.com.</li>
                     </ul>
                 </div>
             </div>

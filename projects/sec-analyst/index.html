@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SEC Filing Analyst: case study · Med BM</title>
-    <meta name="description" content="How I built SEC Filing Analyst: ask plain-English questions across five companies' 10-K filings and get cited answers, using hybrid retrieval (pgvector + a Neo4j knowledge graph), four LangGraph agents and an LLM-judged evaluation on 151 questions.">
+    <meta name="description" content="SEC Filing Analyst answers questions across five companies' 10-K filings with cited sources, using vector search and a knowledge graph.">
     <meta property="og:type" content="article">
     <meta property="og:title" content="SEC Filing Analyst: case study">
     <meta property="og:description" content="Cited answers across five 10-K filings. Multi-agent RAG with vector search plus a knowledge graph. FastAPI, LangGraph, pgvector, Neo4j, Next.js.">
@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../theme-blueprint.css">
     <script src="../../main.js" defer></script>
 </head>
 <body>
@@ -63,10 +64,10 @@
                 </div>
             </div>
             <dl class="meta">
-                <div><dt>My role</dt><dd>Solo. I wrote the architecture rules and design decisions, and built it with Claude Code as my coding assistant. All 13 commits are mine.</dd></div>
-                <div><dt>Timeline</dt><dd>7 &ndash; 9 Aug 2026 &middot; 3 days</dd></div>
-                <div><dt>Status</dt><dd>Prototype. Runs end to end locally; not deployed, no live demo.</dd></div>
-                <div><dt>Stack</dt><dd>Python, FastAPI, LangGraph, OpenAI (+ Anthropic fallback), LangSmith, Postgres + pgvector, Neo4j, Redis, Next.js 16, React Flow</dd></div>
+                <div><dt>My role</dt><dd>Solo, with Claude Code as a coding assistant</dd></div>
+                <div><dt>Timeline</dt><dd>Aug 2026, 3 days</dd></div>
+                <div><dt>Status</dt><dd>Prototype, runs locally</dd></div>
+                <div><dt>Stack</dt><dd>Python, FastAPI, LangGraph, pgvector, Neo4j, Next.js</dd></div>
             </dl>
         </div>
         <div class="cs-hero-shot">
@@ -87,19 +88,16 @@
     <section class="section" aria-labelledby="tldr-heading">
         <div class="wrap">
             <p class="hand cs-label">The 30-second version</p>
-            <h2 id="tldr-heading">RAG that can answer across documents, and shows where every answer came from.</h2>
+            <h2 id="tldr-heading">Answers across filings, with sources.</h2>
             <p class="lede">
-                SEC Filing Analyst answers questions about the 10-K annual reports of Apple, NVIDIA, AMD, Microsoft and Tesla, and
-                <strong>every answer cites the filing section it came from</strong>. It combines vector search over the filings with a
-                Neo4j <strong>knowledge graph</strong> built by an LLM extraction pipeline, so it can answer cross-company questions like
-                "which two companies depend on the same supplier?". Four LangGraph agents draft and check each answer, and an
-                evaluation pipeline scores the live system with an LLM judge.
+                Ask questions about the 10-K reports of Apple, NVIDIA, AMD, Microsoft and Tesla, and <strong>every answer cites its source</strong>.
+                Vector search plus a <strong>knowledge graph</strong> lets it answer cross-company questions like "which two companies share a supplier?".
             </p>
             <ul class="stats">
-                <li class="stat stat-yellow"><span class="stat-num">78%</span><span class="stat-label">factual correctness on a 151-question eval</span></li>
-                <li class="stat stat-blue"><span class="stat-num">12/12</span><span class="stat-label">unanswerable questions correctly refused</span></li>
-                <li class="stat stat-pink"><span class="stat-num">443</span><span class="stat-label">filing chunks, linked to a ~900-node graph</span></li>
-                <li class="stat stat-white"><span class="stat-num">616</span><span class="stat-label">automated test cases (526 test functions)</span></li>
+                <li class="stat stat-yellow"><span class="stat-num">78%</span><span class="stat-label">correct on 151 questions</span></li>
+                <li class="stat stat-blue"><span class="stat-num">12/12</span><span class="stat-label">unanswerables refused</span></li>
+                <li class="stat stat-pink"><span class="stat-num">443</span><span class="stat-label">filing chunks</span></li>
+                <li class="stat stat-white"><span class="stat-num">616</span><span class="stat-label">test cases</span></li>
             </ul>
         </div>
     </section>
@@ -112,12 +110,11 @@
                 <h2 id="problem-heading">Search finds paragraphs. It doesn't connect them.</h2>
             </div>
             <div class="prose">
-                <p>A 10-K runs well over a hundred pages. Finding one fact in one filing is a search problem. "Which of these five companies name the same supplier as a risk?" is not: someone has to read all five, pull out who depends on whom, and check for overlap.</p>
-                <p>Plain semantic search returns the paragraphs that <em>sound</em> most like the question, and can quietly miss a company that describes the same risk in other words. The README names three users:</p>
+                <p>A 10-K is over a hundred pages. Finding one fact is easy; finding which of five companies name the same supplier means reading all five. Plain semantic search can miss a company that says it in other words.</p>
                 <ul class="checks">
-                    <li>an <strong>equity analyst</strong> looking for shared supply-chain bottlenecks,</li>
-                    <li>an <strong>investor</strong> separating company-specific risks from industry-wide ones,</li>
-                    <li>a <strong>researcher</strong> tracing which companies name each other as competitors.</li>
+                    <li>Analysts looking for shared supply-chain risks.</li>
+                    <li>Investors separating company risks from industry ones.</li>
+                    <li>Researchers tracing who names whom as a competitor.</li>
                 </ul>
             </div>
         </div>
@@ -133,43 +130,43 @@
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/sec-analyst/cited-answer-with-agent-trace.png" width="1440" height="816" alt="An answer about NVIDIA's supply-chain risk with a citation, the vector search results and the agent trace" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Cited answers, live agent trace</h3>
-                        <p>The answer streams in token by token, ending with citations like <code>[NVDA: Item 1A. Risk Factors]</code>. A side panel shows each agent step as it happens: supervisor, researcher, analyst, critic. Under the answer, every retrieved chunk is listed with its similarity score.</p>
+                        <h3>Cited answers, live trace</h3>
+                        <p>Answers stream in with citations, next to a live view of each agent step.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/sec-analyst/graph-traversal-shared-supplier.png" width="1440" height="816" alt="Graph traversal showing AMD and NVIDIA both depend on TSMC and Samsung" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Vector search + knowledge graph</h3>
-                        <p>Each answer shows both sources side by side: text chunks from vector search, and graph facts with the path that produced them. The path is drawn as a diagram, so you can see <strong>exactly why</strong> the answer says AMD and NVIDIA both depend on TSMC and Samsung.</p>
+                        <p>Graph facts are drawn as a diagram, so you see exactly why an answer says what it says.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/sec-analyst/risk-exposure-matrix.png" width="1440" height="816" alt="Risk exposure matrix of companies against risk categories, with a count column" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Cross-company risk matrix</h3>
-                        <p>Risks are mapped onto a fixed list of 15 categories in the graph, so "which risks do at least three companies name?" becomes <strong>a count query instead of a text search</strong>. The result is a company &times; risk matrix with a count column.</p>
+                        <p>Risks map to 15 fixed categories, so "which risks do three companies share?" is a simple count.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/sec-analyst/eval-dashboard.png" width="1440" height="816" alt="Evaluation dashboard: 78% overall accuracy, 81% citation coverage, 100% refusal accuracy, broken down by question type" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Evaluation dashboard</h3>
-                        <p>An <code>/evals</code> page reads the latest LangSmith experiment: accuracy, citation coverage and refusal accuracy, <strong>broken down by question type</strong>, plus every individual result with a "disagreements only" filter. A <code>/label</code> page lets a human review the judge's verdicts.</p>
+                        <p>Accuracy, citation coverage and refusals, broken down by question type.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/sec-analyst/admin-corpus-freshness.png" width="1440" height="816" alt="Admin page comparing each indexed filing with the latest one on SEC EDGAR" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Gated ingestion, freshness check</h3>
-                        <p>An admin page compares each indexed filing with the latest one on SEC EDGAR, and lets an operator with a token start ingestion and follow it stage by stage. It's gated <strong>on purpose</strong>: ingestion costs real API money and uses the app's EDGAR identity.</p>
+                        <h3>Admin and freshness</h3>
+                        <p>Checks indexed filings against SEC EDGAR and runs token-protected ingestion.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/sec-analyst/chat-start-and-corpus.png" width="1440" height="816" alt="Start screen listing the five indexed 10-K filings and suggested questions" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>LLM gateway with failover</h3>
-                        <p>Every model call goes through one gateway: OpenAI first, Anthropic if OpenAI fails. A circuit breaker in Redis <strong>opens after 3 failures in a row</strong> for 30 seconds, and every call is traced to LangSmith under a required run name. (Pictured: the start screen with the five indexed filings.)</p>
+                        <h3>Model failover</h3>
+                        <p>OpenAI first, Anthropic if it fails, and every call is traced.</p>
                     </div>
                 </article>
             </div>
@@ -180,29 +177,29 @@
     <section class="section cs-dark" aria-labelledby="arch-heading">
         <div class="wrap">
             <p class="hand cs-label">How it's built</p>
-            <h2 id="arch-heading">Two pipelines: one to read the filings, one to answer.</h2>
-            <p class="lede">Ingestion turns raw 10-Ks into searchable chunks and a knowledge graph. Answering runs four agents over a hybrid retriever and streams the result back as NDJSON.</p>
+            <h2 id="arch-heading">One pipeline reads the filings, one answers.</h2>
+            <p class="lede">Ingestion turns 10-Ks into chunks and a graph. Four agents answer over both and stream the result.</p>
 
             <p class="hand cs-label" style="margin-top:3rem">1. Reading the filings</p>
             <ol class="pipeline" style="margin-top:2rem" aria-label="Ingestion stages">
-                <li><span class="pipe-num">1</span><p class="arch-tag">Download</p><p>10-Ks from SEC EDGAR</p></li>
-                <li><span class="pipe-num">2</span><p class="arch-tag">Parse</p><p>Split into <code>Item N.</code> sections, drop table-of-contents noise</p></li>
-                <li><span class="pipe-num">3</span><p class="arch-tag">Chunk</p><p>1,000-token chunks with 200-token overlap</p></li>
-                <li><span class="pipe-num">4</span><p class="arch-tag">Embed</p><p>text-embedding-3-small into pgvector (HNSW index)</p></li>
-                <li><span class="pipe-num">5</span><p class="arch-tag">Extract</p><p>gpt-4o-mini structured outputs, then a strict validation pass</p></li>
-                <li><span class="pipe-num">6</span><p class="arch-tag">Load graph</p><p>Resolve aliases, <code>MERGE</code> into Neo4j</p></li>
+                <li><span class="pipe-num">1</span><p class="arch-tag">Download</p><p>From SEC EDGAR</p></li>
+                <li><span class="pipe-num">2</span><p class="arch-tag">Parse</p><p>Split into sections</p></li>
+                <li><span class="pipe-num">3</span><p class="arch-tag">Chunk</p><p>1,000-token chunks</p></li>
+                <li><span class="pipe-num">4</span><p class="arch-tag">Embed</p><p>Into pgvector</p></li>
+                <li><span class="pipe-num">5</span><p class="arch-tag">Extract</p><p>Entities, then validate</p></li>
+                <li><span class="pipe-num">6</span><p class="arch-tag">Load graph</p><p>Into Neo4j</p></li>
             </ol>
 
             <p class="hand cs-label" style="margin-top:4rem">2. Answering a question</p>
-            <div class="arch" role="img" aria-label="Answering a question: the Next.js app posts to the FastAPI /chat endpoint. A LangGraph supervisor routes between researcher, analyst and critic agents. The researcher runs vector search in pgvector and a graph query in Neo4j in parallel; all model calls go through an LLM gateway with OpenAI first and Anthropic as fallback.">
+            <div class="arch" role="img" aria-label="Answering a question: the Next.js app calls FastAPI, where LangGraph agents search pgvector and Neo4j in parallel. All model calls go through a gateway with OpenAI first and Anthropic as fallback.">
                 <div class="arch-box arch-main">
-                    <p class="arch-tag">Next.js 16 &middot; 4 pages</p>
-                    <p>Chat with live agent trace and graph diagram, evals, labelling, admin. Reads the NDJSON stream line by line.</p>
+                    <p class="arch-tag">Next.js 16</p>
+                    <p>Chat, evals, labelling and admin pages.</p>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-box arch-renderer">
-                    <p class="arch-tag">FastAPI &middot; POST /chat</p>
-                    <p>15 routes. State is typed and checkpointed to Postgres.</p>
+                    <p class="arch-tag">FastAPI</p>
+                    <p>Streams the answer back.</p>
                     <div class="arch-core">
                         <p class="arch-tag">LangGraph agents</p>
                         <ul>
@@ -212,30 +209,10 @@
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-row">
-                    <div class="arch-box arch-side"><p class="arch-tag">pgvector</p><p>443 embedded chunks, searched by cosine similarity.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">Neo4j</p><p>Companies, products, people, regions and risks, queried with four hand-written Cypher patterns.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">LLM gateway</p><p>OpenAI first, Anthropic fallback, Redis circuit breaker, every call traced to LangSmith.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">pgvector</p><p>Text search.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Neo4j</p><p>Companies, suppliers, risks.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">LLM gateway</p><p>Failover and tracing.</p></div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ AI DETAILS ============ -->
-    <section class="section" aria-labelledby="ai-heading">
-        <div class="wrap cs-two">
-            <div>
-                <p class="hand cs-label">The AI part</p>
-                <h2 id="ai-heading">Measured, not assumed.</h2>
-            </div>
-            <div class="prose">
-                <ul class="checks">
-                    <li><strong>Models:</strong> <code>gpt-4o-mini</code> for answers, graph extraction, question classification and the eval judge; <code>text-embedding-3-small</code> for embeddings; <code>claude-sonnet-4-6</code> as the text fallback. Embeddings have no fallback yet, and that gap is documented.</li>
-                    <li><strong>Agents:</strong> the critic checks that every sentence has a citation and can send the answer back <strong>once</strong>. If the corpus doesn't hold the answer, the agents say exactly "Not found in filings."</li>
-                    <li><strong>Knowledge graph:</strong> a local rebuild produced 892 nodes and 959 relationships. LLM extraction isn't deterministic, so the counts vary between runs.</li>
-                    <li><strong>Eval set:</strong> 151 questions: 120 single-hop (generated by an LLM from real chunks), 19 multi-hop (templated from the graph patterns, no LLM) and 12 unanswerable (discarded if any chunk was too similar).</li>
-                    <li><strong>Latest run:</strong> factual correctness 78% overall (single-hop 78%, <strong>multi-hop 66%</strong>), citation coverage 81%, and all 12 unanswerable questions correctly refused. Scores come from an LLM judge.</li>
-                    <li><strong>Not measured yet:</strong> agreement between the judge and a human (Cohen's kappa). The dashboard and the code for it exist, but no human labels have been added, so n&nbsp;=&nbsp;0.</li>
-                </ul>
             </div>
         </div>
     </section>
@@ -243,81 +220,42 @@
     <!-- ============ CHALLENGES ============ -->
     <section class="section cs-yellow" aria-labelledby="challenges-heading">
         <div class="wrap">
-            <p class="hand cs-label">The interesting parts</p>
-            <h2 id="challenges-heading">Where the LLM needed guard rails, and where it got replaced.</h2>
+            <p class="hand cs-label">The hard parts</p>
+            <h2 id="challenges-heading">Where the LLM needed guard rails.</h2>
 
             <div class="problems">
                 <article class="problem">
                     <p class="hand problem-num">01</p>
-                    <h3>Merging two retrievers whose scores can't be compared</h3>
-                    <p><strong>Problem:</strong> vector search returns similarity scores; a graph query either matches or it doesn't. Ranking both together would let vector search, which almost always fills its quota, push out every graph fact.</p>
-                    <p><strong>Fix:</strong> both run in parallel and the graph gets a <strong>fixed share</strong> of the results (half), with vector search filling the rest and duplicates removed. Without that, the graph, the whole point of the project, would quietly disappear.</p>
+                    <h3>Mixing two kinds of results</h3>
+                    <p>Vector scores and graph matches can't be ranked together. The graph gets a fixed half of the results so it isn't crowded out.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">02</p>
-                    <h3>Raw LLM extraction is mostly noise</h3>
-                    <p><strong>Problem:</strong> free-form extraction creates a new node for every phrasing ("export restrictions", "export control risk"), so companies never land on a shared node and cross-company queries find nothing.</p>
-                    <p><strong>Fix:</strong> fixed relationship types, a <strong>15-value risk vocabulary</strong>, and a validation pass that rejects generic names, auditors and regulators, and schema violations. On one 443-chunk run it rejected 473 extracted items.</p>
+                    <h3>Noisy extraction</h3>
+                    <p>Free-form extraction made a new node for every phrasing. A fixed risk list and strict validation made companies connect.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">03</p>
-                    <h3>The table of contents posing as sections</h3>
-                    <p><strong>Problem:</strong> a regex for <code>Item N.</code> headings also matches the table of contents and cross-references ("see Item 7"), creating fake, out-of-order sections, and every citation is a section name.</p>
-                    <p><strong>Fix:</strong> keep only the longest run of item numbers in increasing order (a dynamic-programming pass), drop tiny or markup-heavy sections, and fail loudly if Risk Factors comes out too short.</p>
+                    <h3>Safe graph queries</h3>
+                    <p>The LLM only picks one of four hand-written queries instead of writing its own, so user input can't inject anything.</p>
                 </article>
-                <article class="problem">
-                    <p class="hand problem-num">04</p>
-                    <h3>Replacing an LLM step with a lookup table</h3>
-                    <p><strong>Problem:</strong> an earlier version asked an LLM to merge entity names ("NVDA", "NVIDIA" &rarr; "NVIDIA Corporation"), and the same kind of bug kept coming back.</p>
-                    <p><strong>Fix:</strong> a hand-maintained alias dictionary, applied before loading the graph and to names in user questions. With five companies and a small, predictable set of names, a table is <strong>cheaper, testable and doesn't drift</strong>.</p>
-                </article>
-                <article class="problem">
-                    <p class="hand problem-num">05</p>
-                    <h3>Graph queries that can't be injected</h3>
-                    <p><strong>Problem:</strong> letting an LLM write Cypher would cover more questions, but it's unpredictable, and with user input it's an injection risk.</p>
-                    <p><strong>Fix:</strong> the LLM only <em>classifies</em> the question into one of four patterns, each a hand-written query with bound parameters. A regex, not a second LLM call, spots counts like "at least three". The trade-off, documented: other question shapes get no graph results.</p>
-                </article>
-                <article class="problem">
-                    <p class="hand problem-num">06</p>
-                    <h3>An agent loop that can't run forever</h3>
-                    <p><strong>Problem:</strong> if the critic rejects an answer the model can never fully cite, analyst and critic would bounce back and forth indefinitely.</p>
-                    <p><strong>Fix:</strong> at most one revision. After that the best draft is returned with a flag saying the citation check didn't fully pass: bounded cost and latency, without silently dropping the answer.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ QUALITY ============ -->
-    <section class="section cs-dark" aria-labelledby="quality-heading">
-        <div class="wrap cs-two">
-            <div>
-                <p class="hand cs-label">Quality &amp; delivery</p>
-                <h2 id="quality-heading">Well tested. Not yet shipped.</h2>
-            </div>
-            <div class="prose">
-                <ul class="checks">
-                    <li><strong>Tests:</strong> 35 pytest files with 526 test functions (616 test cases once parametrized), mostly unit tests with fakes. About 40 live-integration tests skip when the databases aren't reachable. The latest run, on work not yet committed, had 570 passing, 40 skipped and 6 failing. Linting (ruff) passes.</li>
-                    <li><strong>Monitoring:</strong> every LLM call is traced to LangSmith, and <code>/health</code> opens real connections to Postgres, Neo4j and Redis and returns 503 if one is down.</li>
-                    <li><strong>Security:</strong> ingestion needs a bearer token, and graph queries only use bound parameters. A known gap is documented: the provider on/off admin endpoints have no authentication yet.</li>
-                    <li><strong>Delivery, honestly:</strong> the CI workflow only triggers on <code>main</code> while the repo uses <code>master</code>, so it has never run, and the Fly.io deploy fails for lack of a token. Both are first on the list below.</li>
-                </ul>
             </div>
         </div>
     </section>
 
     <!-- ============ PROCESS ============ -->
-    <section class="section cs-yellow" aria-labelledby="process-heading">
+    <section class="section cs-dark" aria-labelledby="process-heading">
         <div class="wrap cs-two">
             <div>
                 <p class="hand cs-label">How I worked</p>
                 <h2 id="process-heading">Rules first, then one slice at a time.</h2>
             </div>
             <div class="prose">
-                <p>I wrote the architecture rules up front: no vendor SDK outside the provider layer, one retriever interface, typed agent state, all config in one settings class, every LLM call traced, and fail loudly. I also documented each design decision alongside the alternatives I rejected.</p>
                 <ul class="checks">
-                    <li><strong>Vertical slices:</strong> service skeleton, LLM gateway, EDGAR ingestion, vector retriever, cited chat, knowledge graph, hybrid retrieval. The agents, evals and frontend then landed together in one large commit.</li>
-                    <li><strong>AI-assisted:</strong> I used Claude Code as my coding assistant throughout. About 30,000 lines added in 3 days reflects that.</li>
-                    <li><strong>Limits written down:</strong> no auth on the provider admin endpoints, no embedding fallback, only four graph question shapes, and sparse board-member data.</li>
+                    <li>Wrote the architecture rules and design decisions before coding.</li>
+                    <li>Built in slices, from the service skeleton to hybrid retrieval and agents.</li>
+                    <li>Scored with an LLM judge; human labels not added yet. Not deployed, and CI hasn't run yet.</li>
+                    <li>Built with Claude Code as a coding assistant.</li>
                 </ul>
             </div>
         </div>
@@ -331,19 +269,17 @@
                 <div class="card card-blue card-static">
                     <p class="hand card-kicker">What I learned</p>
                     <ul class="card-list">
-                        <li>For graph quality, a controlled vocabulary and strict validation mattered more than the extraction prompt.</li>
-                        <li>Where the answer space is small and known, plain code beats another LLM call: cheaper, testable, and a whole class of bugs gone.</li>
-                        <li>Scores from different retrievers aren't comparable. Merging them needs an explicit policy, not a shared ranking.</li>
-                        <li>Report by question type: 78% overall hides that multi-hop questions score 66%.</li>
+                        <li>A fixed vocabulary mattered more than the prompt.</li>
+                        <li>When the answer space is small, plain code beats another LLM call.</li>
+                        <li>Report by question type: multi-hop scored 66%, not 78%.</li>
                     </ul>
                 </div>
                 <div class="card card-yellow card-static">
                     <p class="hand card-kicker">What's next</p>
                     <ul class="card-list">
-                        <li>Point CI at the right branch, and fix the deploy so there's a live demo.</li>
-                        <li>Add human labels so judge&ndash;human agreement is actually measured.</li>
-                        <li>Put the provider admin endpoints behind the same token, and add a second embedding provider.</li>
-                        <li>Automate promoting reviewed questions into the eval dataset.</li>
+                        <li>Fix CI and deploy a live demo.</li>
+                        <li>Add human labels to check the judge.</li>
+                        <li>Secure the remaining admin endpoints.</li>
                     </ul>
                 </div>
             </div>

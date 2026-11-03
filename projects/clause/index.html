@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clause: case study · Med BM</title>
-    <meta name="description" content="How I built Clause, an AI reading aid that flags one-sided clauses in Indian rental agreements and health policies: a six-stage streaming LLM pipeline with retrieval over 34 hand-written risk patterns and verbatim-only quotes.">
+    <meta name="description" content="Clause, an AI app that flags one-sided clauses in Indian rental agreements and health policies.">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Clause: case study">
     <meta property="og:description" content="Find out what you're signing. A streaming LLM + RAG pipeline that marks up your own contract. Next.js, OpenAI, zod.">
@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../theme-blueprint.css">
     <script src="../../main.js" defer></script>
 </head>
 <body>
@@ -59,10 +60,10 @@
                 </div>
             </div>
             <dl class="meta">
-                <div><dt>My role</dt><dd>Solo personal project. I wrote the build brief, including the design direction, and directed Claude Code, which wrote the code. I reviewed, deployed and published it.</dd></div>
-                <div><dt>Timeline</dt><dd>19 Aug 2026 &middot; one evening, about 3 hours, 15 commits</dd></div>
-                <div><dt>Status</dt><dd>Live MVP on Vercel. The public demo runs in demo mode with sample reports.</dd></div>
-                <div><dt>Stack</dt><dd>Next.js 16, React 19, TypeScript, OpenAI (gpt-4o, gpt-4o-mini, embeddings), zod, unpdf, Tailwind v4, Vercel</dd></div>
+                <div><dt>My role</dt><dd>Solo, with Claude Code writing the code</dd></div>
+                <div><dt>Timeline</dt><dd>Aug 2026, one evening</dd></div>
+                <div><dt>Status</dt><dd>Live demo with sample reports</dd></div>
+                <div><dt>Stack</dt><dd>Next.js, TypeScript, OpenAI, Vercel</dd></div>
             </dl>
         </div>
         <div class="cs-hero-shot">
@@ -83,18 +84,16 @@
     <section class="section" aria-labelledby="tldr-heading">
         <div class="wrap">
             <p class="hand cs-label">The 30-second version</p>
-            <h2 id="tldr-heading">An LLM that marks up your contract like a lawyer with a red pen.</h2>
+            <h2 id="tldr-heading">A red pen for your contract.</h2>
             <p class="lede">
-                Clause takes a rental agreement or a health insurance policy, as a PDF or phone photos, and returns <strong>a marked-up copy of your own document</strong>:
-                risky clauses underlined and flagged in the margin, explained, compared with what's normal in India, and paired with what to ask for instead.
-                Behind it is a six-stage pipeline that <strong>streams findings to the browser</strong> as each one is checked, with retrieval over a hand-written
-                knowledge base of risk patterns and a risk score you can read the formula for.
+                Upload a rental agreement or health policy and get <strong>your own document back, marked up</strong>: risky clauses flagged, explained and paired with what to ask for instead.
+                Findings stream in live from a six-stage LLM pipeline.
             </p>
             <ul class="stats">
-                <li class="stat stat-yellow"><span class="stat-num">6</span><span class="stat-label">pipeline stages, streamed live</span></li>
-                <li class="stat stat-blue"><span class="stat-num">34</span><span class="stat-label">hand-written risk patterns for retrieval</span></li>
-                <li class="stat stat-pink"><span class="stat-num">10/10</span><span class="stat-label">top-1 hits on the retrieval probe</span></li>
-                <li class="stat stat-white"><span class="stat-num">~3 h</span><span class="stat-label">from first commit to deployed MVP</span></li>
+                <li class="stat stat-yellow"><span class="stat-num">6</span><span class="stat-label">pipeline stages</span></li>
+                <li class="stat stat-blue"><span class="stat-num">34</span><span class="stat-label">risk patterns</span></li>
+                <li class="stat stat-pink"><span class="stat-num">10/10</span><span class="stat-label">retrieval hits</span></li>
+                <li class="stat stat-white"><span class="stat-num">~3 h</span><span class="stat-label">to deployed MVP</span></li>
             </ul>
         </div>
     </section>
@@ -107,13 +106,11 @@
                 <h2 id="problem-heading">People sign things they can't read.</h2>
             </div>
             <div class="prose">
-                <p>In India, people routinely sign 11-month rental agreements and health insurance policies they don't fully understand: ten-month deposits with deductions "as the Lessor may deem fit", lock-ins that forfeit the whole deposit, room-rent caps and co-payments that quietly shrink what a policy pays out.</p>
-                <p>Clause is for the tenant or policyholder about to sign, not a lawyer. The goal:</p>
+                <p>In India, people sign rental agreements and health policies full of one-sided terms: huge deposits, lock-ins that forfeit them, caps that shrink what a policy pays.</p>
                 <ul class="checks">
-                    <li>go from "slightly scared" to "informed and equipped" in <strong>under 60 seconds</strong>,</li>
-                    <li>point at the exact words in <em>your</em> copy, by clause number,</li>
-                    <li>say what's normal and what to ask for instead,</li>
-                    <li>with no account, no storage, and no pretending to be legal advice.</li>
+                    <li>Informed in <strong>under 60 seconds</strong>.</li>
+                    <li>Point at the exact words in your copy.</li>
+                    <li>No account, no storage, not legal advice.</li>
                 </ul>
             </div>
         </div>
@@ -130,42 +127,42 @@
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/upload-or-pick-a-sample.png" width="1440" height="816" alt="Upload screen with a drop zone and two sample documents" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Upload or try a sample</h3>
-                        <p>Drop a PDF or photos of the pages (up to 10&nbsp;MB), or pick one of two bundled sample documents. A scanned PDF with no text layer is detected, and the user is asked to photograph it instead. <strong>Nothing is stored</strong>: the document lives in memory for one request.</p>
+                        <p>A PDF or phone photos, and <strong>nothing is stored</strong>.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/scan-flags-landing-live.png" width="1440" height="816" alt="Clauses with risky passages underlined and flags in the margin" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Flags land as they're found</h3>
-                        <p>While the document is analysed, a stage list shows progress and findings <strong>stream in one by one</strong>. Each one underlines the exact quoted words and drops a flag next to its clause, like a lawyer annotating your paper copy.</p>
+                        <p>Findings stream in one by one, underlining the exact words in the clause.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/finding-explained-with-suggestion.png" width="1440" height="816" alt="An open finding panel: what it means, why it matters, what's normal, what to ask for" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Every finding, explained</h3>
-                        <p>Each flag opens a panel: what it means, why it matters (in rupees or time), what's normal in India, and <strong>what to ask for instead</strong>, plus the verbatim quote, the matched risk patterns with their similarity, and a confidence value.</p>
+                        <p>What it means, why it matters, what's normal, and <strong>what to ask for instead</strong>.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/how-the-score-is-calculated.png" width="1440" height="816" alt="Side sheet explaining severity levels, weights and how the score is calculated" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>A score you can check</h3>
-                        <p>The report opens with one of four verdicts, from "Don't sign this as is" to "Looks fair", and a 0&ndash;100 risk score. The score is <strong>deterministic, not the model's opinion</strong>: severity weights times confidence, and a side sheet shows exactly how it's calculated.</p>
+                        <p>A verdict and a 0&ndash;100 risk score computed by a visible formula, <strong>not the model's opinion</strong>.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/health-policy-report.png" width="1440" height="816" alt="Report for a family floater health insurance policy" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Two document types</h3>
-                        <p>Rental agreements and health insurance policies, each with its own 17 risk patterns. Room-rent caps, co-payments and waiting periods get the same treatment as deposits and lock-ins. "Copy summary" puts the worst issues first, and print turns the report into a clean single column.</p>
+                        <p>Rental agreements and health policies, with 17 risk patterns each.</p>
                     </div>
                 </article>
                 <article class="feature feature-phone">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/mobile-finding.png" width="390" height="844" alt="A finding on a phone, shown directly under its clause" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Works on a phone</h3>
-                        <p>On small screens the margin folds away and each flag sits right under its clause. It's fully usable by keyboard, announces scan progress to screen readers, and switches off the scan animation for people who prefer reduced motion.</p>
+                        <p>Flags sit under their clause, and it works by keyboard and screen reader.</p>
                     </div>
                 </article>
             </div>
@@ -177,40 +174,21 @@
         <div class="wrap">
             <p class="hand cs-label">How it's built</p>
             <h2 id="arch-heading">One endpoint, six stages, one stream.</h2>
-            <p class="lede">No database, no vector store, no separate backend. A single Next.js route takes the upload and streams back NDJSON events, one JSON object per line. Even errors arrive as events inside the stream, so the browser has one code path.</p>
+            <p class="lede">No database and no separate backend. One Next.js route takes the upload and streams results back line by line.</p>
 
             <ol class="pipeline" aria-label="Pipeline stages">
-                <li><span class="pipe-num">1</span><p class="arch-tag">Read</p><p>PDF text via unpdf, or gpt-4o vision OCR for photos</p></li>
-                <li><span class="pipe-num">2</span><p class="arch-tag">Classify</p><p>gpt-4o-mini on the first 3,000 chars, keyword fallback</p></li>
-                <li><span class="pipe-num">3</span><p class="arch-tag">Segment</p><p>Regex first, LLM only when numbering is missing</p></li>
-                <li><span class="pipe-num">4</span><p class="arch-tag">Retrieve</p><p>Cosine top-5 against 34 pattern vectors, floor 0.45</p></li>
-                <li><span class="pipe-num">5</span><p class="arch-tag">Analyse</p><p>gpt-4o, 5 clauses per batch, 4 in parallel, strict JSON + zod</p></li>
-                <li><span class="pipe-num">6</span><p class="arch-tag">Compile</p><p>Deterministic score, verdict and a summary call</p></li>
+                <li><span class="pipe-num">1</span><p class="arch-tag">Read</p><p>PDF text, or OCR for photos</p></li>
+                <li><span class="pipe-num">2</span><p class="arch-tag">Classify</p><p>Rental or health policy</p></li>
+                <li><span class="pipe-num">3</span><p class="arch-tag">Segment</p><p>Split into clauses</p></li>
+                <li><span class="pipe-num">4</span><p class="arch-tag">Retrieve</p><p>Match risk patterns</p></li>
+                <li><span class="pipe-num">5</span><p class="arch-tag">Analyse</p><p>gpt-4o, in parallel batches</p></li>
+                <li><span class="pipe-num">6</span><p class="arch-tag">Compile</p><p>Score, verdict, summary</p></li>
             </ol>
 
             <div class="arch-row arch-row-after">
-                <div class="arch-box arch-side"><p class="arch-tag">Shared contract</p><p>The browser's state reducer runs directly on the server's event type, so both sides share one typed contract.</p></div>
-                <div class="arch-box arch-side"><p class="arch-tag">Layout without JS</p><p>The marked-up page is a CSS grid with <code>subgrid</code> rows, so each margin flag lines up with its clause with no position math in JavaScript.</p></div>
-                <div class="arch-box arch-side"><p class="arch-tag">Demo mode</p><p>With no API key, the same stream replays hand-written reports with realistic timing, and a "Demo data" chip is always visible.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ AI DETAILS ============ -->
-    <section class="section" aria-labelledby="ai-heading">
-        <div class="wrap cs-two">
-            <div>
-                <p class="hand cs-label">The AI part</p>
-                <h2 id="ai-heading">Small models where they're enough, rules where they're better.</h2>
-            </div>
-            <div class="prose">
-                <ul class="checks">
-                    <li><strong>Models:</strong> <code>gpt-4o-mini</code> for classifying and fallback segmenting, <code>gpt-4o</code> for clause analysis and photo OCR, <code>text-embedding-3-small</code> for retrieval.</li>
-                    <li><strong>RAG without a vector database:</strong> 34 risk patterns written by hand, embedded once and committed as a 490&nbsp;KB JSON file. Each analysis batch only sees the patterns retrieved for its own clauses.</li>
-                    <li><strong>Structured output:</strong> strict JSON schema on every call, then zod validation. A batch that fails twice is skipped and the run carries on.</li>
-                    <li><strong>Scoring:</strong> <code>score = 100 &times; (1 &minus; e<sup>&minus;raw/180</sup>)</code>, where raw is the sum of severity weight &times; confidence. Any critical finding forces the "don't sign" verdict.</li>
-                    <li><strong>Evaluation, honestly scoped:</strong> 10/10 top-1 hits on a retrieval probe of clauses worded differently from the patterns. On live runs, every problem planted in the sample documents was found, every quote was verbatim, and the deliberately fair clauses were left alone. There's no labelled dataset yet, so precision and recall aren't measured.</li>
-                </ul>
+                <div class="arch-box arch-side"><p class="arch-tag">Shared types</p><p>Server and browser share one event contract.</p></div>
+                <div class="arch-box arch-side"><p class="arch-tag">CSS layout</p><p>Flags line up with clauses using subgrid, no JS.</p></div>
+                <div class="arch-box arch-side"><p class="arch-tag">Demo mode</p><p>Without an API key, it replays sample reports.</p></div>
             </div>
         </div>
     </section>
@@ -218,45 +196,24 @@
     <!-- ============ CHALLENGES ============ -->
     <section class="section cs-yellow" aria-labelledby="challenges-heading">
         <div class="wrap">
-            <p class="hand cs-label">The interesting parts</p>
-            <h2 id="challenges-heading">Making an LLM trustworthy enough to read a contract.</h2>
+            <p class="hand cs-label">The hard parts</p>
+            <h2 id="challenges-heading">Making an LLM safe to read a contract.</h2>
 
             <div class="problems">
                 <article class="problem">
                     <p class="hand problem-num">01</p>
-                    <h3>Never show a quote the document doesn't contain</h3>
-                    <p><strong>Problem:</strong> the model can return a "quote" that isn't exactly in the document, for example with its whitespace normalised. A legal reading aid must never show invented words.</p>
-                    <p><strong>Fix:</strong> every quote is matched back to the source, exactly or ignoring whitespace, and what's displayed is a slice of the original clause, never the model's text. If it can't be found, nothing is shown. Similarity scores are computed on the server too, never taken from the model.</p>
+                    <h3>No invented quotes</h3>
+                    <p>Every quote is matched back to the document, and only the original text is shown. If it isn't found, nothing is shown.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">02</p>
-                    <h3>"Looks fair" when nothing was actually read</h3>
-                    <p><strong>Problem:</strong> after deployment the OpenAI credits ran out, every batch failed, and the pipeline "degraded gracefully" into a <em>looks fair</em> verdict with score 0, for a document with a lock-in that forfeits Rs.&nbsp;4,50,000.</p>
-                    <p><strong>Fix:</strong> zero findings with skipped batches is now an error, not a report, and a partial report says so at the top of its summary, on screen, in copied text and in print. The earlier test only covered <em>one</em> batch failing, not all of them.</p>
+                    <h3>"Looks fair" when nothing was read</h3>
+                    <p>When API credits ran out, every batch failed and the report said "looks fair". Now that's an error, and partial reports say so.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">03</p>
-                    <h3>Tuning retrieval with measurements, not guesses</h3>
-                    <p><strong>Problem:</strong> the similarity floor from the brief (0.28) let irrelevant patterns into the prompt.</p>
-                    <p><strong>Fix:</strong> I measured it. Real clauses matched at 0.63&ndash;0.89, while title blocks and signatures peaked at 0.54. At 0.45 the same 17 patterns were still found and boilerplate matched nothing; above 0.55 real matches started to vanish. So: 0.45.</p>
-                </article>
-                <article class="problem">
-                    <p class="hand problem-num">04</p>
-                    <h3>Reassuring "findings" and fake confidence</h3>
-                    <p><strong>Problem:</strong> on a deliberately fair test document, the model returned "findings" like "Security deposit terms are fair", with confidence stuck at 0.90&ndash;1.00.</p>
-                    <p><strong>Fix:</strong> a worked negative example in the prompt (a fair clause whose right answer is <em>no finding</em>) and confidence bands that forbid 1.0. The fair document went to zero findings, and confidence spread out to 0.75&ndash;0.95.</p>
-                </article>
-                <article class="problem">
-                    <p class="hand problem-num">05</p>
-                    <h3>Page footers posing as clauses</h3>
-                    <p><strong>Problem:</strong> running footers like "RENTAL AGREEMENT &mdash; Page 2" landed in the text before clause 7 and were read as a heading, creating a fake clause and a duplicate finding.</p>
-                    <p><strong>Fix:</strong> the footer stripper now spots repeated lines that only differ by page number, and removes only lines that read as page stamps. Clause numbers matter: they're how people find the issue in their own paper copy.</p>
-                </article>
-                <article class="problem">
-                    <p class="hand problem-num">06</p>
-                    <h3>The 11th flag that never printed</h3>
-                    <p><strong>Problem:</strong> the fly-in delay for each flag grew without limit (180&nbsp;ms per flag), so in print the 11th flag never appeared.</p>
-                    <p><strong>Fix:</strong> the delay is capped and only applies during a live scan. It was found by reading the printed PDF, which turned out to be a great "did everything actually render?" test.</p>
+                    <h3>No fake reassurance</h3>
+                    <p>On a fair document, the model flagged things as "fair". A negative example in the prompt brought that to zero findings.</p>
                 </article>
             </div>
         </div>
@@ -267,16 +224,14 @@
         <div class="wrap cs-two">
             <div>
                 <p class="hand cs-label">How I worked</p>
-                <h2 id="process-heading">Write the brief, direct the agent, verify by doing.</h2>
+                <h2 id="process-heading">Write the brief, direct the agent, verify.</h2>
             </div>
             <div class="prose">
-                <p>I wrote a detailed build brief (about 27&nbsp;KB): scope, stack, file tree, data contracts, the design direction ("marked-up stamp paper", with its colors, type and the one signature animation), a phased plan with commit gates, and a 12-point acceptance checklist. Claude Code then built it from that brief in 8 phases.</p>
                 <ul class="checks">
-                    <li><strong>Gate on every phase:</strong> typecheck, lint (no <code>any</code> allowed) and a production build had to pass before each commit.</li>
-                    <li><strong>12 / 12 acceptance checks</strong> recorded as passing: keyless build, streaming findings, corrupt, oversized, scanned and empty files, partial failure, 380&nbsp;px mobile, keyboard use, reduced motion, print.</li>
-                    <li><strong>Verified by doing:</strong> live API runs, a deliberately fair control document, Playwright driving real Chrome, and reading the printed PDF.</li>
-                    <li><strong>Written down:</strong> a decision log with the reason for each judgement call, and notes on what broke and what was measured.</li>
-                    <li><strong>No automated test suite yet.</strong> It was out of scope for the MVP, and it's first on the list below.</li>
+                    <li>Wrote a detailed brief, including the design, and Claude Code built it in 8 phases.</li>
+                    <li>Typecheck, lint and build had to pass before each commit.</li>
+                    <li>All 12 acceptance checks pass, verified with live runs and Playwright.</li>
+                    <li>No automated test suite yet. That's next.</li>
                 </ul>
             </div>
         </div>
@@ -290,19 +245,17 @@
                 <div class="card card-blue card-static">
                     <p class="hand card-kicker">What I learned</p>
                     <ul class="card-list">
-                        <li>Testing partial failure isn't testing total failure. "Nothing's wrong" and "we learned nothing" must look different.</li>
-                        <li>A deliberately fair control document finds bugs that bad documents hide, because on a bad document everything gets flagged anyway.</li>
-                        <li>Measure a tunable on real data before changing it, and keep numbers the model reports apart from numbers you compute.</li>
-                        <li>Printing the output is a cheap end-to-end check.</li>
+                        <li>"Nothing's wrong" and "we learned nothing" must look different.</li>
+                        <li>A fair control document finds bugs bad documents hide.</li>
+                        <li>Measure a setting on real data before changing it.</li>
                     </ul>
                 </div>
                 <div class="card card-yellow card-static">
                     <p class="hand card-kicker">What's next</p>
                     <ul class="card-list">
-                        <li>Unit tests for the pure functions, and a labelled set of 20&ndash;30 real documents to measure precision and recall per pattern.</li>
-                        <li>Fix score saturation (both samples score 99 live) and calibrate confidence across two independent passes.</li>
-                        <li>Multi-page photo upload and more document types: job contracts, loans, builder-buyer agreements.</li>
-                        <li>A "draft an email asking for these changes" button.</li>
+                        <li>Unit tests and a labelled set to measure precision and recall.</li>
+                        <li>More document types, like job contracts and loans.</li>
+                        <li>A button that drafts an email asking for changes.</li>
                     </ul>
                 </div>
             </div>

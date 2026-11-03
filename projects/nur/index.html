@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NUR: case study · Med BM</title>
-    <meta name="description" content="How I built NUR in 7 days as a freelance MVP: a trilingual web app that connects students in Quebec with mosques offering interest-free tuition loans, with Stripe Connect repayments and authorization enforced in Postgres.">
+    <meta name="description" content="NUR, a 7-day freelance MVP connecting students in Quebec with mosques that offer interest-free tuition loans.">
     <meta property="og:type" content="article">
     <meta property="og:title" content="NUR: case study">
     <meta property="og:description" content="Interest-free tuition loans from partner mosques. Next.js, Supabase, Stripe Connect. Built solo in 7 days.">
@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../theme-blueprint.css">
     <script src="../../main.js" defer></script>
 </head>
 <body>
@@ -60,10 +61,10 @@
                 </ul>
             </div>
             <dl class="meta">
-                <div><dt>My role</dt><dd>Solo developer on a freelance contract. The client wrote the product specs and gave feedback; I wrote 80 of the 81 commits.</dd></div>
+                <div><dt>My role</dt><dd>Solo freelance developer; the client wrote the specs</dd></div>
                 <div><dt>Timeline</dt><dd>27 Sep &ndash; 3 Oct 2026 &middot; 7 days to MVP</dd></div>
-                <div><dt>Platform</dt><dd>Web app, installable (PWA), 5 role-based spaces</dd></div>
-                <div><dt>Stack</dt><dd>Next.js 15, React 19, TypeScript, Supabase (Postgres, RLS, Auth, Realtime), Stripe (Checkout, Connect, Identity), Tailwind, Vercel</dd></div>
+                <div><dt>Platform</dt><dd>Web app (PWA)</dd></div>
+                <div><dt>Stack</dt><dd>Next.js, TypeScript, Supabase, Stripe</dd></div>
             </dl>
         </div>
         <div class="cs-hero-shot">
@@ -86,16 +87,14 @@
             <p class="hand cs-label">The 30-second version</p>
             <h2 id="tldr-heading">A fintech MVP where the database enforces the rules.</h2>
             <p class="lede">
-                NUR connects students who are short on tuition money with mosques that lend <strong>interest-free</strong> (qard hasan).
-                A student enters the amount they need, the app combines several mosques' loan programs to cover it, and each mosque
-                approves its part, pays the school directly and collects monthly repayments into <strong>its own Stripe account</strong>.
-                NUR never holds the loan money. Every loan state change runs through Postgres functions under row-level security.
+                NUR connects students short on tuition with mosques that lend <strong>interest-free</strong>. Each mosque approves its share,
+                pays the school and collects repayments into <strong>its own Stripe account</strong>, so NUR never holds the money.
             </p>
             <ul class="stats">
-                <li class="stat stat-yellow"><span class="stat-num">7 days</span><span class="stat-label">from first commit to MVP (81 commits)</span></li>
-                <li class="stat stat-blue"><span class="stat-num">914</span><span class="stat-label">database test assertions (pgTAP)</span></li>
-                <li class="stat stat-pink"><span class="stat-num">238</span><span class="stat-label">unit tests, plus 49 end-to-end spec files</span></li>
-                <li class="stat stat-white"><span class="stat-num">3</span><span class="stat-label">languages, 3,016 strings each, Arabic right-to-left</span></li>
+                <li class="stat stat-yellow"><span class="stat-num">7 days</span><span class="stat-label">to MVP</span></li>
+                <li class="stat stat-blue"><span class="stat-num">914</span><span class="stat-label">database assertions</span></li>
+                <li class="stat stat-pink"><span class="stat-num">238</span><span class="stat-label">unit tests</span></li>
+                <li class="stat stat-white"><span class="stat-num">3</span><span class="stat-label">languages</span></li>
             </ul>
         </div>
     </section>
@@ -108,13 +107,11 @@
                 <h2 id="problem-heading">Interest-free money exists. Finding it is the hard part.</h2>
             </div>
             <div class="prose">
-                <p>Muslim students who avoid interest-bearing loans have few options when Quebec's government aid (AFE) falls short. Some mosques do lend interest-free, but each one runs its own informal process. Students don't know which mosques still have budget, and a mosque has no simple way to review a request, pay a school and track repayments.</p>
-                <p>The client's spec called for one shared platform for four groups:</p>
+                <p>Some mosques in Quebec lend interest-free, but each runs its own informal process. Students don't know who has budget, and mosques have no simple way to review, pay and track loans.</p>
                 <ul class="checks">
-                    <li><strong>Students</strong> find and request funding in one place, then repay automatically.</li>
-                    <li><strong>Mosques</strong> get a request inbox, repayment schedules and automatic collection.</li>
-                    <li><strong>Partner organizations</strong> post jobs and volunteering opportunities.</li>
-                    <li><strong>The NUR team</strong> runs identity checks, a blacklist, a guarantee fund and finance reporting.</li>
+                    <li>Students find funding in one place and repay automatically.</li>
+                    <li>Mosques get a request inbox and automatic collection.</li>
+                    <li>The NUR team handles identity checks and reporting.</li>
                 </ul>
             </div>
         </div>
@@ -131,42 +128,42 @@
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/funding-finder-combinations.png" width="1440" height="816" alt="Funding finder showing five loan combinations for $1,500" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Funding finder</h3>
-                        <p>The student types an amount. A pure TypeScript function searches the programs they're eligible for and builds combinations of <strong>up to 5 loans</strong> that cover the need within each program's limits and remaining budget, ranked by fewest loans, fewest mosques, then lowest monthly payment. The request is checked again in SQL before anything is saved.</p>
+                        <p>Type an amount and get combinations of up to 5 loans that cover it.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/student-request-timeline.png" width="1440" height="816" alt="A student's loan request with a timeline from Submitted to Completed" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Live loan timeline</h3>
-                        <p>Every loan follows a fixed state machine, from submitted through fees paid, funds sent and repaying to completed, with exits like denied or withdrawn. Each change is logged as an event, and the student's page <strong>updates live</strong> through Supabase Realtime the moment the mosque acts.</p>
+                        <p>Each loan moves through fixed steps, and the student's page updates live.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/mosque-request-decision.png" width="1440" height="816" alt="Mosque staff view of a loan request with Approve and Deny buttons, warning signals and a reliability score" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Mosque inbox &amp; decision</h3>
-                        <p>Mosque staff see requests arrive live and open a deliberately minimal applicant folder: name, school, a reliability score, warning signals and the tuition invoice behind an <strong>audited 60-second link</strong>. Approve or deny in one click, with a reason.</p>
+                        <h3>Mosque inbox</h3>
+                        <p>Staff see a minimal applicant folder and approve or deny in one click.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/student-loans-automatic-repayments.png" width="1440" height="816" alt="A student's loans page with this month's automatic repayments" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Repayments that skip the middleman</h3>
-                        <p>The student pays an activation fee through Stripe Checkout, which also saves their card. A daily job then charges each due installment straight to the <strong>lending mosque's Stripe Connect account</strong>, one payment per loan. Failed charges start a grace period with reminders, then a restriction and a recovery case.</p>
+                        <h3>Automatic repayments</h3>
+                        <p>A daily job charges each installment straight to the lending mosque's Stripe account.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/mosque-portfolio.png" width="1440" height="816" alt="Mosque portfolio dashboard with budget deployed, outstanding, repaid and per-program table" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Trust &amp; safety for lenders</h3>
-                        <p>Stripe Identity verifies students (NUR keeps only the result and a keyed hash of the document number, <strong>never ID images</strong>). A blacklist screens sign-ups, borrowing caps limit what a student owes ($500, or $2,000 with a guarantor who verifies and signs), and mosques track money deployed, outstanding and repaid, with CSV exports.</p>
+                        <h3>Trust and safety</h3>
+                        <p>Identity checks without storing ID images, borrowing caps, and a portfolio dashboard for mosques.</p>
                     </div>
                 </article>
                 <article class="feature">
                     <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/arabic-rtl-loans.png" width="1440" height="816" alt="The student loans page in Arabic, with the whole layout mirrored right-to-left" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Trilingual &amp; installable</h3>
-                        <p>Every one of the 3,016 interface strings exists in French, English and Arabic. Logical CSS makes the Arabic layout <strong>mirror completely</strong>, and a test fails the build on any missing translation or forbidden wording (like "interest"). It installs as a PWA, with student tools like a monthly budget page.</p>
+                        <h3>Trilingual</h3>
+                        <p>French, English and Arabic, with the layout fully mirrored right-to-left.</p>
                     </div>
                 </article>
             </div>
@@ -178,29 +175,29 @@
         <div class="wrap">
             <p class="hand cs-label">How it's built</p>
             <h2 id="arch-heading">The UI asks. Postgres decides.</h2>
-            <p class="lede">Security lives in the database: every table has row-level security, status columns are locked by triggers, and a loan can only change state through SQL functions that check who's asking and whether the move is allowed.</p>
+            <p class="lede">Every table has row-level security, and a loan can only change state through SQL functions that check who's asking.</p>
 
-            <div class="arch" role="img" aria-label="Architecture: a Next.js app with five role-based spaces calls server actions, which validate input and call Postgres functions in Supabase. Those functions check permissions, write the change and a loan event, and Realtime pushes updates back to the app. Stripe sends payment results through verified, idempotent webhooks. Vercel cron jobs run daily repayments and reminders, and Resend sends emails.">
+            <div class="arch" role="img" aria-label="Architecture: a Next.js app calls server actions, which call Postgres functions in Supabase. Stripe webhooks record payments, Realtime pushes updates back, and Vercel cron jobs run daily repayments.">
                 <div class="arch-box arch-main">
-                    <p class="arch-tag">Next.js 15 App Router &middot; PWA</p>
-                    <p>98 pages across 5 role-based spaces: student, mosque, admin, mentor, recruiter. Mostly Server Components.</p>
+                    <p class="arch-tag">Next.js 15 &middot; PWA</p>
+                    <p>5 role-based spaces: student, mosque, admin, mentor, recruiter.</p>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-box arch-renderer">
-                    <p class="arch-tag">Server actions &middot; Zod validation + role check</p>
-                    <p>30 feature modules, each split into pure logic, server code and UI.</p>
+                    <p class="arch-tag">Server actions</p>
+                    <p>Validate input and check the role.</p>
                     <div class="arch-core">
-                        <p class="arch-tag">Supabase Postgres &middot; 69 migrations, ~13,400 lines of SQL</p>
+                        <p class="arch-tag">Supabase Postgres</p>
                         <ul>
-                            <li>RLS on every table</li><li>guard triggers</li><li>submit_funding_plan</li><li>approve_loan</li><li>record_payment_result</li><li>loan_events</li>
+                            <li>RLS on every table</li><li>guard triggers</li><li>loan functions</li><li>loan events</li>
                         </ul>
                     </div>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-row">
-                    <div class="arch-box arch-side"><p class="arch-tag">Stripe</p><p>Checkout, Connect direct charges and Identity. Verified, idempotent webhooks are the only place payment state changes.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">Realtime + email</p><p>Changes are pushed live to the inbox and timeline, and emailed in the user's language through Resend.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">Vercel crons</p><p>Daily repayments, reminders, grace periods and escalations. Rows are claimed atomically, so runs never double-send.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Stripe</p><p>Webhooks are the only place payment state changes.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Realtime + email</p><p>Live updates and emails in the user's language.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Vercel crons</p><p>Daily repayments and reminders, never sent twice.</p></div>
                 </div>
             </div>
         </div>
@@ -209,65 +206,25 @@
     <!-- ============ CHALLENGES ============ -->
     <section class="section" aria-labelledby="challenges-heading">
         <div class="wrap">
-            <p class="hand cs-label">The interesting parts</p>
-            <h2 id="challenges-heading">Bugs that only a fintech app can have.</h2>
+            <p class="hand cs-label">The hard parts</p>
+            <h2 id="challenges-heading">Bugs only a fintech app can have.</h2>
 
             <div class="problems">
                 <article class="problem">
                     <p class="hand problem-num">01</p>
-                    <h3>A NULL that let anyone manage loan programs</h3>
-                    <p><strong>Problem:</strong> permission checks used <code>role in ('owner','reviewer')</code>. For a non-member the role is <code>NULL</code>, and <code>NULL in (...)</code> is NULL, not false, so the "deny" branch never fired.</p>
-                    <p><strong>Fix:</strong> caught by a database test while building the loan state machine. All staff checks now go through one <code>can_manage_mosque()</code> helper that returns a real boolean.</p>
+                    <h3>A NULL that skipped a permission check</h3>
+                    <p>For non-members, <code>NULL in (...)</code> wasn't false, so the deny branch never fired. A database test caught it; one helper now returns a real boolean.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">02</p>
                     <h3>Students could lift their own ban</h3>
-                    <p><strong>Problem:</strong> the ban check read a column on the student's profile, and the student's "edit your own row" policy covered every column, that one included.</p>
-                    <p><strong>Fix:</strong> the check now reads a separate <code>bans</code> table, and a guard trigger lets only admins or server functions touch ban columns, with a new test file to prove it.</p>
+                    <p>The ban lived on a row students could edit. It moved to its own table, guarded by a trigger.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">03</p>
                     <h3>Paying several mosques without touching the money</h3>
-                    <p><strong>Problem:</strong> a student with loans from several mosques owes each one separately, and the platform must not collect and redistribute funds.</p>
-                    <p><strong>Fix:</strong> due installments are grouped per loan and each becomes its own direct charge on that mosque's connected account, with an idempotency key per installment set and day. The webhook allocates payments to installments in order and is safe to receive twice.</p>
+                    <p>Each loan's installments become a separate direct charge to that mosque, and the webhook is safe to receive twice.</p>
                 </article>
-                <article class="problem">
-                    <p class="hand problem-num">04</p>
-                    <h3>Live updates that silently stopped</h3>
-                    <p><strong>Problem:</strong> the timeline, inbox and notification bell re-created their Realtime channel on every render, under a fixed name, so the active listener could end up detached while events kept arriving. It only failed sometimes.</p>
-                    <p><strong>Fix:</strong> stable references for the router and translator, plus a unique channel name per component. The end-to-end test for the live timeline then passed reliably.</p>
-                </article>
-                <article class="problem">
-                    <p class="hand problem-num">05</p>
-                    <h3>First-come spots under concurrency</h3>
-                    <p><strong>Problem:</strong> the first 100 verified students get free Premium as "Pioneers". Two verifications at the same instant could take the same spot.</p>
-                    <p><strong>Fix:</strong> assignment takes a Postgres advisory lock and hands out the lowest free number. A later fix stopped demo and test accounts from holding real spots, after the client noticed the public counter showing 95 instead of 100.</p>
-                </article>
-                <article class="problem">
-                    <p class="hand problem-num">06</p>
-                    <h3>Due dates that moved by a day</h3>
-                    <p><strong>Problem:</strong> formatting a date-only value as a JavaScript <code>Date</code> shifted it by a day depending on the server's time zone. On a repayment schedule, that's a real money problem.</p>
-                    <p><strong>Fix:</strong> date-only values are treated as calendar dates at noon UTC, and the schedule is built the same way in SQL and in a TypeScript mirror, with unit tests for month ends and leftover cents.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ QUALITY ============ -->
-    <section class="section cs-dark" aria-labelledby="quality-heading">
-        <div class="wrap cs-two">
-            <div>
-                <p class="hand cs-label">Quality &amp; security</p>
-                <h2 id="quality-heading">Tested where the rules live.</h2>
-            </div>
-            <div class="prose">
-                <ul class="checks">
-                    <li><strong>Database tests:</strong> 49 pgTAP files with 914 assertions covering row-level isolation, every allowed and forbidden loan transition, and the money functions.</li>
-                    <li><strong>Unit tests:</strong> 238 Vitest tests in 54 files for the pure logic: combinations, schedules, fees, scores.</li>
-                    <li><strong>End-to-end:</strong> 49 Playwright spec files against a real Supabase project, including full journeys in French and Arabic, signed Stripe webhook events, accessibility (axe) and offline checks.</li>
-                    <li><strong>CI:</strong> GitHub Actions runs typecheck, lint with zero warnings, unit tests, build, Playwright and Lighthouse budgets (accessibility &ge; 0.95).</li>
-                    <li><strong>Security:</strong> two-factor login (TOTP) required for admins and mosque owners, strict security headers (CSP, HSTS), rate limits enforced in Postgres, private file storage with audited links, and account export and deletion for Quebec's Law&nbsp;25.</li>
-                </ul>
             </div>
         </div>
     </section>
@@ -280,12 +237,11 @@
                 <h2 id="process-heading">Client specs in, tested slices out.</h2>
             </div>
             <div class="prose">
-                <p>I turned the client's requirements into a backlog of user stories with priorities and acceptance criteria, then a build plan of numbered slices. Each slice is one commit, and a progress log records what was done, every decision and every blocker.</p>
                 <ul class="checks">
-                    <li><strong>Non-negotiables written down first:</strong> security in the database, state changes only through SQL functions, money in integer cents, settings stored as data, no hard-coded text, WCAG 2.2 AA.</li>
-                    <li><strong>Client feedback loops:</strong> three design passes, a public simulator, a new fee model and a 27-item requirements workbook. After the client's MVP spec arrived, I re-planned v2 as 18 new slices on top of v1.</li>
-                    <li><strong>Flagging, not guessing:</strong> when a request had legal impact, such as a fee that grows with the loan amount, I flagged it for Sharia-board and consumer-protection review instead of just shipping it.</li>
-                    <li><strong>AI as an assistant:</strong> I used Claude Code to write much of the code. I set the plan and the rules, and I reviewed and tested every slice before it was committed.</li>
+                    <li>Turned the client's specs into user stories, then small slices, one commit each.</li>
+                    <li>Tested where the rules live: pgTAP for the database, Vitest for logic, Playwright end to end.</li>
+                    <li>Flagged legally sensitive requests for review instead of guessing.</li>
+                    <li>Built with Claude Code as a coding assistant. I set the plan and reviewed every slice.</li>
                 </ul>
             </div>
         </div>
@@ -299,19 +255,17 @@
                 <div class="card card-blue card-static">
                     <p class="hand card-kicker">What I learned</p>
                     <ul class="card-list">
-                        <li>Putting authorization in Postgres makes it testable, and those tests found real holes that UI tests never would.</li>
-                        <li>Payments stay correct when the webhook is the only writer and every handler is safe to run twice.</li>
-                        <li>Right-to-left is cheap with logical CSS from day one, and expensive to retrofit.</li>
-                        <li>A written decision log made the switch from the v1 plan to the client's v2 spec painless.</li>
+                        <li>Authorization in Postgres is testable, and those tests found real holes.</li>
+                        <li>Payments stay correct when the webhook is the only writer.</li>
+                        <li>Right-to-left is cheap from day one and expensive later.</li>
                     </ul>
                 </div>
                 <div class="card card-yellow card-static">
                     <p class="hand card-kicker">What's next</p>
                     <ul class="card-list">
-                        <li>Ship v2 to production once the client signs off.</li>
-                        <li>Turn on Stripe Connect for real so automatic repayments go live, plus Google sign-in and error monitoring.</li>
-                        <li>Get student pages under the 180&nbsp;kB JavaScript budget.</li>
-                        <li>Legal pages are waiting on legal and Islamic finance review.</li>
+                        <li>Ship v2 once the client signs off.</li>
+                        <li>Turn on live Stripe Connect repayments.</li>
+                        <li>Finish legal review of the legal pages.</li>
                     </ul>
                 </div>
             </div>
