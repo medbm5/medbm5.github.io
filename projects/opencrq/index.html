@@ -1,16 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OpenCRQ: case study · Med BM</title>
-    <meta name="description" content="OpenCRQ, a cyber risk app that simulates annual losses and traces every euro figure back to its source.">
+    <title>OpenCRQ : étude de cas · Med BM</title>
+    <meta name="description" content="OpenCRQ, une appli de risque cyber qui simule les pertes annuelles et relie chaque montant en euros à sa source.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="OpenCRQ: case study">
-    <meta property="og:description" content="Cyber risk in euros, where every figure links back to its source data. FastAPI, NumPy, pgmpy, React.">
+    <meta property="og:title" content="OpenCRQ : étude de cas">
+    <meta property="og:description" content="Le risque cyber en euros, où chaque chiffre renvoie à ses données source. FastAPI, NumPy, pgmpy, React.">
     <meta property="og:site_name" content="Med BM">
     <meta property="og:url" content="https://medbm5.github.io/projects/opencrq/">
     <meta property="og:image" content="https://medbm5.github.io/img/opencrq/results-loss-curve.png">
+    <link rel="alternate" hreflang="fr" href="https://medbm5.github.io/projects/opencrq/">
+    <link rel="alternate" hreflang="en" href="https://medbm5.github.io/en/projects/opencrq/">
+    <link rel="alternate" hreflang="x-default" href="https://medbm5.github.io/projects/opencrq/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,59 +26,61 @@
 
 <header class="site-header">
     <nav class="nav wrap-wide">
-        <a href="../../" class="logo" data-pop aria-label="Med BM, home">
+        <a href="../../" class="logo" data-pop aria-label="Med BM, accueil">
             <span>Med</span><span>B</span><span>M</span>
         </a>
-        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+        <button class="burger" aria-label="Afficher le menu" aria-expanded="false" aria-controls="mobile-nav">
             <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
         </button>
         <div class="main-nav">
-            <a href="../../#work" data-pop>Projects</a>
-            <a href="../../#road" data-pop>The Road So Far</a>
+            <a href="../../#work" data-pop>Projets</a>
+            <a href="../../#road" data-pop>Mon parcours</a>
             <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
-            <a href="../../#connect" data-pop>Connect</a>
+            <a href="../../#connect" data-pop>Contact</a>
+            <a href="../../en/projects/opencrq/" class="lang-switch" lang="en" hreflang="en" aria-label="English" data-pop>EN</a>
         </div>
     </nav>
     <div class="mobile-nav" id="mobile-nav" hidden>
-        <button class="mobile-close">(close this thing)</button>
-        <a href="../../#work">Projects</a>
-        <a href="../../#road">The Road So Far</a>
+        <button class="mobile-close">(fermer ce truc)</button>
+        <a href="../../#work">Projets</a>
+        <a href="../../#road">Mon parcours</a>
         <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
-        <a href="../../#connect">Connect</a>
+        <a href="../../#connect">Contact</a>
+        <a href="../../en/projects/opencrq/" lang="en" hreflang="en">English</a>
     </div>
 </header>
 
 <!-- ============ HERO ============ -->
 <section class="cs-hero">
     <div class="wrap">
-        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> All projects</a>
+        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> Tous les projets</a>
         <div class="cs-hero-grid">
             <div>
-                <p class="hand cs-kicker">Case study &middot; Risk modelling web app</p>
+                <p class="hand cs-kicker">Étude de cas &middot; Appli web de modélisation du risque</p>
                 <h1 class="cs-title"><img src="../../img/opencrq/icon.svg" alt="" width="64" height="64"> OpenCRQ</h1>
-                <p class="hand big cs-pitch">How much could a cyber attack cost you in a bad year? And where did that number come from?</p>
+                <p class="hand big cs-pitch">Combien pourrait vous coûter une cyberattaque lors d'une mauvaise année ? Et d'où vient ce chiffre ?</p>
                 <div class="connect-links">
-                    <a href="https://github.com/medbm5/open-CQR" target="_blank" rel="noopener" class="btn" data-pop>Source code <span aria-hidden="true">&nearr;</span></a>
+                    <a href="https://github.com/medbm5/open-CQR" target="_blank" rel="noopener" class="btn" data-pop>Code source <span aria-hidden="true">&nearr;</span></a>
                 </div>
                 <ul class="badges">
                     <li>Prototype</li>
-                    <li>Runs locally</li>
+                    <li>Tourne en local</li>
                     <li>EN &middot; FR</li>
                 </ul>
             </div>
             <dl class="meta">
-                <div><dt>My role</dt><dd>Solo, with Claude Code as a coding assistant</dd></div>
-                <div><dt>Timeline</dt><dd>Aug 2026, 5 days</dd></div>
-                <div><dt>Status</dt><dd>Prototype, not deployed</dd></div>
+                <div><dt>Mon rôle</dt><dd>Seul, avec Claude Code comme assistant de code</dd></div>
+                <div><dt>Période</dt><dd>Août 2026, 5 jours</dd></div>
+                <div><dt>Statut</dt><dd>Prototype, non déployé</dd></div>
                 <div><dt>Stack</dt><dd>Python, FastAPI, NumPy, pgmpy, React</dd></div>
             </dl>
         </div>
         <div class="cs-hero-shot">
             <div class="shot-frame">
                 <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
-                <img src="../../img/opencrq/results-loss-curve.png" width="1440" height="816" alt="OpenCRQ results: a loss exceedance curve on a log scale, with markers for the 1-in-20 and 1-in-100 year losses.">
+                <img src="../../img/opencrq/results-loss-curve.png" width="1440" height="816" alt="Résultats OpenCRQ : une courbe de dépassement des pertes en échelle log, avec des repères pour les pertes à 1 an sur 20 et 1 an sur 100.">
             </div>
-            <p class="note-inline hand">The loss curve for a fictional demo company.</p>
+            <p class="note-inline hand">La courbe de pertes d'une entreprise fictive de démo.</p>
         </div>
     </div>
 </section>
@@ -87,17 +92,17 @@
     <!-- ============ TL;DR ============ -->
     <section class="section" aria-labelledby="tldr-heading">
         <div class="wrap">
-            <p class="hand cs-label">The 30-second version</p>
-            <h2 id="tldr-heading">A cyber risk number you can click on and argue with.</h2>
+            <p class="hand cs-label">La version 30 secondes</p>
+            <h2 id="tldr-heading">Un chiffre de risque cyber sur lequel on peut cliquer et discuter.</h2>
             <p class="lede">
-                OpenCRQ turns a company profile and a 20-question assessment into an <strong>annual loss distribution</strong>: the expected loss
-                and the 1-in-20 and 1-in-100-year losses. Click any number to see where it came from, down to <strong>dated source data</strong> or a named assumption.
+                OpenCRQ transforme un profil d'entreprise et un questionnaire de 20 questions en une <strong>distribution des pertes annuelles</strong> : la perte attendue
+                et les pertes à 1 an sur 20 et 1 an sur 100. Cliquez sur un chiffre pour voir d'où il vient, jusqu'aux <strong>données source datées</strong> ou à une hypothèse nommée.
             </p>
             <ul class="stats">
-                <li class="stat stat-yellow"><span class="stat-num">489 ms</span><span class="stat-label">for 100,000 simulated years</span></li>
+                <li class="stat stat-yellow"><span class="stat-num">489 ms</span><span class="stat-label">pour 100 000 années simulées</span></li>
                 <li class="stat stat-blue"><span class="stat-num">507</span><span class="stat-label">tests</span></li>
-                <li class="stat stat-pink"><span class="stat-num">89%</span><span class="stat-label">backend coverage</span></li>
-                <li class="stat stat-white"><span class="stat-num">5 days</span><span class="stat-label">to build</span></li>
+                <li class="stat stat-pink"><span class="stat-num">89%</span><span class="stat-label">de couverture backend</span></li>
+                <li class="stat stat-white"><span class="stat-num">5 jours</span><span class="stat-label">de développement</span></li>
             </ul>
         </div>
     </section>
@@ -106,15 +111,15 @@
     <section class="section cs-yellow" aria-labelledby="problem-heading">
         <div class="wrap cs-two">
             <div>
-                <p class="hand cs-label">The problem</p>
-                <h2 id="problem-heading">Boards ask about the bad year. Most tools only know the average.</h2>
+                <p class="hand cs-label">Le problème</p>
+                <h2 id="problem-heading">Les dirigeants demandent la mauvaise année. La plupart des outils ne connaissent que la moyenne.</h2>
             </div>
             <div class="prose">
-                <p>Many cyber risk tools multiply single numbers for frequency and cost. That gives an average, says little about the bad years, and hides which inputs are guesses.</p>
+                <p>Beaucoup d’outils de risque cyber multiplient un seul chiffre de fréquence par un seul chiffre de coût. On obtient une moyenne, qui dit peu sur les mauvaises années et cache quelles entrées sont des suppositions.</p>
                 <ul class="checks">
-                    <li>Simulate the full distribution, not just the average.</li>
-                    <li>Show where every number came from.</li>
-                    <li>Flag which inputs are uncalibrated assumptions.</li>
+                    <li>Simuler toute la distribution, pas seulement la moyenne.</li>
+                    <li>Montrer d'où vient chaque chiffre.</li>
+                    <li>Signaler les entrées qui sont des hypothèses non calibrées.</li>
                 </ul>
             </div>
         </div>
@@ -123,50 +128,50 @@
     <!-- ============ FEATURES ============ -->
     <section class="section" aria-labelledby="features-heading">
         <div class="wrap">
-            <p class="hand cs-label">What I built</p>
-            <h2 id="features-heading">From a questionnaire to a loss curve you can trace.</h2>
+            <p class="hand cs-label">Ce que j'ai construit</p>
+            <h2 id="features-heading">D'un questionnaire à une courbe de pertes traçable.</h2>
 
             <div class="features">
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/landing-demo-profiles.png" width="1440" height="816" alt="Landing page with three demo company profiles and their expected annual loss" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/landing-demo-profiles.png" width="1440" height="816" alt="Page d'accueil avec trois profils d'entreprises de démo et leur perte annuelle attendue" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>One-click demos</h3>
-                        <p>Three fictional companies, already simulated, so a visitor sees results in one click.</p>
+                        <h3>Démos en un clic</h3>
+                        <p>Trois entreprises fictives, déjà simulées, pour voir des résultats en un clic.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/provenance-trace-var95.png" width="1440" height="816" alt="Side panel 'Where this number came from' showing the derivation steps behind the 1-in-20 year loss" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/provenance-trace-var95.png" width="1440" height="816" alt="Panneau latéral « D'où vient ce chiffre » montrant les étapes de calcul de la perte à 1 an sur 20" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>"Where this number came from"</h3>
-                        <p>Click a figure to see its full derivation, with uncalibrated assumptions in amber.</p>
+                        <h3>« D'où vient ce chiffre »</h3>
+                        <p>Cliquez sur un chiffre pour voir tout son calcul, avec les hypothèses non calibrées en orange.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/what-if-control-comparison.png" width="1440" height="816" alt="What-if comparison: proposing a control change and seeing the change in expected and tail losses with 95% intervals" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/what-if-control-comparison.png" width="1440" height="816" alt="Comparaison what-if : proposer un changement de contrôle et voir l’effet sur les pertes attendues et extrêmes, avec des intervalles à 95 %" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>What-if</h3>
-                        <p>Improve a control and see the change in loss, with 95% intervals, against its yearly cost.</p>
+                        <h3>Et si…</h3>
+                        <p>Améliorez un contrôle et voyez l’effet sur les pertes, avec des intervalles à 95 %, face à son coût annuel.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/sensitivity-what-moves-the-number.png" width="1440" height="816" alt="Input sensitivity chart ranking inputs by rank correlation with annual loss, with a warning that the ranking is not reliable" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/sensitivity-what-moves-the-number.png" width="1440" height="816" alt="Graphique de sensibilité classant les entrées par corrélation de rang avec la perte annuelle, avec un avertissement indiquant que le classement n’est pas fiable" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>What moves the number</h3>
-                        <p>Inputs ranked by impact, with a warning when the ranking isn't reliable.</p>
+                        <h3>Ce qui fait bouger le chiffre</h3>
+                        <p>Les entrées classées par impact, avec un avertissement quand le classement n'est pas fiable.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/control-posture-questionnaire.png" width="1440" height="816" alt="Control posture questionnaire with a 1 to 5 scale and an 'I don't know' option" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/control-posture-questionnaire.png" width="1440" height="816" alt="Questionnaire sur les contrôles avec une échelle de 1 à 5 et une option « Je ne sais pas »" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>An honest questionnaire</h3>
-                        <p>"I don't know" widens the uncertainty instead of counting as a middle score.</p>
+                        <h3>Un questionnaire honnête</h3>
+                        <p>« Je ne sais pas » élargit l'incertitude au lieu de compter comme une note moyenne.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/threat-landscape-attack-kev.png" width="1440" height="816" alt="Threat landscape: sector incident rate marked low confidence, and a table of ATT&CK actor groups" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/opencrq/threat-landscape-attack-kev.png" width="1440" height="816" alt="Paysage des menaces : taux d’incidents du secteur marqué faible confiance, et un tableau des groupes d’attaquants ATT&CK" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Threat landscape</h3>
-                        <p>Dated threat data, low-confidence rates marked, and a plain-language summary in English or French.</p>
+                        <h3>Paysage des menaces</h3>
+                        <p>Des données de menace datées, les taux peu fiables signalés, et un résumé en langage simple en anglais ou en français.</p>
                     </div>
                 </article>
             </div>
@@ -176,31 +181,31 @@
     <!-- ============ ARCHITECTURE ============ -->
     <section class="section cs-dark" aria-labelledby="arch-heading">
         <div class="wrap">
-            <p class="hand cs-label">How it's built</p>
-            <h2 id="arch-heading">Data flows one way, in four layers.</h2>
-            <p class="lede">Public data is saved offline as dated snapshots. A Bayesian network and a vectorised Monte Carlo engine simulate each year; nothing is trained, and the probabilities are flagged as uncalibrated.</p>
+            <p class="hand cs-label">Comment c'est construit</p>
+            <h2 id="arch-heading">Les données vont dans un seul sens, en quatre couches.</h2>
+            <p class="lede">Les données publiques sont enregistrées hors ligne en instantanés datés. Un réseau bayésien et un moteur Monte Carlo vectorisé simulent chaque année ; rien n’est entraîné, et les probabilités sont signalées comme non calibrées.</p>
 
-            <div class="arch" role="img" aria-label="Architecture: public data is ingested offline into dated snapshots. A Bayesian network and a Monte Carlo engine simulate losses. Provenance records where each parameter came from, explanations are checked number by number, and FastAPI serves a React front end.">
+            <div class="arch" role="img" aria-label="Architecture : les données publiques sont ingérées hors ligne en instantanés datés. Un réseau bayésien et un moteur Monte Carlo simulent les pertes. La provenance enregistre l’origine de chaque paramètre, les explications sont vérifiées chiffre par chiffre, et FastAPI sert un front-end React.">
                 <div class="arch-box arch-main">
-                    <p class="arch-tag">1 &middot; Ingestion (offline)</p>
-                    <p>MITRE ATT&amp;CK, CISA KEV, EPSS, VCDB and Eurostat, saved as dated Parquet snapshots.</p>
+                    <p class="arch-tag">1 &middot; Ingestion (hors ligne)</p>
+                    <p>MITRE ATT&amp;CK, CISA KEV, EPSS, VCDB et Eurostat, enregistrés en instantanés Parquet datés.</p>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-box arch-renderer">
-                    <p class="arch-tag">2 &middot; Model</p>
-                    <p>A Bayesian network turns control answers into distributions.</p>
+                    <p class="arch-tag">2 &middot; Modèle</p>
+                    <p>Un réseau bayésien transforme les réponses sur les contrôles en distributions.</p>
                     <div class="arch-core">
-                        <p class="arch-tag">Monte Carlo engine &middot; NumPy</p>
+                        <p class="arch-tag">Moteur Monte Carlo &middot; NumPy</p>
                         <ul>
-                            <li>attack frequency</li><li>resistance per stage</li><li>loss severity</li><li>sensitivity</li><li>what-if</li>
+                            <li>fréquence des attaques</li><li>résistance par étape</li><li>gravité des pertes</li><li>sensibilité</li><li>et si…</li>
                         </ul>
                     </div>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-row">
-                    <div class="arch-box arch-side"><p class="arch-tag">3 &middot; Provenance</p><p>Records where each parameter came from.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">3 &middot; Explanations</p><p>An optional LLM or a template writes the text; every number is checked.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">4 &middot; API &amp; UI</p><p>FastAPI and React, typed from one schema.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">3 &middot; Provenance</p><p>Enregistre l'origine de chaque paramètre.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">3 &middot; Explanations</p><p>Un LLM optionnel ou un modèle de texte rédige ; chaque chiffre est vérifié.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">4 &middot; API &amp; UI</p><p>FastAPI et React, typés à partir d’un seul schéma.</p></div>
                 </div>
             </div>
         </div>
@@ -209,24 +214,24 @@
     <!-- ============ CHALLENGES ============ -->
     <section class="section cs-yellow" aria-labelledby="challenges-heading">
         <div class="wrap">
-            <p class="hand cs-label">The hard parts</p>
-            <h2 id="challenges-heading">Making a random number trustworthy.</h2>
+            <p class="hand cs-label">Les parties difficiles</p>
+            <h2 id="challenges-heading">Rendre un chiffre aléatoire digne de confiance.</h2>
 
             <div class="problems">
                 <article class="problem">
                     <p class="hand problem-num">01</p>
-                    <h3>Measuring the control, not the seed</h3>
-                    <p>Two independent runs mostly measure random noise. What-if reuses the baseline's random draws, cutting that noise at least 5&times;.</p>
+                    <h3>Mesurer le contrôle, pas la graine</h3>
+                    <p>Deux simulations indépendantes mesurent surtout du bruit aléatoire. Le what-if réutilise les tirages aléatoires de la référence, ce qui divise ce bruit par au moins 5.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">02</p>
-                    <h3>Keeping the LLM from inventing numbers</h3>
-                    <p>The LLM does no maths. A verifier checks every number in its text, and anything unverified falls back to a template.</p>
+                    <h3>Empêcher le LLM d'inventer des chiffres</h3>
+                    <p>Le LLM ne fait aucun calcul. Un vérificateur contrôle chaque chiffre de son texte, et tout ce qui n’est pas vérifié est remplacé par un modèle de texte.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">03</p>
-                    <h3>Faster, with identical output</h3>
-                    <p>Profiling cut run time 11.5% with bit-identical results. I rejected a faster sampler that moved the 1-in-20-year loss by 1%.</p>
+                    <h3>Plus rapide, avec un résultat identique</h3>
+                    <p>Le profilage a réduit le temps d'exécution de 11,5 % avec des résultats identiques au bit près. J'ai refusé un échantillonneur plus rapide qui décalait la perte à 1 an sur 20 de 1 %.</p>
                 </article>
             </div>
         </div>
@@ -236,15 +241,15 @@
     <section class="section cs-dark" aria-labelledby="process-heading">
         <div class="wrap cs-two">
             <div>
-                <p class="hand cs-label">How I worked</p>
-                <h2 id="process-heading">Measure first, write it down.</h2>
+                <p class="hand cs-label">Comment j'ai travaillé</p>
+                <h2 id="process-heading">Mesurer d’abord, tout écrire.</h2>
             </div>
             <div class="prose">
                 <ul class="checks">
-                    <li>Built in vertical slices over 5 days, one capability per commit.</li>
-                    <li>Tests check the maths, not just the code, including that every parameter has a source.</li>
-                    <li>8 decision records and a written list of limitations.</li>
-                    <li>Built with Claude Code as a coding assistant. I directed the work.</li>
+                    <li>Construit en tranches verticales sur 5 jours, une fonctionnalité par commit.</li>
+                    <li>Les tests vérifient les maths, pas seulement le code, y compris que chaque paramètre a une source.</li>
+                    <li>8 fiches de décision et une liste écrite des limites.</li>
+                    <li>Construit avec Claude Code comme assistant de code. C'est moi qui ai dirigé le travail.</li>
                 </ul>
             </div>
         </div>
@@ -253,22 +258,22 @@
     <!-- ============ LEARNED / NEXT ============ -->
     <section class="section" aria-labelledby="learned-heading">
         <div class="wrap">
-            <h2 id="learned-heading" class="sr-only">What I learned and what's next</h2>
+            <h2 id="learned-heading" class="sr-only">Ce que j'ai appris et la suite</h2>
             <div class="cards">
                 <div class="card card-blue card-static">
-                    <p class="hand card-kicker">What I learned</p>
+                    <p class="hand card-kicker">Ce que j'ai appris</p>
                     <ul class="card-list">
-                        <li>To compare random runs, reuse the same random numbers.</li>
-                        <li>For a risk number, reproducibility comes before speed.</li>
-                        <li>An LLM that does no maths is one you can check.</li>
+                        <li>Pour comparer des simulations aléatoires, réutiliser les mêmes nombres aléatoires.</li>
+                        <li>Pour un chiffre de risque, la reproductibilité passe avant la vitesse.</li>
+                        <li>Un LLM qui ne calcule rien est un LLM que l’on peut vérifier.</li>
                     </ul>
                 </div>
                 <div class="card card-yellow card-static">
-                    <p class="hand card-kicker">What's next</p>
+                    <p class="hand card-kicker">La suite</p>
                     <ul class="card-list">
-                        <li>Calibrate the assumptions against real loss data.</li>
-                        <li>Model correlation between scenarios.</li>
-                        <li>Fit loss severity to data.</li>
+                        <li>Calibrer les hypothèses sur de vraies données de pertes.</li>
+                        <li>Modéliser la corrélation entre scénarios.</li>
+                        <li>Ajuster la gravité des pertes aux données.</li>
                     </ul>
                 </div>
             </div>
@@ -277,12 +282,12 @@
 
     <section class="connect" aria-labelledby="cta-heading">
         <div class="wrap">
-            <h2 id="cta-heading">Need numbers people can trust?</h2>
-            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering.</p>
+            <h2 id="cta-heading">Besoin de chiffres fiables ?</h2>
+            <p class="hand big">Je cherche un CDI en ingénierie logicielle ou IA.</p>
             <div class="connect-links">
                 <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
                 <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
-                <a href="../metamorphosis/" class="btn btn-ghost" data-pop>Next project: Metamorphosis <span aria-hidden="true">&rarr;</span></a>
+                <a href="../metamorphosis/" class="btn btn-ghost" data-pop>Projet suivant : Metamorphosis <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -290,13 +295,13 @@
 
 <footer class="footer">
     <div class="wrap footer-inner">
-        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
-        <ul class="socials" aria-label="Social links and email">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Fait main, aucun template n'a été maltraité.</p>
+        <ul class="socials" aria-label="Réseaux sociaux et e-mail">
             <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
             <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
-            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">E-mail</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
         </ul>
     </div>

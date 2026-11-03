@@ -1,16 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Clause: case study · Med BM</title>
-    <meta name="description" content="Clause, an AI app that flags one-sided clauses in Indian rental agreements and health policies.">
+    <title>Clause : étude de cas · Med BM</title>
+    <meta name="description" content="Clause, une app IA qui repère les clauses abusives dans les baux et les contrats santé indiens.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Clause: case study">
-    <meta property="og:description" content="Find out what you're signing. A streaming LLM + RAG pipeline that marks up your own contract. Next.js, OpenAI, zod.">
+    <meta property="og:title" content="Clause : étude de cas">
+    <meta property="og:description" content="Sachez ce que vous signez. Un pipeline LLM + RAG en streaming qui annote votre propre contrat. Next.js, OpenAI, zod.">
     <meta property="og:site_name" content="Med BM">
     <meta property="og:url" content="https://medbm5.github.io/projects/clause/">
     <meta property="og:image" content="https://medbm5.github.io/img/clause/rental-report-verdict-and-score.png">
+    <link rel="alternate" hreflang="fr" href="https://medbm5.github.io/projects/clause/">
+    <link rel="alternate" hreflang="en" href="https://medbm5.github.io/en/projects/clause/">
+    <link rel="alternate" hreflang="x-default" href="https://medbm5.github.io/projects/clause/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,55 +26,57 @@
 
 <header class="site-header">
     <nav class="nav wrap-wide">
-        <a href="../../" class="logo" data-pop aria-label="Med BM, home">
+        <a href="../../" class="logo" data-pop aria-label="Med BM, accueil">
             <span>Med</span><span>B</span><span>M</span>
         </a>
-        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+        <button class="burger" aria-label="Afficher le menu" aria-expanded="false" aria-controls="mobile-nav">
             <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
         </button>
         <div class="main-nav">
-            <a href="../../#work" data-pop>Projects</a>
-            <a href="../../#road" data-pop>The Road So Far</a>
+            <a href="../../#work" data-pop>Projets</a>
+            <a href="../../#road" data-pop>Mon parcours</a>
             <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
-            <a href="../../#connect" data-pop>Connect</a>
+            <a href="../../#connect" data-pop>Contact</a>
+            <a href="../../en/projects/clause/" class="lang-switch" lang="en" hreflang="en" aria-label="English" data-pop>EN</a>
         </div>
     </nav>
     <div class="mobile-nav" id="mobile-nav" hidden>
-        <button class="mobile-close">(close this thing)</button>
-        <a href="../../#work">Projects</a>
-        <a href="../../#road">The Road So Far</a>
+        <button class="mobile-close">(fermer ce truc)</button>
+        <a href="../../#work">Projets</a>
+        <a href="../../#road">Mon parcours</a>
         <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
-        <a href="../../#connect">Connect</a>
+        <a href="../../#connect">Contact</a>
+        <a href="../../en/projects/clause/" lang="en" hreflang="en">English</a>
     </div>
 </header>
 
 <!-- ============ HERO ============ -->
 <section class="cs-hero">
     <div class="wrap">
-        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> All projects</a>
+        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> Tous les projets</a>
         <div class="cs-hero-grid">
             <div>
-                <p class="hand cs-kicker">Case study &middot; AI web app</p>
+                <p class="hand cs-kicker">Étude de cas &middot; App web IA</p>
                 <h1 class="cs-title"><img src="../../img/clause/icon.svg" alt="" width="64" height="64"> Clause</h1>
-                <p class="hand big cs-pitch">Find out what you're signing. Upload a rental agreement or health policy and get every one-sided clause flagged, in plain English.</p>
+                <p class="hand big cs-pitch">Sachez ce que vous signez. Envoyez un bail ou un contrat santé et chaque clause abusive est signalée, en termes simples.</p>
                 <div class="connect-links">
-                    <a href="https://clause-opal-omega.vercel.app" target="_blank" rel="noopener" class="btn" data-pop>Try the demo <span aria-hidden="true">&nearr;</span></a>
-                    <a href="https://github.com/medbm5/clause" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>Source code <span aria-hidden="true">&nearr;</span></a>
+                    <a href="https://clause-opal-omega.vercel.app" target="_blank" rel="noopener" class="btn" data-pop>Essayer la démo <span aria-hidden="true">&nearr;</span></a>
+                    <a href="https://github.com/medbm5/clause" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>Code source <span aria-hidden="true">&nearr;</span></a>
                 </div>
             </div>
             <dl class="meta">
-                <div><dt>My role</dt><dd>Solo, with Claude Code writing the code</dd></div>
-                <div><dt>Timeline</dt><dd>Aug 2026, one evening</dd></div>
-                <div><dt>Status</dt><dd>Live demo with sample reports</dd></div>
+                <div><dt>Mon rôle</dt><dd>Seul, avec Claude Code pour écrire le code</dd></div>
+                <div><dt>Période</dt><dd>Août 2026, une soirée</dd></div>
+                <div><dt>Statut</dt><dd>Démo en ligne avec des rapports d'exemple</dd></div>
                 <div><dt>Stack</dt><dd>Next.js, TypeScript, OpenAI, Vercel</dd></div>
             </dl>
         </div>
         <div class="cs-hero-shot">
             <div class="shot-frame">
                 <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
-                <img src="../../img/clause/rental-report-verdict-and-score.png" width="1440" height="816" alt="Clause report for a Bengaluru rental agreement: verdict 'Don't sign this as is', risk score 97 out of 100, and a plain-language summary.">
+                <img src="../../img/clause/rental-report-verdict-and-score.png" width="1440" height="816" alt="Rapport Clause pour un bail à Bengaluru : verdict « Ne signez pas en l'état », score de risque de 97 sur 100 et un résumé en termes simples.">
             </div>
-            <p class="note-inline hand">A finished report. The sample documents are fictional.</p>
+            <p class="note-inline hand">Un rapport terminé. Les documents d'exemple sont fictifs.</p>
         </div>
     </div>
 </section>
@@ -83,17 +88,17 @@
     <!-- ============ TL;DR ============ -->
     <section class="section" aria-labelledby="tldr-heading">
         <div class="wrap">
-            <p class="hand cs-label">The 30-second version</p>
-            <h2 id="tldr-heading">A red pen for your contract.</h2>
+            <p class="hand cs-label">La version 30 secondes</p>
+            <h2 id="tldr-heading">Un stylo rouge pour votre contrat.</h2>
             <p class="lede">
-                Upload a rental agreement or health policy and get <strong>your own document back, marked up</strong>: risky clauses flagged, explained and paired with what to ask for instead.
-                Findings stream in live from a six-stage LLM pipeline.
+                Envoyez un bail ou un contrat santé et récupérez <strong>votre propre document, annoté</strong> : les clauses risquées sont signalées, expliquées, avec ce qu'il faut demander à la place.
+                Les résultats arrivent en direct depuis un pipeline LLM en six étapes.
             </p>
             <ul class="stats">
-                <li class="stat stat-yellow"><span class="stat-num">6</span><span class="stat-label">pipeline stages</span></li>
-                <li class="stat stat-blue"><span class="stat-num">34</span><span class="stat-label">risk patterns</span></li>
-                <li class="stat stat-pink"><span class="stat-num">10/10</span><span class="stat-label">retrieval hits</span></li>
-                <li class="stat stat-white"><span class="stat-num">~3 h</span><span class="stat-label">to deployed MVP</span></li>
+                <li class="stat stat-yellow"><span class="stat-num">6</span><span class="stat-label">étapes du pipeline</span></li>
+                <li class="stat stat-blue"><span class="stat-num">34</span><span class="stat-label">clauses à risque connues</span></li>
+                <li class="stat stat-pink"><span class="stat-num">10/10</span><span class="stat-label">bonnes recherches</span></li>
+                <li class="stat stat-white"><span class="stat-num">~3 h</span><span class="stat-label">jusqu'au MVP en ligne</span></li>
             </ul>
         </div>
     </section>
@@ -102,15 +107,15 @@
     <section class="section cs-yellow" aria-labelledby="problem-heading">
         <div class="wrap cs-two">
             <div>
-                <p class="hand cs-label">The problem</p>
-                <h2 id="problem-heading">People sign things they can't read.</h2>
+                <p class="hand cs-label">Le problème</p>
+                <h2 id="problem-heading">On signe des choses qu'on ne sait pas lire.</h2>
             </div>
             <div class="prose">
-                <p>In India, people sign rental agreements and health policies full of one-sided terms: huge deposits, lock-ins that forfeit them, caps that shrink what a policy pays.</p>
+                <p>En Inde, on signe des baux et des contrats santé pleins de clauses déséquilibrées : cautions énormes, durées minimales qui les font perdre, plafonds qui réduisent ce que l'assurance paie.</p>
                 <ul class="checks">
-                    <li>Informed in <strong>under 60 seconds</strong>.</li>
-                    <li>Point at the exact words in your copy.</li>
-                    <li>No account, no storage, not legal advice.</li>
+                    <li>Informé en <strong>moins de 60 secondes</strong>.</li>
+                    <li>Montrer les mots exacts dans votre document.</li>
+                    <li>Pas de compte, rien de stocké, pas un conseil juridique.</li>
                 </ul>
             </div>
         </div>
@@ -119,50 +124,50 @@
     <!-- ============ FEATURES ============ -->
     <section class="section" aria-labelledby="features-heading">
         <div class="wrap">
-            <p class="hand cs-label">What I built</p>
-            <h2 id="features-heading">Drop a document, watch it get marked up.</h2>
+            <p class="hand cs-label">Ce que j'ai construit</p>
+            <h2 id="features-heading">Déposez un document, regardez-le se faire annoter.</h2>
 
             <div class="features">
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/upload-or-pick-a-sample.png" width="1440" height="816" alt="Upload screen with a drop zone and two sample documents" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/upload-or-pick-a-sample.png" width="1440" height="816" alt="Écran d'envoi avec une zone de dépôt et deux documents d'exemple" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Upload or try a sample</h3>
-                        <p>A PDF or phone photos, and <strong>nothing is stored</strong>.</p>
+                        <h3>Envoyez ou testez un exemple</h3>
+                        <p>Un PDF ou des photos prises au téléphone, et <strong>rien n'est stocké</strong>.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/scan-flags-landing-live.png" width="1440" height="816" alt="Clauses with risky passages underlined and flags in the margin" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/scan-flags-landing-live.png" width="1440" height="816" alt="Des clauses avec les passages risqués soulignés et des alertes dans la marge" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Flags land as they're found</h3>
-                        <p>Findings stream in one by one, underlining the exact words in the clause.</p>
+                        <h3>Les alertes arrivent au fil de l'eau</h3>
+                        <p>Les résultats arrivent un par un et soulignent les mots exacts de la clause.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/finding-explained-with-suggestion.png" width="1440" height="816" alt="An open finding panel: what it means, why it matters, what's normal, what to ask for" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/finding-explained-with-suggestion.png" width="1440" height="816" alt="Le détail d'une alerte : ce que ça veut dire, pourquoi c'est important, ce qui est normal, quoi demander" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Every finding, explained</h3>
-                        <p>What it means, why it matters, what's normal, and <strong>what to ask for instead</strong>.</p>
+                        <h3>Chaque alerte, expliquée</h3>
+                        <p>Ce que ça veut dire, pourquoi c'est important, ce qui est normal, et <strong>quoi demander à la place</strong>.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/how-the-score-is-calculated.png" width="1440" height="816" alt="Side sheet explaining severity levels, weights and how the score is calculated" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/how-the-score-is-calculated.png" width="1440" height="816" alt="Panneau latéral qui explique les niveaux de gravité, les poids et le calcul du score" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>A score you can check</h3>
-                        <p>A verdict and a 0&ndash;100 risk score computed by a visible formula, <strong>not the model's opinion</strong>.</p>
+                        <h3>Un score vérifiable</h3>
+                        <p>Un verdict et un score de risque de 0 à 100, calculés par une formule visible, <strong>pas l'avis du modèle</strong>.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/health-policy-report.png" width="1440" height="816" alt="Report for a family floater health insurance policy" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/health-policy-report.png" width="1440" height="816" alt="Rapport pour une assurance santé familiale" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Two document types</h3>
-                        <p>Rental agreements and health policies, with 17 risk patterns each.</p>
+                        <h3>Deux types de documents</h3>
+                        <p>Baux et contrats santé, avec 17 clauses à risque connues pour chacun.</p>
                     </div>
                 </article>
                 <article class="feature feature-phone">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/mobile-finding.png" width="390" height="844" alt="A finding on a phone, shown directly under its clause" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/clause/mobile-finding.png" width="390" height="844" alt="Une alerte sur téléphone, affichée juste sous sa clause" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Works on a phone</h3>
-                        <p>Flags sit under their clause, and it works by keyboard and screen reader.</p>
+                        <h3>Marche sur téléphone</h3>
+                        <p>Les alertes sont sous leur clause, et tout marche au clavier et au lecteur d'écran.</p>
                     </div>
                 </article>
             </div>
@@ -172,23 +177,23 @@
     <!-- ============ ARCHITECTURE ============ -->
     <section class="section cs-dark" aria-labelledby="arch-heading">
         <div class="wrap">
-            <p class="hand cs-label">How it's built</p>
-            <h2 id="arch-heading">One endpoint, six stages, one stream.</h2>
-            <p class="lede">No database and no separate backend. One Next.js route takes the upload and streams results back line by line.</p>
+            <p class="hand cs-label">Comment c'est construit</p>
+            <h2 id="arch-heading">Un endpoint, six étapes, un seul flux.</h2>
+            <p class="lede">Pas de base de données ni de backend séparé. Une route Next.js reçoit le fichier et renvoie les résultats ligne par ligne.</p>
 
-            <ol class="pipeline" aria-label="Pipeline stages">
-                <li><span class="pipe-num">1</span><p class="arch-tag">Read</p><p>PDF text, or OCR for photos</p></li>
-                <li><span class="pipe-num">2</span><p class="arch-tag">Classify</p><p>Rental or health policy</p></li>
-                <li><span class="pipe-num">3</span><p class="arch-tag">Segment</p><p>Split into clauses</p></li>
-                <li><span class="pipe-num">4</span><p class="arch-tag">Retrieve</p><p>Match risk patterns</p></li>
-                <li><span class="pipe-num">5</span><p class="arch-tag">Analyse</p><p>gpt-4o, in parallel batches</p></li>
-                <li><span class="pipe-num">6</span><p class="arch-tag">Compile</p><p>Score, verdict, summary</p></li>
+            <ol class="pipeline" aria-label="Étapes du pipeline">
+                <li><span class="pipe-num">1</span><p class="arch-tag">Lire</p><p>Texte du PDF, ou OCR pour les photos</p></li>
+                <li><span class="pipe-num">2</span><p class="arch-tag">Classer</p><p>Bail ou contrat santé</p></li>
+                <li><span class="pipe-num">3</span><p class="arch-tag">Découper</p><p>En clauses</p></li>
+                <li><span class="pipe-num">4</span><p class="arch-tag">Chercher</p><p>Les clauses à risque connues</p></li>
+                <li><span class="pipe-num">5</span><p class="arch-tag">Analyser</p><p>gpt-4o, par lots en parallèle</p></li>
+                <li><span class="pipe-num">6</span><p class="arch-tag">Compiler</p><p>Score, verdict, résumé</p></li>
             </ol>
 
             <div class="arch-row arch-row-after">
-                <div class="arch-box arch-side"><p class="arch-tag">Shared types</p><p>Server and browser share one event contract.</p></div>
-                <div class="arch-box arch-side"><p class="arch-tag">CSS layout</p><p>Flags line up with clauses using subgrid, no JS.</p></div>
-                <div class="arch-box arch-side"><p class="arch-tag">Demo mode</p><p>Without an API key, it replays sample reports.</p></div>
+                <div class="arch-box arch-side"><p class="arch-tag">Types partagés</p><p>Serveur et navigateur partagent le même format d'événements.</p></div>
+                <div class="arch-box arch-side"><p class="arch-tag">Mise en page CSS</p><p>Les alertes s'alignent sur les clauses avec subgrid, sans JS.</p></div>
+                <div class="arch-box arch-side"><p class="arch-tag">Mode démo</p><p>Sans clé API, il rejoue des rapports d'exemple.</p></div>
             </div>
         </div>
     </section>
@@ -196,24 +201,24 @@
     <!-- ============ CHALLENGES ============ -->
     <section class="section cs-yellow" aria-labelledby="challenges-heading">
         <div class="wrap">
-            <p class="hand cs-label">The hard parts</p>
-            <h2 id="challenges-heading">Making an LLM safe to read a contract.</h2>
+            <p class="hand cs-label">Les parties difficiles</p>
+            <h2 id="challenges-heading">Rendre un LLM fiable pour lire un contrat.</h2>
 
             <div class="problems">
                 <article class="problem">
                     <p class="hand problem-num">01</p>
-                    <h3>No invented quotes</h3>
-                    <p>Every quote is matched back to the document, and only the original text is shown. If it isn't found, nothing is shown.</p>
+                    <h3>Pas de citations inventées</h3>
+                    <p>Chaque citation est retrouvée dans le document, et seul le texte original est affiché. Si elle n'est pas trouvée, rien ne s'affiche.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">02</p>
-                    <h3>"Looks fair" when nothing was read</h3>
-                    <p>When API credits ran out, every batch failed and the report said "looks fair". Now that's an error, and partial reports say so.</p>
+                    <h3>« Ça a l'air correct » sans rien avoir lu</h3>
+                    <p>Quand les crédits API étaient épuisés, tous les lots échouaient et le rapport disait « ça a l'air correct ». Maintenant, c'est une erreur, et les rapports partiels le signalent.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">03</p>
-                    <h3>No fake reassurance</h3>
-                    <p>On a fair document, the model flagged things as "fair". A negative example in the prompt brought that to zero findings.</p>
+                    <h3>Pas de fausse réassurance</h3>
+                    <p>Sur un document équilibré, le modèle signalait des choses comme « correctes ». Un contre-exemple dans le prompt a ramené ça à zéro alerte.</p>
                 </article>
             </div>
         </div>
@@ -223,15 +228,15 @@
     <section class="section cs-dark" aria-labelledby="process-heading">
         <div class="wrap cs-two">
             <div>
-                <p class="hand cs-label">How I worked</p>
-                <h2 id="process-heading">Write the brief, direct the agent, verify.</h2>
+                <p class="hand cs-label">Comment j'ai travaillé</p>
+                <h2 id="process-heading">Écrire le brief, guider l'agent, vérifier.</h2>
             </div>
             <div class="prose">
                 <ul class="checks">
-                    <li>Wrote a detailed brief, including the design, and Claude Code built it in 8 phases.</li>
-                    <li>Typecheck, lint and build had to pass before each commit.</li>
-                    <li>All 12 acceptance checks pass, verified with live runs and Playwright.</li>
-                    <li>No automated test suite yet. That's next.</li>
+                    <li>J'ai écrit un brief détaillé, design compris, et Claude Code l'a construit en 8 phases.</li>
+                    <li>Typecheck, lint et build devaient passer avant chaque commit.</li>
+                    <li>Les 12 critères d'acceptation passent, vérifiés en conditions réelles et avec Playwright.</li>
+                    <li>Pas encore de tests automatisés. C'est la prochaine étape.</li>
                 </ul>
             </div>
         </div>
@@ -240,22 +245,22 @@
     <!-- ============ LEARNED / NEXT ============ -->
     <section class="section" aria-labelledby="learned-heading">
         <div class="wrap">
-            <h2 id="learned-heading" class="sr-only">What I learned and what's next</h2>
+            <h2 id="learned-heading" class="sr-only">Ce que j'ai appris et la suite</h2>
             <div class="cards">
                 <div class="card card-blue card-static">
-                    <p class="hand card-kicker">What I learned</p>
+                    <p class="hand card-kicker">Ce que j'ai appris</p>
                     <ul class="card-list">
-                        <li>"Nothing's wrong" and "we learned nothing" must look different.</li>
-                        <li>A fair control document finds bugs bad documents hide.</li>
-                        <li>Measure a setting on real data before changing it.</li>
+                        <li>« Rien à signaler » et « on n'a rien appris » doivent se distinguer.</li>
+                        <li>Un document témoin équilibré révèle des bugs que les mauvais documents cachent.</li>
+                        <li>Mesurer un réglage sur de vraies données avant de le changer.</li>
                     </ul>
                 </div>
                 <div class="card card-yellow card-static">
-                    <p class="hand card-kicker">What's next</p>
+                    <p class="hand card-kicker">La suite</p>
                     <ul class="card-list">
-                        <li>Unit tests and a labelled set to measure precision and recall.</li>
-                        <li>More document types, like job contracts and loans.</li>
-                        <li>A button that drafts an email asking for changes.</li>
+                        <li>Des tests unitaires et un jeu annoté pour mesurer précision et rappel.</li>
+                        <li>Plus de types de documents, comme les contrats de travail et les prêts.</li>
+                        <li>Un bouton qui rédige un e-mail pour demander des modifications.</li>
                     </ul>
                 </div>
             </div>
@@ -264,12 +269,12 @@
 
     <section class="connect" aria-labelledby="cta-heading">
         <div class="wrap">
-            <h2 id="cta-heading">Building with LLMs? Let's talk.</h2>
-            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering.</p>
+            <h2 id="cta-heading">Vous construisez avec des LLM ? Parlons-en.</h2>
+            <p class="hand big">Je cherche un CDI en ingénierie logicielle ou IA.</p>
             <div class="connect-links">
                 <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
                 <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
-                <a href="../sec-analyst/" class="btn btn-ghost" data-pop>Next project: SEC Filing Analyst <span aria-hidden="true">&rarr;</span></a>
+                <a href="../sec-analyst/" class="btn btn-ghost" data-pop>Projet suivant : SEC Filing Analyst <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -277,13 +282,13 @@
 
 <footer class="footer">
     <div class="wrap footer-inner">
-        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
-        <ul class="socials" aria-label="Social links and email">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Fait main, aucun template n'a été maltraité.</p>
+        <ul class="socials" aria-label="Réseaux sociaux et e-mail">
             <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
             <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
-            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">E-mail</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
         </ul>
     </div>

@@ -47,7 +47,9 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setNav(fal
 // Poke the head
 const head = document.querySelector('.head');
 const speech = document.querySelector('.speech');
-const ouches = ['Ouch!', 'Hey!', 'Rude.', 'Stop that.', 'Merci!', 'Bug found?', 'Hired?', 'Again?!'];
+const ouches = document.documentElement.lang === 'fr'
+    ? ['Aïe !', 'Hé !', 'Malpoli.', 'Arrête ça.', 'Thanks!', 'Un bug ?', 'Embauché ?', 'Encore ?!']
+    : ['Ouch!', 'Hey!', 'Rude.', 'Stop that.', 'Merci!', 'Bug found?', 'Hired?', 'Again?!'];
 let speechTimer;
 head?.addEventListener('click', () => {
     head.classList.remove('ouch');

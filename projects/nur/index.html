@@ -1,16 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NUR: case study · Med BM</title>
-    <meta name="description" content="NUR, a 7-day freelance MVP connecting students in Quebec with mosques that offer interest-free tuition loans.">
+    <title>NUR : étude de cas · Med BM</title>
+    <meta name="description" content="NUR, un MVP freelance fait en 7 jours qui met en relation des étudiants au Québec avec des mosquées qui prêtent sans intérêt pour les frais de scolarité.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="NUR: case study">
-    <meta property="og:description" content="Interest-free tuition loans from partner mosques. Next.js, Supabase, Stripe Connect. Built solo in 7 days.">
+    <meta property="og:title" content="NUR : étude de cas">
+    <meta property="og:description" content="Des prêts étudiants sans intérêt de mosquées partenaires. Next.js, Supabase, Stripe Connect. Fait seul en 7 jours.">
     <meta property="og:site_name" content="Med BM">
     <meta property="og:url" content="https://medbm5.github.io/projects/nur/">
     <meta property="og:image" content="https://medbm5.github.io/img/nur/landing-hero.png">
+    <link rel="alternate" hreflang="fr" href="https://medbm5.github.io/projects/nur/">
+    <link rel="alternate" hreflang="en" href="https://medbm5.github.io/en/projects/nur/">
+    <link rel="alternate" hreflang="x-default" href="https://medbm5.github.io/projects/nur/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,56 +26,58 @@
 
 <header class="site-header">
     <nav class="nav wrap-wide">
-        <a href="../../" class="logo" data-pop aria-label="Med BM, home">
+        <a href="../../" class="logo" data-pop aria-label="Med BM, accueil">
             <span>Med</span><span>B</span><span>M</span>
         </a>
-        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+        <button class="burger" aria-label="Afficher le menu" aria-expanded="false" aria-controls="mobile-nav">
             <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
         </button>
         <div class="main-nav">
-            <a href="../../#work" data-pop>Projects</a>
-            <a href="../../#road" data-pop>The Road So Far</a>
+            <a href="../../#work" data-pop>Projets</a>
+            <a href="../../#road" data-pop>Mon parcours</a>
             <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
-            <a href="../../#connect" data-pop>Connect</a>
+            <a href="../../#connect" data-pop>Contact</a>
+            <a href="../../en/projects/nur/" class="lang-switch" lang="en" hreflang="en" aria-label="English" data-pop>EN</a>
         </div>
     </nav>
     <div class="mobile-nav" id="mobile-nav" hidden>
-        <button class="mobile-close">(close this thing)</button>
-        <a href="../../#work">Projects</a>
-        <a href="../../#road">The Road So Far</a>
+        <button class="mobile-close">(fermer ce truc)</button>
+        <a href="../../#work">Projets</a>
+        <a href="../../#road">Mon parcours</a>
         <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
-        <a href="../../#connect">Connect</a>
+        <a href="../../#connect">Contact</a>
+        <a href="../../en/projects/nur/" lang="en" hreflang="en">English</a>
     </div>
 </header>
 
 <!-- ============ HERO ============ -->
 <section class="cs-hero">
     <div class="wrap">
-        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> All projects</a>
+        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> Tous les projets</a>
         <div class="cs-hero-grid">
             <div>
-                <p class="hand cs-kicker">Case study &middot; Freelance client work</p>
+                <p class="hand cs-kicker">Étude de cas &middot; Mission freelance</p>
                 <h1 class="cs-title"><img src="../../img/nur/icon.png" alt="" width="64" height="64"> NUR</h1>
-                <p class="hand big cs-pitch">Interest-free tuition loans for students in Quebec, funded by partner mosques. Built solo, MVP in 7 days.</p>
+                <p class="hand big cs-pitch">Des prêts sans intérêt pour les frais de scolarité des étudiants au Québec, financés par des mosquées partenaires. Fait seul, MVP en 7 jours.</p>
                 <ul class="badges">
-                    <li>Private client repo</li>
-                    <li>MVP &middot; launching soon</li>
+                    <li>Dépôt privé du client</li>
+                    <li>MVP &middot; lancement bientôt</li>
                     <li>FR &middot; EN &middot; AR</li>
                 </ul>
             </div>
             <dl class="meta">
-                <div><dt>My role</dt><dd>Solo freelance developer; the client wrote the specs</dd></div>
-                <div><dt>Timeline</dt><dd>27 Sep &ndash; 3 Oct 2026 &middot; 7 days to MVP</dd></div>
-                <div><dt>Platform</dt><dd>Web app (PWA)</dd></div>
+                <div><dt>Mon rôle</dt><dd>Développeur freelance seul ; le client a écrit les specs</dd></div>
+                <div><dt>Période</dt><dd>27 sept. &ndash; 3 oct. 2026 &middot; 7 jours pour le MVP</dd></div>
+                <div><dt>Plateforme</dt><dd>App web (PWA)</dd></div>
                 <div><dt>Stack</dt><dd>Next.js, TypeScript, Supabase, Stripe</dd></div>
             </dl>
         </div>
         <div class="cs-hero-shot">
             <div class="shot-frame">
                 <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
-                <img src="../../img/nur/landing-hero.png" width="1440" height="816" alt="NUR landing page: 'Zero interest. A clear path to your education.' with an example loan combination from two mosques.">
+                <img src="../../img/nur/landing-hero.png" width="1440" height="816" alt="Page d'accueil de NUR : « Zéro intérêt. Un chemin clair vers vos études. » avec un exemple de combinaison de prêts de deux mosquées.">
             </div>
-            <p class="note-inline hand">The landing page. All data in these screenshots is demo data.</p>
+            <p class="note-inline hand">La page d'accueil. Toutes les données de ces captures sont des données de démo.</p>
         </div>
     </div>
 </section>
@@ -84,17 +89,17 @@
     <!-- ============ TL;DR ============ -->
     <section class="section" aria-labelledby="tldr-heading">
         <div class="wrap">
-            <p class="hand cs-label">The 30-second version</p>
-            <h2 id="tldr-heading">A fintech MVP where the database enforces the rules.</h2>
+            <p class="hand cs-label">La version 30 secondes</p>
+            <h2 id="tldr-heading">Un MVP fintech où la base de données fait respecter les règles.</h2>
             <p class="lede">
-                NUR connects students short on tuition with mosques that lend <strong>interest-free</strong>. Each mosque approves its share,
-                pays the school and collects repayments into <strong>its own Stripe account</strong>, so NUR never holds the money.
+                NUR met en relation les étudiants à court d'argent pour leurs études avec des mosquées qui prêtent <strong>sans intérêt</strong>. Chaque mosquée approuve sa part,
+                paie l'école et reçoit les remboursements sur <strong>son propre compte Stripe</strong>, donc NUR ne détient jamais l'argent.
             </p>
             <ul class="stats">
-                <li class="stat stat-yellow"><span class="stat-num">7 days</span><span class="stat-label">to MVP</span></li>
-                <li class="stat stat-blue"><span class="stat-num">914</span><span class="stat-label">database assertions</span></li>
-                <li class="stat stat-pink"><span class="stat-num">238</span><span class="stat-label">unit tests</span></li>
-                <li class="stat stat-white"><span class="stat-num">3</span><span class="stat-label">languages</span></li>
+                <li class="stat stat-yellow"><span class="stat-num">7 jours</span><span class="stat-label">pour le MVP</span></li>
+                <li class="stat stat-blue"><span class="stat-num">914</span><span class="stat-label">assertions en base</span></li>
+                <li class="stat stat-pink"><span class="stat-num">238</span><span class="stat-label">tests unitaires</span></li>
+                <li class="stat stat-white"><span class="stat-num">3</span><span class="stat-label">langues</span></li>
             </ul>
         </div>
     </section>
@@ -103,15 +108,15 @@
     <section class="section cs-yellow" aria-labelledby="problem-heading">
         <div class="wrap cs-two">
             <div>
-                <p class="hand cs-label">The problem</p>
-                <h2 id="problem-heading">Interest-free money exists. Finding it is the hard part.</h2>
+                <p class="hand cs-label">Le problème</p>
+                <h2 id="problem-heading">L'argent sans intérêt existe. Le difficile, c'est de le trouver.</h2>
             </div>
             <div class="prose">
-                <p>Some mosques in Quebec lend interest-free, but each runs its own informal process. Students don't know who has budget, and mosques have no simple way to review, pay and track loans.</p>
+                <p>Certaines mosquées au Québec prêtent sans intérêt, mais chacune a son propre processus informel. Les étudiants ne savent pas qui a du budget, et les mosquées n'ont pas de moyen simple d'étudier, payer et suivre les prêts.</p>
                 <ul class="checks">
-                    <li>Students find funding in one place and repay automatically.</li>
-                    <li>Mosques get a request inbox and automatic collection.</li>
-                    <li>The NUR team handles identity checks and reporting.</li>
+                    <li>Les étudiants trouvent un financement au même endroit et remboursent automatiquement.</li>
+                    <li>Les mosquées ont une boîte de demandes et un encaissement automatique.</li>
+                    <li>L'équipe NUR gère les vérifications d'identité et le reporting.</li>
                 </ul>
             </div>
         </div>
@@ -120,50 +125,50 @@
     <!-- ============ FEATURES ============ -->
     <section class="section" aria-labelledby="features-heading">
         <div class="wrap">
-            <p class="hand cs-label">What I built</p>
-            <h2 id="features-heading">From "how much do you need?" to the last repayment.</h2>
+            <p class="hand cs-label">Ce que j'ai construit</p>
+            <h2 id="features-heading">De « combien vous faut-il ? » au dernier remboursement.</h2>
 
             <div class="features">
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/funding-finder-combinations.png" width="1440" height="816" alt="Funding finder showing five loan combinations for $1,500" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/funding-finder-combinations.png" width="1440" height="816" alt="Recherche de financement montrant cinq combinaisons de prêts pour 1 500 $" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Funding finder</h3>
-                        <p>Type an amount and get combinations of up to 5 loans that cover it.</p>
+                        <h3>Recherche de financement</h3>
+                        <p>Tapez un montant et obtenez des combinaisons d'au plus 5 prêts qui le couvrent.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/student-request-timeline.png" width="1440" height="816" alt="A student's loan request with a timeline from Submitted to Completed" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/student-request-timeline.png" width="1440" height="816" alt="Une demande de prêt d'étudiant avec une chronologie de Soumise à Terminée" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Live loan timeline</h3>
-                        <p>Each loan moves through fixed steps, and the student's page updates live.</p>
+                        <h3>Suivi du prêt en direct</h3>
+                        <p>Chaque prêt passe par des étapes fixes, et la page de l'étudiant se met à jour en direct.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/mosque-request-decision.png" width="1440" height="816" alt="Mosque staff view of a loan request with Approve and Deny buttons, warning signals and a reliability score" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/mosque-request-decision.png" width="1440" height="816" alt="Vue d'une demande de prêt côté mosquée avec les boutons Approuver et Refuser, des signaux d'alerte et un score de fiabilité" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Mosque inbox</h3>
-                        <p>Staff see a minimal applicant folder and approve or deny in one click.</p>
+                        <h3>Boîte de la mosquée</h3>
+                        <p>L'équipe voit un dossier minimal du demandeur et approuve ou refuse en un clic.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/student-loans-automatic-repayments.png" width="1440" height="816" alt="A student's loans page with this month's automatic repayments" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/student-loans-automatic-repayments.png" width="1440" height="816" alt="La page des prêts d'un étudiant avec les remboursements automatiques du mois" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Automatic repayments</h3>
-                        <p>A daily job charges each installment straight to the lending mosque's Stripe account.</p>
+                        <h3>Remboursements automatiques</h3>
+                        <p>Une tâche quotidienne prélève chaque échéance directement sur le compte Stripe de la mosquée prêteuse.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/mosque-portfolio.png" width="1440" height="816" alt="Mosque portfolio dashboard with budget deployed, outstanding, repaid and per-program table" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/mosque-portfolio.png" width="1440" height="816" alt="Tableau de bord du portefeuille de la mosquée avec le budget engagé, en cours, remboursé et un tableau par programme" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Trust and safety</h3>
-                        <p>Identity checks without storing ID images, borrowing caps, and a portfolio dashboard for mosques.</p>
+                        <h3>Confiance et sécurité</h3>
+                        <p>Des vérifications d'identité sans stocker les pièces d'identité, des plafonds d'emprunt et un tableau de bord pour les mosquées.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/arabic-rtl-loans.png" width="1440" height="816" alt="The student loans page in Arabic, with the whole layout mirrored right-to-left" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/nur/arabic-rtl-loans.png" width="1440" height="816" alt="La page des prêts étudiants en arabe, avec toute la mise en page inversée de droite à gauche" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Trilingual</h3>
-                        <p>French, English and Arabic, with the layout fully mirrored right-to-left.</p>
+                        <h3>Trilingue</h3>
+                        <p>Français, anglais et arabe, avec une mise en page entièrement inversée de droite à gauche.</p>
                     </div>
                 </article>
             </div>
@@ -173,31 +178,31 @@
     <!-- ============ ARCHITECTURE ============ -->
     <section class="section cs-dark" aria-labelledby="arch-heading">
         <div class="wrap">
-            <p class="hand cs-label">How it's built</p>
-            <h2 id="arch-heading">The UI asks. Postgres decides.</h2>
-            <p class="lede">Every table has row-level security, and a loan can only change state through SQL functions that check who's asking.</p>
+            <p class="hand cs-label">Comment c'est construit</p>
+            <h2 id="arch-heading">L'interface demande. Postgres décide.</h2>
+            <p class="lede">Chaque table a une sécurité au niveau des lignes, et un prêt ne change d'état que via des fonctions SQL qui vérifient qui demande.</p>
 
-            <div class="arch" role="img" aria-label="Architecture: a Next.js app calls server actions, which call Postgres functions in Supabase. Stripe webhooks record payments, Realtime pushes updates back, and Vercel cron jobs run daily repayments.">
+            <div class="arch" role="img" aria-label="Architecture : une app Next.js appelle des server actions, qui appellent des fonctions Postgres dans Supabase. Les webhooks Stripe enregistrent les paiements, Realtime renvoie les mises à jour, et des crons Vercel lancent les remboursements quotidiens.">
                 <div class="arch-box arch-main">
                     <p class="arch-tag">Next.js 15 &middot; PWA</p>
-                    <p>5 role-based spaces: student, mosque, admin, mentor, recruiter.</p>
+                    <p>5 espaces selon le rôle : étudiant, mosquée, admin, mentor, recruteur.</p>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-box arch-renderer">
                     <p class="arch-tag">Server actions</p>
-                    <p>Validate input and check the role.</p>
+                    <p>Valident les données et vérifient le rôle.</p>
                     <div class="arch-core">
                         <p class="arch-tag">Supabase Postgres</p>
                         <ul>
-                            <li>RLS on every table</li><li>guard triggers</li><li>loan functions</li><li>loan events</li>
+                            <li>RLS sur chaque table</li><li>triggers de garde</li><li>fonctions de prêt</li><li>événements de prêt</li>
                         </ul>
                     </div>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-row">
-                    <div class="arch-box arch-side"><p class="arch-tag">Stripe</p><p>Webhooks are the only place payment state changes.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">Realtime + email</p><p>Live updates and emails in the user's language.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">Vercel crons</p><p>Daily repayments and reminders, never sent twice.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Stripe</p><p>Les webhooks sont le seul endroit où l'état d'un paiement change.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Realtime + e-mail</p><p>Mises à jour en direct et e-mails dans la langue de l'utilisateur.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Vercel crons</p><p>Remboursements et rappels quotidiens, jamais envoyés deux fois.</p></div>
                 </div>
             </div>
         </div>
@@ -206,24 +211,24 @@
     <!-- ============ CHALLENGES ============ -->
     <section class="section" aria-labelledby="challenges-heading">
         <div class="wrap">
-            <p class="hand cs-label">The hard parts</p>
-            <h2 id="challenges-heading">Bugs only a fintech app can have.</h2>
+            <p class="hand cs-label">Les parties difficiles</p>
+            <h2 id="challenges-heading">Des bugs qu'on ne trouve que dans une app fintech.</h2>
 
             <div class="problems">
                 <article class="problem">
                     <p class="hand problem-num">01</p>
-                    <h3>A NULL that skipped a permission check</h3>
-                    <p>For non-members, <code>NULL in (...)</code> wasn't false, so the deny branch never fired. A database test caught it; one helper now returns a real boolean.</p>
+                    <h3>Un NULL qui sautait une vérification de droits</h3>
+                    <p>Pour les non-membres, <code>NULL in (...)</code> n'était pas faux, donc le refus ne se déclenchait jamais. Un test en base l'a détecté ; une fonction utilitaire renvoie maintenant un vrai booléen.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">02</p>
-                    <h3>Students could lift their own ban</h3>
-                    <p>The ban lived on a row students could edit. It moved to its own table, guarded by a trigger.</p>
+                    <h3>Les étudiants pouvaient lever leur propre bannissement</h3>
+                    <p>Le bannissement était sur une ligne modifiable par les étudiants. Il est passé dans sa propre table, protégée par un trigger.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">03</p>
-                    <h3>Paying several mosques without touching the money</h3>
-                    <p>Each loan's installments become a separate direct charge to that mosque, and the webhook is safe to receive twice.</p>
+                    <h3>Payer plusieurs mosquées sans toucher à l'argent</h3>
+                    <p>Les échéances de chaque prêt deviennent un prélèvement direct séparé vers cette mosquée, et le webhook peut être reçu deux fois sans risque.</p>
                 </article>
             </div>
         </div>
@@ -233,15 +238,15 @@
     <section class="section cs-yellow" aria-labelledby="process-heading">
         <div class="wrap cs-two">
             <div>
-                <p class="hand cs-label">How I worked</p>
-                <h2 id="process-heading">Client specs in, tested slices out.</h2>
+                <p class="hand cs-label">Comment j'ai travaillé</p>
+                <h2 id="process-heading">Les specs du client en entrée, des étapes testées en sortie.</h2>
             </div>
             <div class="prose">
                 <ul class="checks">
-                    <li>Turned the client's specs into user stories, then small slices, one commit each.</li>
-                    <li>Tested where the rules live: pgTAP for the database, Vitest for logic, Playwright end to end.</li>
-                    <li>Flagged legally sensitive requests for review instead of guessing.</li>
-                    <li>Built with Claude Code as a coding assistant. I set the plan and reviewed every slice.</li>
+                    <li>J'ai transformé les specs du client en user stories, puis en petites étapes, un commit chacune.</li>
+                    <li>Tests là où vivent les règles : pgTAP pour la base, Vitest pour la logique, Playwright de bout en bout.</li>
+                    <li>Les demandes juridiquement sensibles sont signalées pour relecture au lieu de deviner.</li>
+                    <li>Construit avec Claude Code comme assistant de code. J'ai fixé le plan et relu chaque étape.</li>
                 </ul>
             </div>
         </div>
@@ -250,22 +255,22 @@
     <!-- ============ LEARNED / NEXT ============ -->
     <section class="section" aria-labelledby="learned-heading">
         <div class="wrap">
-            <h2 id="learned-heading" class="sr-only">What I learned and what's next</h2>
+            <h2 id="learned-heading" class="sr-only">Ce que j'ai appris et la suite</h2>
             <div class="cards">
                 <div class="card card-blue card-static">
-                    <p class="hand card-kicker">What I learned</p>
+                    <p class="hand card-kicker">Ce que j'ai appris</p>
                     <ul class="card-list">
-                        <li>Authorization in Postgres is testable, and those tests found real holes.</li>
-                        <li>Payments stay correct when the webhook is the only writer.</li>
-                        <li>Right-to-left is cheap from day one and expensive later.</li>
+                        <li>Les autorisations dans Postgres se testent, et ces tests ont trouvé de vraies failles.</li>
+                        <li>Les paiements restent justes quand le webhook est le seul à écrire.</li>
+                        <li>Le droite-à-gauche coûte peu dès le premier jour, et cher plus tard.</li>
                     </ul>
                 </div>
                 <div class="card card-yellow card-static">
-                    <p class="hand card-kicker">What's next</p>
+                    <p class="hand card-kicker">La suite</p>
                     <ul class="card-list">
-                        <li>Ship v2 once the client signs off.</li>
-                        <li>Turn on live Stripe Connect repayments.</li>
-                        <li>Finish legal review of the legal pages.</li>
+                        <li>Livrer la v2 une fois validée par le client.</li>
+                        <li>Activer les vrais remboursements Stripe Connect.</li>
+                        <li>Terminer la relecture juridique des pages légales.</li>
                     </ul>
                 </div>
             </div>
@@ -274,12 +279,12 @@
 
     <section class="connect" aria-labelledby="cta-heading">
         <div class="wrap">
-            <h2 id="cta-heading">Need something like this built?</h2>
-            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering.</p>
+            <h2 id="cta-heading">Besoin de faire construire quelque chose comme ça ?</h2>
+            <p class="hand big">Je cherche un CDI en ingénierie logicielle ou IA.</p>
             <div class="connect-links">
                 <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
                 <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
-                <a href="../genai-hub/" class="btn btn-ghost" data-pop>Next project: Gen AI Hub <span aria-hidden="true">&rarr;</span></a>
+                <a href="../genai-hub/" class="btn btn-ghost" data-pop>Projet suivant : Gen AI Hub <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -287,13 +292,13 @@
 
 <footer class="footer">
     <div class="wrap footer-inner">
-        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
-        <ul class="socials" aria-label="Social links and email">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Fait main, aucun template n'a été maltraité.</p>
+        <ul class="socials" aria-label="Réseaux sociaux et e-mail">
             <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
             <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
-            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">E-mail</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
         </ul>
     </div>

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Progressive Overload: case study · Med BM</title>
+    <meta name="description" content="Progressive Overload, an offline-first gym tracker where you win each workout by beating your last one.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Progressive Overload: case study">
+    <meta property="og:description" content="Beat last week, win the match. A local-first workout tracker built with React Native, Expo and Supabase.">
+    <meta property="og:site_name" content="Med BM">
+    <meta property="og:url" content="https://medbm5.github.io/en/projects/progressive-overload/">
+    <meta property="og:image" content="https://medbm5.github.io/img/progressive-overload/logging-sets.png">
+    <link rel="alternate" hreflang="fr" href="https://medbm5.github.io/projects/progressive-overload/">
+    <link rel="alternate" hreflang="en" href="https://medbm5.github.io/en/projects/progressive-overload/">
+    <link rel="alternate" hreflang="x-default" href="https://medbm5.github.io/projects/progressive-overload/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../theme-blueprint.css">
+    <script src="../../../main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="nav wrap-wide">
+        <a href="../../" class="logo" data-pop aria-label="Med BM, home">
+            <span>Med</span><span>B</span><span>M</span>
+        </a>
+        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+            <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="main-nav">
+            <a href="../../#work" data-pop>Projects</a>
+            <a href="../../#road" data-pop>The Road So Far</a>
+            <a href="../../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
+            <a href="../../#connect" data-pop>Connect</a>
+            <a href="../../../projects/progressive-overload/" class="lang-switch" lang="fr" hreflang="fr" aria-label="Français" data-pop>FR</a>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+        <button class="mobile-close">(close this thing)</button>
+        <a href="../../#work">Projects</a>
+        <a href="../../#road">The Road So Far</a>
+        <a href="../../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="../../#connect">Connect</a>
+        <a href="../../../projects/progressive-overload/" lang="fr" hreflang="fr">Français</a>
+    </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="cs-hero">
+    <div class="wrap">
+        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> All projects</a>
+        <div class="cs-hero-grid">
+            <div>
+                <p class="hand cs-kicker">Case study &middot; Mobile app</p>
+                <h1 class="cs-title"><img src="../../../img/progressive-overload/icon.png" alt="" width="64" height="64"> Progressive Overload</h1>
+                <p class="hand big cs-pitch">Every workout is a match, and you win it by beating what you lifted last time.</p>
+                <ul class="badges">
+                    <li>Private prototype</li>
+                    <li>Android &amp; iOS (Expo)</li>
+                    <li>Offline-first</li>
+                </ul>
+            </div>
+            <dl class="meta">
+                <div><dt>My role</dt><dd>Solo, with Claude Code as a coding assistant</dd></div>
+                <div><dt>Timeline</dt><dd>Oct 2026, 3 days</dd></div>
+                <div><dt>Platform</dt><dd>Android and iOS (Expo)</dd></div>
+                <div><dt>Stack</dt><dd>React Native, Expo, TypeScript, Zustand, Supabase</dd></div>
+            </dl>
+        </div>
+        <div class="cs-hero-shot" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:2.5rem;max-width:62rem;margin-inline:auto">
+            <div class="shot-frame" style="max-width:18rem;margin-inline:auto"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/progressive-overload/hand.png" width="390" height="844" alt="A workout as a hand of cards: the Bench Press card shows last session's 65 kg &times; 4 and today's target of 67.5 kg &times; 4."></div>
+            <div class="shot-frame" style="max-width:18rem;margin-inline:auto"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/progressive-overload/logging-sets.png" width="390" height="844" alt="Logging bench press sets: the first set at 67.5 kg &times; 4 is marked as a PR and the screen says 'Overloaded, round won so far', with a rest timer running."></div>
+            <div class="shot-frame" style="max-width:18rem;margin-inline:auto"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/progressive-overload/victory.png" width="390" height="844" alt="Victory screen after a Push workout: 2 rounds won, 0 lost, 3 draws, +21 RR towards Gold II, +255 XP and 803 kg of volume."></div>
+        </div>
+        <p class="note-inline hand">Draw a card, beat last week, win the match. Real screenshots from the release build.</p>
+    </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v38c-120 34-240 50-360 30S840 6 720 26 480 88 360 78 120 20 0 40z"/></svg>
+
+<main class="cs">
+
+    <!-- ============ TL;DR ============ -->
+    <section class="section" aria-labelledby="tldr-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The 30-second version</p>
+            <h2 id="tldr-heading">A workout tracker with one rule: beat last time.</h2>
+            <p class="lede">
+                Each workout is a <strong>match</strong> and each exercise a <strong>card</strong>, and every set is scored live against your last best.
+                Wins feed ranks, streaks and seasons, and it all works <strong>offline</strong>, syncing to Supabase in the background.
+            </p>
+            <ul class="stats">
+                <li class="stat stat-yellow"><span class="stat-num">~21k</span><span class="stat-label">lines of TypeScript</span></li>
+                <li class="stat stat-blue"><span class="stat-num">121</span><span class="stat-label">Jest tests</span></li>
+                <li class="stat stat-pink"><span class="stat-num">37</span><span class="stat-label">screens</span></li>
+                <li class="stat stat-white"><span class="stat-num">1 day</span><span class="stat-label">to first build</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="section cs-yellow" aria-labelledby="problem-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">The problem</p>
+                <h2 id="problem-heading">Most gym apps are spreadsheets.</h2>
+            </div>
+            <div class="prose">
+                <p>Getting stronger means adding a little weight or a rep over time. Most apps record what you did and leave the comparison to you. I built this for my own training.</p>
+                <ul class="checks">
+                    <li>Every set has a target and an instant verdict.</li>
+                    <li>Reward following your plan, not training every day.</li>
+                    <li>Logging never waits on the network.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" aria-labelledby="features-heading">
+        <div class="wrap">
+            <p class="hand cs-label">What I built</p>
+            <h2 id="features-heading">A training log that plays like a card game.</h2>
+
+            <div class="features">
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/progressive-overload/hand.png" width="390" height="844" alt="The Bench Press card in a hand of five, with the deck, the Finalize button and the graveyard below" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Workouts as a hand of cards</h3>
+                        <p>Each exercise card shows last session's best and today's target.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/progressive-overload/logging-sets.png" width="390" height="844" alt="Set logging with last match's best, the target to beat, a PR flag and a rest timer" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Live set scoring</h3>
+                        <p>Tick a set and it tells you right away if you beat last time, flags PRs and starts the rest timer.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/progressive-overload/home.png" width="390" height="844" alt="Home screen with Gold II rank, a 21-day streak, a bulk season from 78 to 82 kg, the training week and two spell cards" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Home dashboard</h3>
+                        <p>Rank, streak, season progress and the bonus cards you earn for staying on target.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/progressive-overload/exercise-charts.png" width="390" height="844" alt="Bench press charts: estimated 1RM rising to 74 kg, volume per session and best reps per set" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Progress per exercise</h3>
+                        <p>Charts for estimated max, volume and reps, plus a rank relative to body weight.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/progressive-overload/profile.png" width="390" height="844" alt="Profile with level, body stats, current and peak rank, shortcuts and achievements" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Profile and achievements</h3>
+                        <p>Level, ranks, history, a 69-exercise library and achievements.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/progressive-overload/season-forecast.png" width="390" height="844" alt="Season forecast: weight from 78 to 82 kg over 50 days, 19 matches, 3 matches a week" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Season planner</h3>
+                        <p>Set a body-weight goal and it forecasts the weight curve and number of workouts.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section class="section cs-dark" aria-labelledby="arch-heading">
+        <div class="wrap">
+            <p class="hand cs-label">How it's built</p>
+            <h2 id="arch-heading">Local-first, with the rules kept pure.</h2>
+            <p class="lede">All game rules live in plain TypeScript with no React and no I/O. Screens read and write through one local store that syncs in the background.</p>
+
+            <div class="arch" role="img" aria-label="Architecture: Expo Router screens call feature services, which use a pure TypeScript domain layer for the game rules. Data lives in a local Zustand store and a background sync engine syncs it to Supabase.">
+                <div class="arch-box arch-main">
+                    <p class="arch-tag">Expo Router</p>
+                    <p>37 thin screens.</p>
+                </div>
+                <div class="arch-arrow" aria-hidden="true">&darr;</div>
+                <div class="arch-box arch-renderer">
+                    <p class="arch-tag">Features</p>
+                    <p>Saves the workout on every edit, so a killed app resumes where it was.</p>
+                    <div class="arch-core">
+                        <p class="arch-tag">Domain rules &middot; 87 tests</p>
+                        <ul>
+                            <li>scoring</li><li>targets</li><li>rank</li><li>XP</li><li>streak</li><li>seasons</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="arch-arrow" aria-hidden="true">&darr;</div>
+                <div class="arch-row">
+                    <div class="arch-box arch-side"><p class="arch-tag">Local store</p><p>Zustand, saved to the phone.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Sync engine</p><p>Runs in the background. The UI never waits on it.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Supabase</p><p>Postgres with row-level security.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CHALLENGES ============ -->
+    <section class="section" aria-labelledby="challenges-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The hard parts</p>
+            <h2 id="challenges-heading">Games are hard. Gym Wi-Fi is worse.</h2>
+
+            <div class="problems">
+                <article class="problem">
+                    <p class="hand problem-num">01</p>
+                    <h3>Cards lost mid-animation</h3>
+                    <p>A re-render during a card animation could drop it, losing an exercise mid-workout. Stable callbacks and locking the deck during moves fixed it.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">02</p>
+                    <h3>Sync that never blocks a set</h3>
+                    <p>The app must work with no signal. A small sync engine pushes and pulls changes in the background, and device edits win.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">03</p>
+                    <h3>A crash only a phone found</h3>
+                    <p>A layout scaling helper broke card animations on a real phone, though types, lint and tests passed. I moved the sizes out of the animation code.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section cs-yellow" aria-labelledby="process-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">How I worked</p>
+                <h2 id="process-heading">Plan, build, then go lift with it.</h2>
+            </div>
+            <div class="prose">
+                <ul class="checks">
+                    <li>Started from a written plan of 22 slices, one commit each.</li>
+                    <li>Then improved it by using it, and tested on three Android phones.</li>
+                    <li>Strict TypeScript, lint and tests as the quality gate. No CI yet.</li>
+                    <li>Built with Claude Code as a coding assistant. I wrote the specs and reviewed every change.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNED / NEXT ============ -->
+    <section class="section" aria-labelledby="learned-heading">
+        <div class="wrap">
+            <h2 id="learned-heading" class="sr-only">What I learned and what's next</h2>
+            <div class="cards">
+                <div class="card card-blue card-static">
+                    <p class="hand card-kicker">What I learned</p>
+                    <ul class="card-list">
+                        <li>Pure, tested rules made late changes cheap.</li>
+                        <li>Animation code needs its own discipline.</li>
+                        <li>Real phones catch what one dev phone hides.</li>
+                    </ul>
+                </div>
+                <div class="card card-yellow card-static">
+                    <p class="hand card-kicker">What's next</p>
+                    <ul class="card-list">
+                        <li>Real accounts, so a reinstall keeps your data.</li>
+                        <li>Notifications for rest timer and streaks.</li>
+                        <li>Crash reporting and store builds.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="connect" aria-labelledby="cta-heading">
+        <div class="wrap">
+            <h2 id="cta-heading">Want someone who ships fast and tests on real devices?</h2>
+            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering.</p>
+            <div class="connect-links">
+                <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
+                <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
+                <a href="../nur/" class="btn btn-ghost" data-pop>Next project: NUR <span aria-hidden="true">&rarr;</span></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="wrap footer-inner">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
+        <ul class="socials" aria-label="Social links and email">
+            <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>

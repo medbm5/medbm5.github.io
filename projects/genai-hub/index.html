@@ -1,16 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gen AI Hub: case study · Med BM</title>
-    <meta name="description" content="My Allianz Global Investors internship: the MVP of an AI services portal with a &quot;Chat with your data&quot; feature on Azure.">
+    <title>Gen AI Hub : étude de cas · Med BM</title>
+    <meta name="description" content="Mon stage chez Allianz Global Investors : le MVP d'un portail de services IA avec une fonction &quot;Chat with your data&quot; sur Azure.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Gen AI Hub at Allianz Global Investors: case study">
-    <meta property="og:description" content="A RAG-based &quot;Chat with your data&quot; platform MVP on Azure that led to budget approval for production.">
+    <meta property="og:title" content="Gen AI Hub chez Allianz Global Investors : étude de cas">
+    <meta property="og:description" content="Le MVP d'une plateforme RAG &quot;Chat with your data&quot; sur Azure, qui a obtenu le budget pour la production.">
     <meta property="og:site_name" content="Med BM">
     <meta property="og:url" content="https://medbm5.github.io/projects/genai-hub/">
     <meta property="og:image" content="https://medbm5.github.io/img/genai-hub/chat-answer.png">
+    <link rel="alternate" hreflang="fr" href="https://medbm5.github.io/projects/genai-hub/">
+    <link rel="alternate" hreflang="en" href="https://medbm5.github.io/en/projects/genai-hub/">
+    <link rel="alternate" hreflang="x-default" href="https://medbm5.github.io/projects/genai-hub/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,56 +26,58 @@
 
 <header class="site-header">
     <nav class="nav wrap-wide">
-        <a href="../../" class="logo" data-pop aria-label="Med BM, home">
+        <a href="../../" class="logo" data-pop aria-label="Med BM, accueil">
             <span>Med</span><span>B</span><span>M</span>
         </a>
-        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+        <button class="burger" aria-label="Afficher le menu" aria-expanded="false" aria-controls="mobile-nav">
             <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
         </button>
         <div class="main-nav">
-            <a href="../../#work" data-pop>Projects</a>
-            <a href="../../#road" data-pop>The Road So Far</a>
+            <a href="../../#work" data-pop>Projets</a>
+            <a href="../../#road" data-pop>Mon parcours</a>
             <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
-            <a href="../../#connect" data-pop>Connect</a>
+            <a href="../../#connect" data-pop>Contact</a>
+            <a href="../../en/projects/genai-hub/" class="lang-switch" lang="en" hreflang="en" aria-label="English" data-pop>EN</a>
         </div>
     </nav>
     <div class="mobile-nav" id="mobile-nav" hidden>
-        <button class="mobile-close">(close this thing)</button>
-        <a href="../../#work">Projects</a>
-        <a href="../../#road">The Road So Far</a>
+        <button class="mobile-close">(fermer ce truc)</button>
+        <a href="../../#work">Projets</a>
+        <a href="../../#road">Mon parcours</a>
         <a href="../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
-        <a href="../../#connect">Connect</a>
+        <a href="../../#connect">Contact</a>
+        <a href="../../en/projects/genai-hub/" lang="en" hreflang="en">English</a>
     </div>
 </header>
 
 <!-- ============ HERO ============ -->
 <section class="cs-hero">
     <div class="wrap">
-        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> All projects</a>
+        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> Tous les projets</a>
         <div class="cs-hero-grid">
             <div>
-                <p class="hand cs-kicker">Case study &middot; End-of-studies internship</p>
+                <p class="hand cs-kicker">Étude de cas &middot; Stage de fin d'études</p>
                 <h1 class="cs-title"><img src="../../img/genai-hub/icon.svg" alt="" width="64" height="64"> Gen AI Hub</h1>
-                <p class="hand big cs-pitch">One place for every AI service at Allianz Global Investors, starting with "Chat with your data".</p>
+                <p class="hand big cs-pitch">Un seul endroit pour tous les services IA d'Allianz Global Investors, en commençant par « Chat with your data ».</p>
                 <ul class="badges">
                     <li>Allianz Global Investors</li>
-                    <li>MVP &rarr; production budget</li>
-                    <li>MSc thesis project</li>
+                    <li>MVP &rarr; budget de production</li>
+                    <li>Projet de mémoire de master</li>
                 </ul>
             </div>
             <dl class="meta">
-                <div><dt>My role</dt><dd>Python AI Engineer intern. Backend, RAG pipeline and the stakeholder demo.</dd></div>
-                <div><dt>Timeline</dt><dd>Apr &ndash; Sep 2024</dd></div>
-                <div><dt>Context</dt><dd>Also my MSc thesis, Universit&eacute; Paris Cit&eacute;</dd></div>
+                <div><dt>Mon rôle</dt><dd>Stagiaire ingénieur IA Python. Backend, pipeline RAG et démo aux décideurs.</dd></div>
+                <div><dt>Période</dt><dd>Avr. &ndash; sept. 2024</dd></div>
+                <div><dt>Contexte</dt><dd>Aussi mon mémoire de master, Universit&eacute; Paris Cit&eacute;</dd></div>
                 <div><dt>Stack</dt><dd>Python, Flask, Azure OpenAI, Azure AI Search, Semantic Kernel, React</dd></div>
             </dl>
         </div>
         <div class="cs-hero-shot">
             <div class="shot-frame">
                 <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
-                <img src="../../img/genai-hub/chat-answer.png" width="1440" height="816" alt="Gen AI Hub chat: a user uploads story.pdf, asks for a summary, and gets a structured summary of the document.">
+                <img src="../../img/genai-hub/chat-answer.png" width="1440" height="816" alt="Chat Gen AI Hub : un utilisateur envoie story.pdf, demande un résumé et reçoit un résumé structuré du document.">
             </div>
-            <p class="note-inline hand">Upload a file, ask a question, get an answer from your own document.</p>
+            <p class="note-inline hand">Envoyez un fichier, posez une question, obtenez une réponse tirée de votre document.</p>
         </div>
     </div>
 </section>
@@ -84,17 +89,17 @@
     <!-- ============ TL;DR ============ -->
     <section class="section" aria-labelledby="tldr-heading">
         <div class="wrap">
-            <p class="hand cs-label">The 30-second version</p>
-            <h2 id="tldr-heading">An AI platform MVP that earned its production budget.</h2>
+            <p class="hand cs-label">La version 30 secondes</p>
+            <h2 id="tldr-heading">Un MVP de plateforme IA qui a obtenu son budget de production.</h2>
             <p class="lede">
-                At Allianz Global Investors I built the MVP of the <strong>Gen AI Hub</strong>, one portal for the company's AI services, and its first
-                feature, <strong>"Chat with your data"</strong>: upload a file and ask questions about it. My demo to stakeholders led to <strong>budget approval for production</strong>.
+                Chez Allianz Global Investors, j'ai construit le MVP du <strong>Gen AI Hub</strong>, un portail unique pour les services IA de l'entreprise, et sa première
+                fonction, <strong>« Chat with your data »</strong> : envoyer un fichier et lui poser des questions. Ma démo aux décideurs a débouché sur <strong>le budget pour la production</strong>.
             </p>
             <ul class="stats">
-                <li class="stat stat-yellow"><span class="stat-num">4</span><span class="stat-label">GenAI services</span></li>
-                <li class="stat stat-blue"><span class="stat-num">MVP</span><span class="stat-label">&rarr; production budget</span></li>
-                <li class="stat stat-pink"><span class="stat-num">7</span><span class="stat-label">services in one pipeline</span></li>
-                <li class="stat stat-white"><span class="stat-num">6 mo</span><span class="stat-label">internship</span></li>
+                <li class="stat stat-yellow"><span class="stat-num">4</span><span class="stat-label">services GenAI</span></li>
+                <li class="stat stat-blue"><span class="stat-num">MVP</span><span class="stat-label">&rarr; budget de production</span></li>
+                <li class="stat stat-pink"><span class="stat-num">7</span><span class="stat-label">services dans un pipeline</span></li>
+                <li class="stat stat-white"><span class="stat-num">6 mois</span><span class="stat-label">de stage</span></li>
             </ul>
         </div>
     </section>
@@ -103,15 +108,15 @@
     <section class="section cs-yellow" aria-labelledby="problem-heading">
         <div class="wrap cs-two">
             <div>
-                <p class="hand cs-label">The problem</p>
-                <h2 id="problem-heading">Lots of documents, scattered AI tools.</h2>
+                <p class="hand cs-label">Le problème</p>
+                <h2 id="problem-heading">Beaucoup de documents, des outils IA éparpillés.</h2>
             </div>
             <div class="prose">
-                <p>Getting answers out of company documents took time and technical skills, AI tools were popping up with no common entry point, and leadership wanted proof before investing more.</p>
+                <p>Tirer des réponses des documents internes demandait du temps et des compétences techniques, les outils IA se multipliaient sans point d'entrée commun, et la direction voulait des preuves avant d'investir plus.</p>
                 <ul class="checks">
-                    <li>Anyone can question their files in plain language.</li>
-                    <li>All AI services in one portal, with permissions.</li>
-                    <li>Fits Allianz's Azure and security rules.</li>
+                    <li>N'importe qui peut interroger ses fichiers en langage courant.</li>
+                    <li>Tous les services IA dans un portail, avec des droits d'accès.</li>
+                    <li>Compatible avec Azure et les règles de sécurité d'Allianz.</li>
                 </ul>
             </div>
         </div>
@@ -120,43 +125,43 @@
     <!-- ============ FEATURES ============ -->
     <section class="section" aria-labelledby="features-heading">
         <div class="wrap">
-            <p class="hand cs-label">What I built</p>
-            <h2 id="features-heading">A portal, and a chat that reads your documents.</h2>
+            <p class="hand cs-label">Ce que j'ai construit</p>
+            <h2 id="features-heading">Un portail, et un chat qui lit vos documents.</h2>
 
             <div class="features">
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/genai-hub/home.png" width="1440" height="816" alt="Gen AI Hub home page with Governance, Use Case Management and Incubator links, productivity features and business areas" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/genai-hub/home.png" width="1440" height="816" alt="Page d'accueil du Gen AI Hub avec les liens Governance, Use Case Management et Incubator, les fonctions de productivité et les métiers" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>One portal</h3>
-                        <p>Governance, chat, text tools and private apps for teams like HR and Legal, all in one place.</p>
+                        <h3>Un seul portail</h3>
+                        <p>Gouvernance, chat, outils de texte et apps privées pour des équipes comme les RH et le juridique, au même endroit.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/genai-hub/chat-answer.png" width="1440" height="816" alt="A chat where a PDF is uploaded and summarized" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/genai-hub/chat-answer.png" width="1440" height="816" alt="Un chat où un PDF est envoyé puis résumé" loading="lazy"></div>
                     <div class="feature-copy">
                         <h3>Chat with your data</h3>
-                        <p>Attach a file and ask about it; GPT-4 answers from passages found in your document.</p>
+                        <p>Joignez un fichier et posez votre question ; GPT-4 répond à partir des passages trouvés dans votre document.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/genai-hub/chat-settings.png" width="1440" height="816" alt="Chat settings with a custom prompt, creativity and answer-length sliders and a GPT model picker" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/genai-hub/chat-settings.png" width="1440" height="816" alt="Réglages du chat avec un prompt personnalisé, des curseurs de créativité et de longueur, et un choix de modèle GPT" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Chat settings</h3>
-                        <p>Pick the model, creativity and answer length, or add a custom prompt.</p>
+                        <h3>Réglages du chat</h3>
+                        <p>Choisissez le modèle, la créativité et la longueur des réponses, ou ajoutez un prompt personnalisé.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/genai-hub/chat-title-summary.png" width="1440" height="816" alt="Chat information dialog with a generated title and summary of the conversation" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/genai-hub/chat-title-summary.png" width="1440" height="816" alt="Fenêtre d'infos du chat avec un titre et un résumé générés pour la conversation" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Auto titles</h3>
-                        <p>One click generates a title and summary so chats are easy to find later.</p>
+                        <h3>Titres automatiques</h3>
+                        <p>Un clic génère un titre et un résumé pour retrouver facilement ses chats.</p>
                     </div>
                 </article>
                 <article class="feature">
-                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/genai-hub/chat-files.png" width="1440" height="816" alt="Chat files dialog listing story.pdf with a delete button" loading="lazy"></div>
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../img/genai-hub/chat-files.png" width="1440" height="816" alt="Fenêtre des fichiers du chat avec story.pdf et un bouton de suppression" loading="lazy"></div>
                     <div class="feature-copy">
-                        <h3>Your files, your call</h3>
-                        <p>Deleting a file removes it from both the database and the search index.</p>
+                        <h3>Vos fichiers, votre choix</h3>
+                        <p>Supprimer un fichier l'efface à la fois de la base et de l'index de recherche.</p>
                     </div>
                 </article>
             </div>
@@ -166,31 +171,31 @@
     <!-- ============ ARCHITECTURE ============ -->
     <section class="section cs-dark" aria-labelledby="arch-heading">
         <div class="wrap">
-            <p class="hand cs-label">How it's built</p>
-            <h2 id="arch-heading">Index once, then rewrite, retrieve and answer.</h2>
-            <p class="lede">Uploaded files are split and indexed by Azure AI Search. For each question, one prompt writes a search query from the chat and a second answers from the results.</p>
+            <p class="hand cs-label">Comment c'est construit</p>
+            <h2 id="arch-heading">Indexer une fois, puis reformuler, chercher et répondre.</h2>
+            <p class="lede">Les fichiers envoyés sont découpés et indexés par Azure AI Search. Pour chaque question, un premier prompt écrit une requête à partir du chat, un second répond à partir des résultats.</p>
 
-            <div class="arch" role="img" aria-label="Architecture: a React web app talks to a Flask server. Files go to Azure Blob Storage and are indexed by Azure AI Search. For each question, Semantic Kernel asks Azure OpenAI for a search query, retrieves passages and asks for an answer. Content Safety checks prompts, SQL Server stores history and Datadog monitors.">
+            <div class="arch" role="img" aria-label="Architecture : une app web React parle à un serveur Flask. Les fichiers vont dans Azure Blob Storage et sont indexés par Azure AI Search. Pour chaque question, Semantic Kernel demande à Azure OpenAI une requête, récupère des passages et demande une réponse. Content Safety vérifie les prompts, SQL Server garde l'historique et Datadog surveille.">
                 <div class="arch-box arch-main">
-                    <p class="arch-tag">React web app</p>
-                    <p>Portal, chat, uploads and history.</p>
+                    <p class="arch-tag">App web React</p>
+                    <p>Portail, chat, envois et historique.</p>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;</div>
                 <div class="arch-box arch-renderer">
-                    <p class="arch-tag">Flask server &middot; CQRS</p>
-                    <p>Role-based access. Every prompt is checked by Azure AI Content Safety.</p>
+                    <p class="arch-tag">Serveur Flask &middot; CQRS</p>
+                    <p>Accès par rôle. Chaque prompt est vérifié par Azure AI Content Safety.</p>
                     <div class="arch-core">
                         <p class="arch-tag">Semantic Kernel</p>
                         <ul>
-                            <li>1. write query</li><li>2. retrieve</li><li>3. answer</li>
+                            <li>1. écrire la requête</li><li>2. chercher</li><li>3. répondre</li>
                         </ul>
                     </div>
                 </div>
                 <div class="arch-arrow" aria-hidden="true">&darr;&uarr;</div>
                 <div class="arch-row">
-                    <div class="arch-box arch-side"><p class="arch-tag">Blob &rarr; AI Search</p><p>Splits and indexes each new file.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">Azure OpenAI</p><p>GPT-4 for queries, answers and summaries.</p></div>
-                    <div class="arch-box arch-side"><p class="arch-tag">SQL Server &middot; Datadog</p><p>Chat history and monitoring.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Blob &rarr; AI Search</p><p>Découpe et indexe chaque nouveau fichier.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Azure OpenAI</p><p>GPT-4 pour les requêtes, les réponses et les résumés.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">SQL Server &middot; Datadog</p><p>Historique des chats et supervision.</p></div>
                 </div>
             </div>
         </div>
@@ -199,24 +204,24 @@
     <!-- ============ CHALLENGES ============ -->
     <section class="section" aria-labelledby="challenges-heading">
         <div class="wrap">
-            <p class="hand cs-label">The hard parts</p>
-            <h2 id="challenges-heading">Enterprise RAG is more than a vector search.</h2>
+            <p class="hand cs-label">Les parties difficiles</p>
+            <h2 id="challenges-heading">Un RAG en entreprise, c'est plus qu'une recherche vectorielle.</h2>
 
             <div class="problems">
                 <article class="problem">
                     <p class="hand problem-num">01</p>
-                    <h3>Follow-up questions</h3>
-                    <p>"And the second part?" is a bad search query. The LLM first rewrites it using the chat history, then the search runs.</p>
+                    <h3>Les questions de suivi</h3>
+                    <p>« Et la deuxième partie ? » est une mauvaise requête. Le LLM la reformule d'abord avec l'historique du chat, puis la recherche se lance.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">02</p>
-                    <h3>Prompt injection</h3>
-                    <p>User text and documents both end up in the prompt. Azure AI Content Safety checks every prompt and alerts the security team on an attack.</p>
+                    <h3>L'injection de prompt</h3>
+                    <p>Le texte de l'utilisateur et les documents finissent tous deux dans le prompt. Azure AI Content Safety vérifie chaque prompt et alerte l'équipe sécurité en cas d'attaque.</p>
                 </article>
                 <article class="problem">
                     <p class="hand problem-num">03</p>
-                    <h3>Cost</h3>
-                    <p>GPT-4 is expensive at scale. Users pick the model per chat and switch to a stronger one only when needed.</p>
+                    <h3>Le coût</h3>
+                    <p>GPT-4 coûte cher à grande échelle. On choisit le modèle par chat et on ne passe à un plus puissant que si besoin.</p>
                 </article>
             </div>
         </div>
@@ -226,15 +231,15 @@
     <section class="section cs-yellow" aria-labelledby="process-heading">
         <div class="wrap cs-two">
             <div>
-                <p class="hand cs-label">How I worked</p>
-                <h2 id="process-heading">Agile, reviewed, monitored.</h2>
+                <p class="hand cs-label">Comment j'ai travaillé</p>
+                <h2 id="process-heading">Agile, relu, supervisé.</h2>
             </div>
             <div class="prose">
                 <ul class="checks">
-                    <li>Jira and Confluence, with every pull request reviewed.</li>
-                    <li>Deployed with Docker, Helm and Kubernetes, monitored with Datadog.</li>
-                    <li>Research papers on RAG and LLM costs guided the main decisions.</li>
-                    <li>Mentored by a cloud architect; written up as my MSc thesis at Universit&eacute; Paris Cit&eacute;.</li>
+                    <li>Jira et Confluence, avec chaque pull request relue.</li>
+                    <li>Déployé avec Docker, Helm et Kubernetes, supervisé avec Datadog.</li>
+                    <li>Des articles de recherche sur le RAG et le coût des LLM ont guidé les grandes décisions.</li>
+                    <li>Encadré par un architecte cloud ; rédigé comme mémoire de master à l'Universit&eacute; Paris Cit&eacute;.</li>
                 </ul>
             </div>
         </div>
@@ -243,22 +248,22 @@
     <!-- ============ LEARNED / NEXT ============ -->
     <section class="section" aria-labelledby="learned-heading">
         <div class="wrap">
-            <h2 id="learned-heading" class="sr-only">What I learned and what's next</h2>
+            <h2 id="learned-heading" class="sr-only">Ce que j'ai appris et la suite</h2>
             <div class="cards">
                 <div class="card card-blue card-static">
-                    <p class="hand card-kicker">What I learned</p>
+                    <p class="hand card-kicker">Ce que j'ai appris</p>
                     <ul class="card-list">
-                        <li>The best tool is the one that fits the company's cloud and security.</li>
-                        <li>Hands-on Azure OpenAI, AI Search and Semantic Kernel.</li>
-                        <li>An MVP's job is to convince; the demo matters.</li>
+                        <li>Le meilleur outil, c'est celui qui colle au cloud et à la sécurité de l'entreprise.</li>
+                        <li>De la pratique sur Azure OpenAI, AI Search et Semantic Kernel.</li>
+                        <li>Un MVP doit convaincre ; la démo compte.</li>
                     </ul>
                 </div>
                 <div class="card card-yellow card-static">
-                    <p class="hand card-kicker">What's next (at handover)</p>
+                    <p class="hand card-kicker">La suite (à la passation)</p>
                     <ul class="card-list">
-                        <li>Pilot with a small group, then roll out company-wide.</li>
-                        <li>Measure answer quality, for example with an LLM as judge.</li>
-                        <li>Add more AI services to the hub.</li>
+                        <li>Un pilote avec un petit groupe, puis un déploiement dans toute l'entreprise.</li>
+                        <li>Mesurer la qualité des réponses, par exemple avec un LLM comme juge.</li>
+                        <li>Ajouter d'autres services IA au hub.</li>
                     </ul>
                 </div>
             </div>
@@ -267,12 +272,12 @@
 
     <section class="connect" aria-labelledby="cta-heading">
         <div class="wrap">
-            <h2 id="cta-heading">Building GenAI inside a big company?</h2>
-            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering.</p>
+            <h2 id="cta-heading">Vous faites de la GenAI dans une grande entreprise ?</h2>
+            <p class="hand big">Je cherche un CDI en ingénierie logicielle ou IA.</p>
             <div class="connect-links">
                 <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
                 <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
-                <a href="../clause/" class="btn btn-ghost" data-pop>Next project: Clause <span aria-hidden="true">&rarr;</span></a>
+                <a href="../clause/" class="btn btn-ghost" data-pop>Projet suivant : Clause <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -280,13 +285,13 @@
 
 <footer class="footer">
     <div class="wrap footer-inner">
-        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
-        <ul class="socials" aria-label="Social links and email">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Fait main, aucun template n'a été maltraité.</p>
+        <ul class="socials" aria-label="Réseaux sociaux et e-mail">
             <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
             <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
-            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">E-mail</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
         </ul>
     </div>

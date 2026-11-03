@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clause: case study · Med BM</title>
+    <meta name="description" content="Clause, an AI app that flags one-sided clauses in Indian rental agreements and health policies.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Clause: case study">
+    <meta property="og:description" content="Find out what you're signing. A streaming LLM + RAG pipeline that marks up your own contract. Next.js, OpenAI, zod.">
+    <meta property="og:site_name" content="Med BM">
+    <meta property="og:url" content="https://medbm5.github.io/en/projects/clause/">
+    <meta property="og:image" content="https://medbm5.github.io/img/clause/rental-report-verdict-and-score.png">
+    <link rel="alternate" hreflang="fr" href="https://medbm5.github.io/projects/clause/">
+    <link rel="alternate" hreflang="en" href="https://medbm5.github.io/en/projects/clause/">
+    <link rel="alternate" hreflang="x-default" href="https://medbm5.github.io/projects/clause/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../theme-blueprint.css">
+    <script src="../../../main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="nav wrap-wide">
+        <a href="../../" class="logo" data-pop aria-label="Med BM, home">
+            <span>Med</span><span>B</span><span>M</span>
+        </a>
+        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+            <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="main-nav">
+            <a href="../../#work" data-pop>Projects</a>
+            <a href="../../#road" data-pop>The Road So Far</a>
+            <a href="../../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
+            <a href="../../#connect" data-pop>Connect</a>
+            <a href="../../../projects/clause/" class="lang-switch" lang="fr" hreflang="fr" aria-label="Français" data-pop>FR</a>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+        <button class="mobile-close">(close this thing)</button>
+        <a href="../../#work">Projects</a>
+        <a href="../../#road">The Road So Far</a>
+        <a href="../../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="../../#connect">Connect</a>
+        <a href="../../../projects/clause/" lang="fr" hreflang="fr">Français</a>
+    </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="cs-hero">
+    <div class="wrap">
+        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> All projects</a>
+        <div class="cs-hero-grid">
+            <div>
+                <p class="hand cs-kicker">Case study &middot; AI web app</p>
+                <h1 class="cs-title"><img src="../../../img/clause/icon.svg" alt="" width="64" height="64"> Clause</h1>
+                <p class="hand big cs-pitch">Find out what you're signing. Upload a rental agreement or health policy and get every one-sided clause flagged, in plain English.</p>
+                <div class="connect-links">
+                    <a href="https://clause-opal-omega.vercel.app" target="_blank" rel="noopener" class="btn" data-pop>Try the demo <span aria-hidden="true">&nearr;</span></a>
+                    <a href="https://github.com/medbm5/clause" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>Source code <span aria-hidden="true">&nearr;</span></a>
+                </div>
+            </div>
+            <dl class="meta">
+                <div><dt>My role</dt><dd>Solo, with Claude Code writing the code</dd></div>
+                <div><dt>Timeline</dt><dd>Aug 2026, one evening</dd></div>
+                <div><dt>Status</dt><dd>Live demo with sample reports</dd></div>
+                <div><dt>Stack</dt><dd>Next.js, TypeScript, OpenAI, Vercel</dd></div>
+            </dl>
+        </div>
+        <div class="cs-hero-shot">
+            <div class="shot-frame">
+                <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                <img src="../../../img/clause/rental-report-verdict-and-score.png" width="1440" height="816" alt="Clause report for a Bengaluru rental agreement: verdict 'Don't sign this as is', risk score 97 out of 100, and a plain-language summary.">
+            </div>
+            <p class="note-inline hand">A finished report. The sample documents are fictional.</p>
+        </div>
+    </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v38c-120 34-240 50-360 30S840 6 720 26 480 88 360 78 120 20 0 40z"/></svg>
+
+<main class="cs">
+
+    <!-- ============ TL;DR ============ -->
+    <section class="section" aria-labelledby="tldr-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The 30-second version</p>
+            <h2 id="tldr-heading">A red pen for your contract.</h2>
+            <p class="lede">
+                Upload a rental agreement or health policy and get <strong>your own document back, marked up</strong>: risky clauses flagged, explained and paired with what to ask for instead.
+                Findings stream in live from a six-stage LLM pipeline.
+            </p>
+            <ul class="stats">
+                <li class="stat stat-yellow"><span class="stat-num">6</span><span class="stat-label">pipeline stages</span></li>
+                <li class="stat stat-blue"><span class="stat-num">34</span><span class="stat-label">risk patterns</span></li>
+                <li class="stat stat-pink"><span class="stat-num">10/10</span><span class="stat-label">retrieval hits</span></li>
+                <li class="stat stat-white"><span class="stat-num">~3 h</span><span class="stat-label">to deployed MVP</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="section cs-yellow" aria-labelledby="problem-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">The problem</p>
+                <h2 id="problem-heading">People sign things they can't read.</h2>
+            </div>
+            <div class="prose">
+                <p>In India, people sign rental agreements and health policies full of one-sided terms: huge deposits, lock-ins that forfeit them, caps that shrink what a policy pays.</p>
+                <ul class="checks">
+                    <li>Informed in <strong>under 60 seconds</strong>.</li>
+                    <li>Point at the exact words in your copy.</li>
+                    <li>No account, no storage, not legal advice.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" aria-labelledby="features-heading">
+        <div class="wrap">
+            <p class="hand cs-label">What I built</p>
+            <h2 id="features-heading">Drop a document, watch it get marked up.</h2>
+
+            <div class="features">
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/clause/upload-or-pick-a-sample.png" width="1440" height="816" alt="Upload screen with a drop zone and two sample documents" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Upload or try a sample</h3>
+                        <p>A PDF or phone photos, and <strong>nothing is stored</strong>.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/clause/scan-flags-landing-live.png" width="1440" height="816" alt="Clauses with risky passages underlined and flags in the margin" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Flags land as they're found</h3>
+                        <p>Findings stream in one by one, underlining the exact words in the clause.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/clause/finding-explained-with-suggestion.png" width="1440" height="816" alt="An open finding panel: what it means, why it matters, what's normal, what to ask for" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Every finding, explained</h3>
+                        <p>What it means, why it matters, what's normal, and <strong>what to ask for instead</strong>.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/clause/how-the-score-is-calculated.png" width="1440" height="816" alt="Side sheet explaining severity levels, weights and how the score is calculated" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>A score you can check</h3>
+                        <p>A verdict and a 0&ndash;100 risk score computed by a visible formula, <strong>not the model's opinion</strong>.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/clause/health-policy-report.png" width="1440" height="816" alt="Report for a family floater health insurance policy" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Two document types</h3>
+                        <p>Rental agreements and health policies, with 17 risk patterns each.</p>
+                    </div>
+                </article>
+                <article class="feature feature-phone">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/clause/mobile-finding.png" width="390" height="844" alt="A finding on a phone, shown directly under its clause" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Works on a phone</h3>
+                        <p>Flags sit under their clause, and it works by keyboard and screen reader.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section class="section cs-dark" aria-labelledby="arch-heading">
+        <div class="wrap">
+            <p class="hand cs-label">How it's built</p>
+            <h2 id="arch-heading">One endpoint, six stages, one stream.</h2>
+            <p class="lede">No database and no separate backend. One Next.js route takes the upload and streams results back line by line.</p>
+
+            <ol class="pipeline" aria-label="Pipeline stages">
+                <li><span class="pipe-num">1</span><p class="arch-tag">Read</p><p>PDF text, or OCR for photos</p></li>
+                <li><span class="pipe-num">2</span><p class="arch-tag">Classify</p><p>Rental or health policy</p></li>
+                <li><span class="pipe-num">3</span><p class="arch-tag">Segment</p><p>Split into clauses</p></li>
+                <li><span class="pipe-num">4</span><p class="arch-tag">Retrieve</p><p>Match risk patterns</p></li>
+                <li><span class="pipe-num">5</span><p class="arch-tag">Analyse</p><p>gpt-4o, in parallel batches</p></li>
+                <li><span class="pipe-num">6</span><p class="arch-tag">Compile</p><p>Score, verdict, summary</p></li>
+            </ol>
+
+            <div class="arch-row arch-row-after">
+                <div class="arch-box arch-side"><p class="arch-tag">Shared types</p><p>Server and browser share one event contract.</p></div>
+                <div class="arch-box arch-side"><p class="arch-tag">CSS layout</p><p>Flags line up with clauses using subgrid, no JS.</p></div>
+                <div class="arch-box arch-side"><p class="arch-tag">Demo mode</p><p>Without an API key, it replays sample reports.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CHALLENGES ============ -->
+    <section class="section cs-yellow" aria-labelledby="challenges-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The hard parts</p>
+            <h2 id="challenges-heading">Making an LLM safe to read a contract.</h2>
+
+            <div class="problems">
+                <article class="problem">
+                    <p class="hand problem-num">01</p>
+                    <h3>No invented quotes</h3>
+                    <p>Every quote is matched back to the document, and only the original text is shown. If it isn't found, nothing is shown.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">02</p>
+                    <h3>"Looks fair" when nothing was read</h3>
+                    <p>When API credits ran out, every batch failed and the report said "looks fair". Now that's an error, and partial reports say so.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">03</p>
+                    <h3>No fake reassurance</h3>
+                    <p>On a fair document, the model flagged things as "fair". A negative example in the prompt brought that to zero findings.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section cs-dark" aria-labelledby="process-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">How I worked</p>
+                <h2 id="process-heading">Write the brief, direct the agent, verify.</h2>
+            </div>
+            <div class="prose">
+                <ul class="checks">
+                    <li>Wrote a detailed brief, including the design, and Claude Code built it in 8 phases.</li>
+                    <li>Typecheck, lint and build had to pass before each commit.</li>
+                    <li>All 12 acceptance checks pass, verified with live runs and Playwright.</li>
+                    <li>No automated test suite yet. That's next.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNED / NEXT ============ -->
+    <section class="section" aria-labelledby="learned-heading">
+        <div class="wrap">
+            <h2 id="learned-heading" class="sr-only">What I learned and what's next</h2>
+            <div class="cards">
+                <div class="card card-blue card-static">
+                    <p class="hand card-kicker">What I learned</p>
+                    <ul class="card-list">
+                        <li>"Nothing's wrong" and "we learned nothing" must look different.</li>
+                        <li>A fair control document finds bugs bad documents hide.</li>
+                        <li>Measure a setting on real data before changing it.</li>
+                    </ul>
+                </div>
+                <div class="card card-yellow card-static">
+                    <p class="hand card-kicker">What's next</p>
+                    <ul class="card-list">
+                        <li>Unit tests and a labelled set to measure precision and recall.</li>
+                        <li>More document types, like job contracts and loans.</li>
+                        <li>A button that drafts an email asking for changes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="connect" aria-labelledby="cta-heading">
+        <div class="wrap">
+            <h2 id="cta-heading">Building with LLMs? Let's talk.</h2>
+            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering.</p>
+            <div class="connect-links">
+                <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
+                <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
+                <a href="../sec-analyst/" class="btn btn-ghost" data-pop>Next project: SEC Filing Analyst <span aria-hidden="true">&rarr;</span></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="wrap footer-inner">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
+        <ul class="socials" aria-label="Social links and email">
+            <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>

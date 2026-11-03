@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chess Terminal: case study · Med BM</title>
+    <meta name="description" content="Chess Terminal, an offline desktop app that teaches chess openings like a game.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Chess Terminal: case study">
+    <meta property="og:description" content="A local-first desktop app that teaches chess openings like a game. Electron, React, TypeScript, Stockfish WASM.">
+    <meta property="og:site_name" content="Med BM">
+    <meta property="og:url" content="https://medbm5.github.io/en/projects/chess-terminal/">
+    <meta property="og:image" content="https://medbm5.github.io/img/chess/menu.png">
+    <link rel="alternate" hreflang="fr" href="https://medbm5.github.io/projects/chess-terminal/">
+    <link rel="alternate" hreflang="en" href="https://medbm5.github.io/en/projects/chess-terminal/">
+    <link rel="alternate" hreflang="x-default" href="https://medbm5.github.io/projects/chess-terminal/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Space+Mono:ital,wght@0,400;0,700;1,700&family=Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../theme-blueprint.css">
+    <script src="../../../main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="nav wrap-wide">
+        <a href="../../" class="logo" data-pop aria-label="Med BM, home">
+            <span>Med</span><span>B</span><span>M</span>
+        </a>
+        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+            <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="main-nav">
+            <a href="../../#work" data-pop>Projects</a>
+            <a href="../../#road" data-pop>The Road So Far</a>
+            <a href="../../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
+            <a href="../../#connect" data-pop>Connect</a>
+            <a href="../../../projects/chess-terminal/" class="lang-switch" lang="fr" hreflang="fr" aria-label="Français" data-pop>FR</a>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+        <button class="mobile-close">(close this thing)</button>
+        <a href="../../#work">Projects</a>
+        <a href="../../#road">The Road So Far</a>
+        <a href="../../../files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="../../#connect">Connect</a>
+        <a href="../../../projects/chess-terminal/" lang="fr" hreflang="fr">Français</a>
+    </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="cs-hero">
+    <div class="wrap">
+        <a href="../../#work" class="back-link" data-pop><span aria-hidden="true">&larr;</span> All projects</a>
+        <div class="cs-hero-grid">
+            <div>
+                <p class="hand cs-kicker">Case study &middot; Desktop app</p>
+                <h1 class="cs-title"><img src="../../../img/chess/icon.png" alt="" width="64" height="64"> Chess Terminal</h1>
+                <p class="hand big cs-pitch">Learn chess openings like a game, with a coach that explains every move and a boss at the end of every opening.</p>
+                <div class="connect-links">
+                    <a href="https://github.com/medbm5/Chess-Terminal/releases/latest" target="_blank" rel="noopener" class="btn" data-pop>Download v0.3.0 <span aria-hidden="true">&darr;</span></a>
+                    <a href="https://github.com/medbm5/Chess-Terminal" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>Source code <span aria-hidden="true">&nearr;</span></a>
+                </div>
+            </div>
+            <dl class="meta">
+                <div><dt>My role</dt><dd>Solo</dd></div>
+                <div><dt>Timeline</dt><dd>Oct 2026, 3 days</dd></div>
+                <div><dt>Platforms</dt><dd>Windows, macOS, Linux</dd></div>
+                <div><dt>Stack</dt><dd>TypeScript, React, Electron, Stockfish</dd></div>
+                <div><dt>License</dt><dd>Open source, GPL-3.0</dd></div>
+            </dl>
+        </div>
+        <div class="cs-hero-shot">
+            <div class="shot-frame">
+                <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                <img src="../../../img/chess/menu.png" width="1442" height="817" alt="Chess Terminal's main menu, with a big chess king, a side menu and daily challenges.">
+            </div>
+            <p class="note-inline hand">The main menu. Every screen is real, no mockups.</p>
+        </div>
+    </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v38c-120 34-240 50-360 30S840 6 720 26 480 88 360 78 120 20 0 40z"/></svg>
+
+<main class="cs">
+
+    <!-- ============ TL;DR ============ -->
+    <section class="section" aria-labelledby="tldr-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The 30-second version</p>
+            <h2 id="tldr-heading">Learn chess openings like a game.</h2>
+            <p class="lede">
+                A desktop app that coaches you through openings, tests you from memory and turns your mistakes into review.
+                It runs <strong>entirely on your computer</strong>, with Stockfish built in and no account or server.
+            </p>
+            <ul class="stats">
+                <li class="stat stat-yellow"><span class="stat-num">33</span><span class="stat-label">openings</span></li>
+                <li class="stat stat-blue"><span class="stat-num">215</span><span class="stat-label">unit tests</span></li>
+                <li class="stat stat-pink"><span class="stat-num">~15k</span><span class="stat-label">lines of TypeScript</span></li>
+                <li class="stat stat-white"><span class="stat-num">96%</span><span class="stat-label">smaller app</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="section cs-yellow" aria-labelledby="problem-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">The problem</p>
+                <h2 id="problem-heading">Opening theory is a wall of moves nobody explains.</h2>
+            </div>
+            <div class="prose">
+                <p>Most opening training is memorising lists of moves. You learn <em>what</em> to play but not <em>why</em>, so you're lost as soon as your opponent goes off-script.</p>
+                <ul class="checks">
+                    <li>Explain the idea behind every move.</li>
+                    <li>Test from memory and bring back what I forget.</li>
+                    <li>Feel like a game, so I keep coming back.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" aria-labelledby="features-heading">
+        <div class="wrap">
+            <p class="hand cs-label">What I built</p>
+            <h2 id="features-heading">Six ways to train, one loop.</h2>
+
+            <div class="features">
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/chess/coach.png" width="1442" height="817" alt="Coach screen with an explanation of the last move and the next move to play" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Coach</h3>
+                        <p>Play an opening against the bot, with an explanation for every move and Stockfish grading once the book runs out.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/chess/memory-test.png" width="1442" height="817" alt="Memory test showing the correct move after a mistake" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Memory test</h3>
+                        <p>No hints, one mistake ends the run, and the lines you miss come up more often.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/chess/openings.png" width="1442" height="817" alt="Openings map grouped by difficulty tier" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Openings map</h3>
+                        <p>33 openings in five tiers, each ending with a boss that unlocks the next tier.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/chess/puzzles.png" width="1442" height="817" alt="A puzzle on the board with theme and opening filters" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Puzzles</h3>
+                        <p>Lichess puzzles plus puzzles <strong>mined from your own games</strong>.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/chess/calculations.png" width="1442" height="817" alt="Calculation drill with a frozen board" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Calculations</h3>
+                        <p>Drills for thinking ahead, like playing a whole line on a frozen board.</p>
+                    </div>
+                </article>
+                <article class="feature">
+                    <div class="shot-frame"><div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="../../../img/chess/stats.png" width="1442" height="817" alt="Stats screen with the opening passport and puzzle rating history" loading="lazy"></div>
+                    <div class="feature-copy">
+                        <h3>Review &amp; stats</h3>
+                        <p>Mistakes become spaced-repetition cards, and stats show where you usually leave the book.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section class="section cs-dark" aria-labelledby="arch-heading">
+        <div class="wrap">
+            <p class="hand cs-label">How it's built</p>
+            <h2 id="arch-heading">Pure logic in the middle, everything else at the edges.</h2>
+            <p class="lede">The chess and training rules are small, pure, tested functions. The React screens stay thin.</p>
+
+            <div class="arch" role="img" aria-label="Architecture: Electron serves a sandboxed React UI whose screens call pure core modules, backed by two Stockfish workers, a local IndexedDB database and validated opening files.">
+                <div class="arch-box arch-main">
+                    <p class="arch-tag">Electron</p>
+                    <p>Sandboxed window, no Node in the UI.</p>
+                </div>
+                <div class="arch-arrow" aria-hidden="true">&darr;</div>
+                <div class="arch-box arch-renderer">
+                    <p class="arch-tag">React 18 + Zustand</p>
+                    <p>10 screens: Coach, Memory test, Map, Puzzles and more.</p>
+                    <div class="arch-core">
+                        <p class="arch-tag">src/core</p>
+                        <ul>
+                            <li>chess</li><li>coach</li><li>engine</li><li>training</li><li>puzzles</li><li>progress</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="arch-arrow" aria-hidden="true">&darr;</div>
+                <div class="arch-row">
+                    <div class="arch-box arch-side"><p class="arch-tag">Stockfish &times; 2</p><p>One grades, one plays.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">IndexedDB</p><p>Games, reviews, ratings.</p></div>
+                    <div class="arch-box arch-side"><p class="arch-tag">Content</p><p>33 validated opening files.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CHALLENGES ============ -->
+    <section class="section" aria-labelledby="challenges-heading">
+        <div class="wrap">
+            <p class="hand cs-label">The hard parts</p>
+            <h2 id="challenges-heading">Problems I had to solve.</h2>
+
+            <div class="problems">
+                <article class="problem">
+                    <p class="hand problem-num">01</p>
+                    <h3>Stockfish in a packaged app</h3>
+                    <p>Packaged Electron apps can't load WebAssembly from <code>file://</code>. I serve the UI through a custom <code>app://</code> scheme and check the engine loads in the installed app.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">02</p>
+                    <h3>320&nbsp;MB down to 12&nbsp;MB</h3>
+                    <p>The installer was copying every Stockfish build. Now it ships only the two engine files the app needs.</p>
+                </article>
+                <article class="problem">
+                    <p class="hand problem-num">03</p>
+                    <h3>Content you can trust</h3>
+                    <p>A validator replays every opening line and rejects illegal moves or missing explanations, in CI and at startup.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section cs-yellow" aria-labelledby="process-heading">
+        <div class="wrap cs-two">
+            <div>
+                <p class="hand cs-label">How I worked</p>
+                <h2 id="process-heading">Spec first, small slices.</h2>
+            </div>
+            <div class="prose">
+                <ul class="checks">
+                    <li>Wrote the spec first, then built it in 15 slices with an AI coding agent.</li>
+                    <li>Typecheck, lint and tests had to pass before every commit.</li>
+                    <li>CI builds Windows, macOS and Linux installers on each tag.</li>
+                    <li>Redesigned twice, because the first versions felt like dashboards.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LEARNED / NEXT ============ -->
+    <section class="section" aria-labelledby="learned-heading">
+        <div class="wrap">
+            <div class="cards">
+                <div class="card card-blue card-static">
+                    <p class="hand card-kicker">What I learned</p>
+                    <ul class="card-list">
+                        <li>Pure logic and a thin UI make tests and redesigns cheap.</li>
+                        <li>Test where it really runs: the engine worked in dev long before the installer.</li>
+                        <li>A learning tool has to be fun, or nobody opens it twice.</li>
+                    </ul>
+                </div>
+                <div class="card card-yellow card-static">
+                    <p class="hand card-kicker">What's next</p>
+                    <ul class="card-list">
+                        <li>Sign the Windows and macOS installers.</li>
+                        <li>More openings and deeper lines.</li>
+                        <li>Import games from Lichess or Chess.com.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="connect" aria-labelledby="cta-heading">
+        <div class="wrap">
+            <h2 id="cta-heading">Want this kind of care on your team?</h2>
+            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering.</p>
+            <div class="connect-links">
+                <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
+                <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
+                <a href="../matetoscroll/" class="btn btn-ghost" data-pop>Next project: MateToScroll <span aria-hidden="true">&rarr;</span></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="wrap footer-inner">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
+        <ul class="socials" aria-label="Social links and email">
+            <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>

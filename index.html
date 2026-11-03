@@ -1,16 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Med BM · I build software that thinks a little.</title>
-    <meta name="description" content="Full-stack & AI software engineer with 5+ years in production: healthcare integrations (FHIR, HL7), GenAI platforms (RAG, Azure OpenAI) and complete products shipped end to end.">
+    <title>Med BM · Je crée des logiciels qui réfléchissent un peu.</title>
+    <meta name="description" content="Ingénieur logiciel full-stack et IA, plus de 5 ans en production : intégrations santé (FHIR, HL7), plateformes GenAI (RAG, Azure OpenAI) et produits complets livrés de bout en bout.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Med BM · I build software that thinks a little.">
-    <meta property="og:description" content="Full-stack & AI software engineer with 5+ years in production: healthcare integrations (FHIR, HL7), GenAI platforms (RAG, Azure OpenAI) and complete products shipped end to end.">
+    <meta property="og:title" content="Med BM · Je crée des logiciels qui réfléchissent un peu.">
+    <meta property="og:description" content="Ingénieur logiciel full-stack et IA, plus de 5 ans en production : intégrations santé (FHIR, HL7), plateformes GenAI (RAG, Azure OpenAI) et produits complets livrés de bout en bout.">
     <meta property="og:site_name" content="Med BM">
     <meta property="og:url" content="https://medbm5.github.io/">
     <meta property="og:image" content="https://medbm5.github.io/img/med.jpeg">
+    <link rel="alternate" hreflang="fr" href="https://medbm5.github.io/">
+    <link rel="alternate" hreflang="en" href="https://medbm5.github.io/en/">
+    <link rel="alternate" hreflang="x-default" href="https://medbm5.github.io/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♞</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,43 +26,45 @@
 
 <header class="site-header">
     <nav class="nav wrap-wide">
-        <a href="#top" class="logo" data-pop aria-label="Med BM, home">
+        <a href="#top" class="logo" data-pop aria-label="Med BM, accueil">
             <span>Med</span><span>B</span><span>M</span>
         </a>
-        <button class="burger" aria-label="Show menu" aria-expanded="false" aria-controls="mobile-nav">
+        <button class="burger" aria-label="Afficher le menu" aria-expanded="false" aria-controls="mobile-nav">
             <svg width="32" height="24" viewBox="0 0 32 24" aria-hidden="true"><path d="M2 3h28M2 12h20M2 21h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
         </button>
         <div class="main-nav">
-            <a href="#work" data-pop>Projects</a>
-            <a href="#road" data-pop>The Road So Far</a>
+            <a href="#work" data-pop>Projets</a>
+            <a href="#road" data-pop>Mon parcours</a>
             <a href="files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener" data-pop>CV</a>
-            <a href="#connect" data-pop>Connect</a>
+            <a href="#connect" data-pop>Contact</a>
+            <a href="en/" class="lang-switch" lang="en" hreflang="en" aria-label="English" data-pop>EN</a>
         </div>
     </nav>
     <div class="mobile-nav" id="mobile-nav" hidden>
-        <button class="mobile-close">(close this thing)</button>
-        <a href="#work">Projects</a>
-        <a href="#road">The Road So Far</a>
+        <button class="mobile-close">(fermer ce truc)</button>
+        <a href="#work">Projets</a>
+        <a href="#road">Mon parcours</a>
         <a href="files/CV_Mohamed_EL_BAAMRANI_FullStack_AI_Engineer.pdf" target="_blank" rel="noopener">CV</a>
-        <a href="#connect">Connect</a>
+        <a href="#connect">Contact</a>
+        <a href="en/" lang="en" hreflang="en">English</a>
     </div>
 </header>
 
 <section class="hero" id="top">
     <div class="wrap hero-inner">
         <div class="hero-photo">
-            <button class="head" type="button" aria-label="Poke Mohamed's photo">
-                <img src="img/med.jpeg" width="1536" height="2048" alt="Mohamed El Baamrani, smiling, on a bridge over the Seine with the Eiffel Tower behind him.">
+            <button class="head" type="button" aria-label="Taquiner la photo de Mohamed">
+                <img src="img/med.jpeg" width="1536" height="2048" alt="Mohamed El Baamrani, souriant, sur un pont au-dessus de la Seine, la tour Eiffel derrière lui.">
             </button>
             <p class="speech" aria-live="polite"></p>
-            <p class="note note-me">That's me!</p>
-            <p class="note note-glasses">The glasses add +10 to debugging. Scientifically proven. Probably.</p>
-            <p class="note note-screen">Yes, that's the Eiffel Tower. No, I didn't build it.</p>
+            <p class="note note-me">C’est moi !</p>
+            <p class="note note-glasses">Les lunettes donnent +10 en débogage. Prouvé scientifiquement. Probablement.</p>
+            <p class="note note-screen">Oui, c’est la tour Eiffel. Non, ce n’est pas moi qui l’ai construite.</p>
         </div>
         <div class="hero-copy">
-            <h1>I build software that thinks a&nbsp;little.</h1>
-            <p class="hand big">Full-stack &amp; AI software engineer. 5+ years in production, from hospital integrations to GenAI platforms.</p>
-            <a href="#work" class="arrow-link" data-pop>See what I'm building <span aria-hidden="true">&darr;</span></a>
+            <h1>Je crée des logiciels qui réfléchissent un&nbsp;peu.</h1>
+            <p class="hand big">Ingénieur logiciel full-stack et IA. Plus de 5 ans en production, des intégrations hospitalières aux plateformes GenAI.</p>
+            <a href="#work" class="arrow-link" data-pop>Voir ce que je construis <span aria-hidden="true">&darr;</span></a>
         </div>
     </div>
 </section>
@@ -69,40 +74,40 @@
 <main>
     <section class="section intro" aria-labelledby="intro-heading">
         <div class="wrap">
-            <h2 id="intro-heading">Half software engineer, half machine-learning nerd, all&nbsp;in.</h2>
+            <h2 id="intro-heading">Moitié ingénieur logiciel, moitié geek du machine learning, à fond dans les&nbsp;deux.</h2>
             <p class="lede">
-                <strong>5+ years of production experience</strong>, from Python and Node.js backends to React and TypeScript
-                front ends, on a healthcare platform where data reliability and traceability are critical. I've connected
-                hospital systems like Epic, EMIS and SystmOne through FHIR and HL7, built the backend of a GenAI platform at
-                Allianz Global Investors that went from MVP to production budget approval, and shipped complete products end to
-                end. MSc in Machine Learning, 5&times; AWS certified, and tests, strict typing and CI/CD by default.
+                <strong>Plus de 5 ans d’expérience en production</strong>, des backends Python et Node.js aux front-ends React
+                et TypeScript, sur une plateforme de santé où la fiabilité et la traçabilité des données sont essentielles. J’ai
+                connecté des systèmes hospitaliers comme Epic, EMIS et SystmOne via FHIR et HL7, construit le backend d’une
+                plateforme GenAI chez Allianz Global Investors, passée du MVP à un budget de production, et livré des produits
+                complets de bout en bout. Master en Machine Learning, 5 certifications AWS, et tests, typage strict et CI/CD par défaut.
             </p>
-            <p class="hand mid">Still learning. Still shipping.</p>
+            <p class="hand mid">Toujours en train d’apprendre. Toujours en train de livrer.</p>
 
             <div class="cards cards-3">
                 <a href="#work" class="card card-blue">
-                    <p class="hand card-kicker">Full-stack engineering</p>
+                    <p class="hand card-kicker">Développement full-stack</p>
                     <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" width="72" height="72"><path d="M22 18 8 32l14 14M42 18l14 14-14 14M36 12 28 52" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
-                    <p class="card-body">React, Next.js and TypeScript up front; Python, Node.js, Laravel and Spring Boot behind. Postgres with row-level security, Stripe, React Native, Electron.</p>
-                    <p class="card-cta"><span>See the projects</span> <span aria-hidden="true">&darr;</span></p>
+                    <p class="card-body">React, Next.js et TypeScript côté front ; Python, Node.js, Laravel et Spring Boot côté back. Postgres avec row-level security, Stripe, React Native, Electron.</p>
+                    <p class="card-cta"><span>Voir les projets</span> <span aria-hidden="true">&darr;</span></p>
                 </a>
                 <a href="#work" class="card card-yellow">
-                    <p class="hand card-kicker">AI &amp; GenAI</p>
+                    <p class="hand card-kicker">IA &amp; GenAI</p>
                     <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" width="72" height="72"><circle cx="32" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="5"/><path d="M32 6v12M32 46v12M6 32h12M46 32h12M14 14l8 8M42 42l8 8M50 14l-8 8M22 42l-8 8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
                     </div>
-                    <p class="card-body">RAG, agents and structured outputs on Azure OpenAI and OpenAI, with Semantic Kernel and LangGraph. LLM apps with guardrails, and evaluations that measure them.</p>
-                    <p class="card-cta"><span>See the AI projects</span> <span aria-hidden="true">&darr;</span></p>
+                    <p class="card-body">RAG, agents et sorties structurées sur Azure OpenAI et OpenAI, avec Semantic Kernel et LangGraph. Des applis LLM avec garde-fous, et des évaluations pour les mesurer.</p>
+                    <p class="card-cta"><span>Voir les projets IA</span> <span aria-hidden="true">&darr;</span></p>
                 </a>
                 <a href="#road" class="card card-pink">
-                    <p class="hand card-kicker">Healthcare integration</p>
+                    <p class="hand card-kicker">Intégration santé</p>
                     <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" width="72" height="72"><path d="M26 8h12v18h18v12H38v18H26V38H8V26h18z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/></svg>
                     </div>
-                    <p class="card-body">6+ clinical systems connected through FHIR R4, HL7 v2, SMART on FHIR and Mirth Connect, where every record has to arrive, and arrive right.</p>
-                    <p class="card-cta"><span>See my experience</span> <span aria-hidden="true">&darr;</span></p>
+                    <p class="card-body">Plus de 6 systèmes cliniques connectés via FHIR R4, HL7 v2, SMART on FHIR et Mirth Connect, où chaque dossier doit arriver, et arriver juste.</p>
+                    <p class="card-cta"><span>Voir mon expérience</span> <span aria-hidden="true">&darr;</span></p>
                 </a>
             </div>
         </div>
@@ -110,59 +115,59 @@
 
     <section class="section work" id="work" aria-labelledby="work-heading">
         <div class="wrap">
-            <h2 id="work-heading">Stuff I've built.</h2>
-            <p class="hand mid sub">More coming soon. My keyboard is warm.</p>
+            <h2 id="work-heading">Ce que j’ai construit.</h2>
+            <p class="hand mid sub">D’autres arrivent bientôt. Mon clavier chauffe.</p>
 
             <!-- One <article class="project"> per project. Copy this block to add another one,
                  and copy the projects/chess-terminal/ folder to give it a case study page. -->
             <article class="project" aria-labelledby="nur-heading">
                 <div class="project-copy">
-                    <p class="hand project-kicker">Freelance client &middot; Web app (PWA)</p>
+                    <p class="hand project-kicker">Client freelance &middot; Appli web (PWA)</p>
                     <h3 id="nur-heading"><img src="img/nur/icon.png" alt="" width="48" height="48"> <a href="projects/nur/" class="project-title-link">NUR</a></h3>
                     <p class="project-body">
-                        Interest-free tuition loans for students in Quebec, funded by partner mosques. The app combines
-                        several mosques' programs to cover what a student needs, and each mosque approves, pays the school
-                        and collects repayments straight into its own Stripe account. Built solo in 7 days, in French,
-                        English and Arabic.
+                        Des prêts sans intérêt pour les frais de scolarité d’étudiants au Québec, financés par des mosquées
+                        partenaires. L’appli combine les programmes de plusieurs mosquées pour couvrir le besoin de l’étudiant,
+                        et chaque mosquée approuve, paie l’école et reçoit les remboursements directement sur son compte Stripe.
+                        Construit seul en 7 jours, en français, anglais et arabe.
                     </p>
                     <ul class="facts">
-                        <li><strong>Authorization in Postgres</strong>: row-level security everywhere</li>
-                        <li><strong>Stripe Connect</strong>: repayments go straight to each mosque</li>
-                        <li><strong>914</strong> database test assertions + <strong>238</strong> unit tests</li>
-                        <li><strong>Arabic</strong> fully right-to-left</li>
+                        <li><strong>Autorisations dans Postgres</strong> : row-level security partout</li>
+                        <li><strong>Stripe Connect</strong> : les remboursements vont directement à chaque mosquée</li>
+                        <li><strong>914</strong> assertions de tests en base + <strong>238</strong> tests unitaires</li>
+                        <li><strong>Arabe</strong> entièrement de droite à gauche</li>
                     </ul>
-                    <ul class="tags" aria-label="Built with">
+                    <ul class="tags" aria-label="Construit avec">
                         <li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>Postgres</li><li>Stripe</li><li>Playwright</li>
                     </ul>
                     <div class="project-links">
-                        <a class="btn" href="projects/nur/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn" href="projects/nur/" data-pop>Lire l’étude de cas <span aria-hidden="true">&rarr;</span></a>
                     </div>
                 </div>
 
-                <figure class="shots" aria-roledescription="carousel" aria-label="NUR screenshots" tabindex="0">
+                <figure class="shots" aria-roledescription="carousel" aria-label="NUR : captures d’écran" tabindex="0">
                     <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
                     <div class="shot-frame">
                         <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
                         <img src="img/nur/landing-hero.png" width="1440" height="816" alt="" class="shot-img">
                     </div>
                     <div class="shot-controls">
-                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                        <button type="button" class="shot-prev" aria-label="Capture précédente">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                         <span class="shot-count"></span>
-                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                        <button type="button" class="shot-next" aria-label="Capture suivante">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                     </div>
                     <script type="application/json" class="shot-data">
                         [
-                            {"src": "img/nur/landing-hero.png", "alt": "NUR landing page with an example loan combination", "caption": "Zero interest. That's the whole pitch."},
-                            {"src": "img/nur/funding-finder-combinations.png", "alt": "Funding finder with five loan combinations", "caption": "Type an amount, get combinations."},
-                            {"src": "img/nur/student-request-timeline.png", "alt": "A student's loan request timeline", "caption": "Updates live when the mosque acts."},
-                            {"src": "img/nur/mosque-request-decision.png", "alt": "Mosque staff deciding on a loan request", "caption": "The mosque decides in one click."},
-                            {"src": "img/nur/mosque-portfolio.png", "alt": "Mosque portfolio dashboard", "caption": "Every dollar out, every dollar back."},
-                            {"src": "img/nur/student-budget.png", "alt": "Student monthly budget page", "caption": "A budget tool for students, too."},
-                            {"src": "img/nur/arabic-rtl-loans.png", "alt": "Student loans page in Arabic, right-to-left", "caption": "And all of it in Arabic, mirrored."}
+                            {"src": "img/nur/landing-hero.png", "alt": "Page d’accueil de NUR avec un exemple de combinaison de prêts", "caption": "Zéro intérêt. C’est tout le concept."},
+                            {"src": "img/nur/funding-finder-combinations.png", "alt": "Recherche de financement avec cinq combinaisons de prêts", "caption": "Tapez un montant, obtenez des combinaisons."},
+                            {"src": "img/nur/student-request-timeline.png", "alt": "Suivi de la demande de prêt d’un étudiant", "caption": "Mis à jour en direct quand la mosquée agit."},
+                            {"src": "img/nur/mosque-request-decision.png", "alt": "L’équipe d’une mosquée décide d’une demande de prêt", "caption": "La mosquée décide en un clic."},
+                            {"src": "img/nur/mosque-portfolio.png", "alt": "Tableau de bord du portefeuille d’une mosquée", "caption": "Chaque dollar prêté, chaque dollar rendu."},
+                            {"src": "img/nur/student-budget.png", "alt": "Page de budget mensuel de l’étudiant", "caption": "Un outil de budget pour les étudiants, aussi."},
+                            {"src": "img/nur/arabic-rtl-loans.png", "alt": "Page des prêts étudiants en arabe, de droite à gauche", "caption": "Et tout ça en arabe, en miroir."}
                         ]
                     </script>
                 </figure>
@@ -170,47 +175,47 @@
 
             <article class="project" aria-labelledby="genai-hub-heading">
                 <div class="project-copy">
-                    <p class="hand project-kicker">Internship &middot; Allianz Global Investors</p>
+                    <p class="hand project-kicker">Stage &middot; Allianz Global Investors</p>
                     <h3 id="genai-hub-heading"><img src="img/genai-hub/icon.svg" alt="" width="48" height="48"> <a href="projects/genai-hub/" class="project-title-link">Gen AI Hub</a></h3>
                     <p class="project-body">
-                        The MVP of a single portal for Allianz Global Investors' AI services, with "Chat with your data" as its first key feature: upload a file and question it in a chat, with answers grounded in the document through RAG on Azure. I built the Flask backend and the RAG pipeline, and my demo to stakeholders got it a production budget.
+                        Le MVP d’un portail unique pour les services IA d’Allianz Global Investors, avec « Chat with your data » comme première fonctionnalité clé : on dépose un fichier et on l’interroge dans un chat, avec des réponses ancrées dans le document grâce au RAG sur Azure. J’ai construit le backend Flask et le pipeline RAG, et ma démo aux décideurs lui a obtenu un budget de production.
                     </p>
                     <ul class="facts">
-                        <li><strong>4</strong> GenAI services delivered on the platform</li>
-                        <li><strong>Budget approved</strong> for production after the MVP demo</li>
-                        <li><strong>Prompt-injection checks</strong> with Azure AI Content Safety</li>
-                        <li><strong>CQRS</strong> backend, CI/CD on Kubernetes, Datadog monitoring</li>
+                        <li><strong>4</strong> services GenAI livrés sur la plateforme</li>
+                        <li><strong>Budget validé</strong> pour la production après la démo du MVP</li>
+                        <li><strong>Détection des injections de prompt</strong> avec Azure AI Content Safety</li>
+                        <li>Backend <strong>CQRS</strong>, CI/CD sur Kubernetes, monitoring Datadog</li>
                     </ul>
-                    <ul class="tags" aria-label="Built with">
+                    <ul class="tags" aria-label="Construit avec">
                         <li>Python</li><li>Flask</li><li>Azure OpenAI</li><li>Azure AI Search</li><li>Semantic Kernel</li><li>React</li>
                     </ul>
                     <div class="project-links">
-                        <a class="btn" href="projects/genai-hub/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn" href="projects/genai-hub/" data-pop>Lire l’étude de cas <span aria-hidden="true">&rarr;</span></a>
                     </div>
                 </div>
 
-                <figure class="shots" aria-roledescription="carousel" aria-label="Gen AI Hub screenshots" tabindex="0">
+                <figure class="shots" aria-roledescription="carousel" aria-label="Gen AI Hub : captures d’écran" tabindex="0">
                     <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
                     <div class="shot-frame">
                         <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
                         <img src="img/genai-hub/chat-answer.png" width="1440" height="816" alt="" class="shot-img">
                     </div>
                     <div class="shot-controls">
-                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                        <button type="button" class="shot-prev" aria-label="Capture précédente">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                         <span class="shot-count"></span>
-                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                        <button type="button" class="shot-next" aria-label="Capture suivante">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                     </div>
                     <script type="application/json" class="shot-data">
                         [
-                            {"src": "img/genai-hub/chat-answer.png", "alt": "A PDF uploaded to the chat and summarized", "caption": "Ask your documents. Get answers."},
-                            {"src": "img/genai-hub/home.png", "alt": "Gen AI Hub home page with governance, chat, text tools and business areas", "caption": "Every AI service, one front door."},
-                            {"src": "img/genai-hub/chat-settings.png", "alt": "Chat settings: custom prompt, creativity, answer length and GPT model", "caption": "Power users get the knobs."},
-                            {"src": "img/genai-hub/chat-title-summary.png", "alt": "A generated title and summary for a conversation", "caption": "Chats name and summarize themselves."},
-                            {"src": "img/genai-hub/chat-files.png", "alt": "The files attached to a chat, with a delete button", "caption": "Delete a file, it leaves the index too."}
+                            {"src": "img/genai-hub/chat-answer.png", "alt": "Un PDF déposé dans le chat et résumé", "caption": "Interrogez vos documents. Obtenez des réponses."},
+                            {"src": "img/genai-hub/home.png", "alt": "Accueil du Gen AI Hub avec gouvernance, chat, outils de texte et métiers", "caption": "Tous les services IA, une seule porte d’entrée."},
+                            {"src": "img/genai-hub/chat-settings.png", "alt": "Réglages du chat : prompt personnalisé, créativité, longueur de réponse et modèle GPT", "caption": "Les experts ont droit aux réglages."},
+                            {"src": "img/genai-hub/chat-title-summary.png", "alt": "Un titre et un résumé générés pour une conversation", "caption": "Les chats se nomment et se résument tout seuls."},
+                            {"src": "img/genai-hub/chat-files.png", "alt": "Les fichiers joints à un chat, avec un bouton de suppression", "caption": "Supprime un fichier, il quitte aussi l’index."}
                         ]
                     </script>
                 </figure>
@@ -218,52 +223,52 @@
 
             <article class="project" aria-labelledby="clause-heading">
                 <div class="project-copy">
-                    <p class="hand project-kicker">AI web app &middot; LLM + RAG</p>
+                    <p class="hand project-kicker">Appli web IA &middot; LLM + RAG</p>
                     <h3 id="clause-heading"><img src="img/clause/icon.svg" alt="" width="48" height="48"> <a href="projects/clause/" class="project-title-link">Clause</a></h3>
                     <p class="project-body">
-                        Find out what you're signing. Upload an Indian rental agreement or health policy and get back a
-                        marked-up copy of your own document: one-sided clauses underlined, explained in plain English,
-                        compared with what's normal, and paired with what to ask for instead.
+                        Sachez ce que vous signez. Déposez un bail indien ou un contrat d’assurance santé et récupérez une copie
+                        annotée de votre propre document : clauses déséquilibrées soulignées, expliquées simplement, comparées
+                        à ce qui est normal, avec ce qu’il faut demander à la place.
                     </p>
                     <ul class="facts">
-                        <li><strong>6-stage pipeline</strong> streaming findings live</li>
-                        <li><strong>RAG</strong> over 34 hand-written risk patterns</li>
-                        <li><strong>Verbatim quotes only</strong>, matched back to the source</li>
-                        <li><strong>Deterministic</strong>, explained risk score</li>
+                        <li><strong>Pipeline en 6 étapes</strong> qui diffuse les résultats en direct</li>
+                        <li><strong>RAG</strong> sur 34 schémas de risque écrits à la main</li>
+                        <li><strong>Uniquement des citations exactes</strong>, vérifiées dans la source</li>
+                        <li>Score de risque <strong>déterministe</strong> et expliqué</li>
                     </ul>
-                    <ul class="tags" aria-label="Built with">
+                    <ul class="tags" aria-label="Construit avec">
                         <li>Next.js</li><li>TypeScript</li><li>OpenAI</li><li>Embeddings</li><li>zod</li><li>Vercel</li>
                     </ul>
                     <div class="project-links">
-                        <a class="btn" href="projects/clause/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn" href="projects/clause/" data-pop>Lire l’étude de cas <span aria-hidden="true">&rarr;</span></a>
                         <a class="btn btn-ghost" href="https://clause-opal-omega.vercel.app" target="_blank" rel="noopener" data-pop>Demo <span aria-hidden="true">&nearr;</span></a>
                         <a class="btn btn-ghost" href="https://github.com/medbm5/clause" target="_blank" rel="noopener" data-pop>Code <span aria-hidden="true">&nearr;</span></a>
                     </div>
                 </div>
 
-                <figure class="shots" aria-roledescription="carousel" aria-label="Clause screenshots" tabindex="0">
+                <figure class="shots" aria-roledescription="carousel" aria-label="Clause : captures d’écran" tabindex="0">
                     <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
                     <div class="shot-frame">
                         <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
                         <img src="img/clause/rental-report-verdict-and-score.png" width="1440" height="816" alt="" class="shot-img">
                     </div>
                     <div class="shot-controls">
-                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                        <button type="button" class="shot-prev" aria-label="Capture précédente">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                         <span class="shot-count"></span>
-                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                        <button type="button" class="shot-next" aria-label="Capture suivante">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                     </div>
                     <script type="application/json" class="shot-data">
                         [
-                            {"src": "img/clause/rental-report-verdict-and-score.png", "alt": "Report with the verdict 'Don't sign this as is' and a risk score of 97", "caption": "Verdict first. Don't sign this one."},
-                            {"src": "img/clause/scan-flags-landing-live.png", "alt": "Risky clauses underlined with flags in the margin", "caption": "Flags land in the margin, live."},
-                            {"src": "img/clause/finding-explained-with-suggestion.png", "alt": "A finding explained with what to ask for", "caption": "What it means, and what to ask for."},
-                            {"src": "img/clause/how-the-score-is-calculated.png", "alt": "How the risk score is calculated", "caption": "The score shows its working."},
-                            {"src": "img/clause/health-policy-report.png", "alt": "Report for a health insurance policy", "caption": "Health policies too."},
-                            {"src": "img/clause/upload-or-pick-a-sample.png", "alt": "Upload screen with sample documents", "caption": "No account. Nothing stored."}
+                            {"src": "img/clause/rental-report-verdict-and-score.png", "alt": "Rapport avec le verdict « Ne signez pas en l’état » et un score de risque de 97", "caption": "Le verdict d’abord. Ne signe pas celui-là."},
+                            {"src": "img/clause/scan-flags-landing-live.png", "alt": "Clauses risquées soulignées avec des alertes dans la marge", "caption": "Les alertes arrivent dans la marge, en direct."},
+                            {"src": "img/clause/finding-explained-with-suggestion.png", "alt": "Un point expliqué avec ce qu’il faut demander", "caption": "Ce que ça veut dire, et quoi demander."},
+                            {"src": "img/clause/how-the-score-is-calculated.png", "alt": "Comment le score de risque est calculé", "caption": "Le score montre son calcul."},
+                            {"src": "img/clause/health-policy-report.png", "alt": "Rapport pour un contrat d’assurance santé", "caption": "Les assurances santé aussi."},
+                            {"src": "img/clause/upload-or-pick-a-sample.png", "alt": "Écran de dépôt avec des documents d’exemple", "caption": "Pas de compte. Rien n’est stocké."}
                         ]
                     </script>
                 </figure>
@@ -271,49 +276,49 @@
 
             <article class="project" aria-labelledby="sec-analyst-heading">
                 <div class="project-copy">
-                    <p class="hand project-kicker">LLM agents &middot; RAG + knowledge graph</p>
+                    <p class="hand project-kicker">Agents LLM &middot; RAG + graphe de connaissances</p>
                     <h3 id="sec-analyst-heading"><img src="img/sec-analyst/icon.png" alt="" width="48" height="48"> <a href="projects/sec-analyst/" class="project-title-link">SEC Filing Analyst</a></h3>
                     <p class="project-body">
-                        Ask plain-English questions across Apple, NVIDIA, AMD, Microsoft and Tesla's annual reports (10-K) and get answers that cite the filing section. Vector search is combined with a Neo4j knowledge graph built by an LLM extraction pipeline, so it can answer cross-company questions like "which two companies share a supplier?". Four LangGraph agents draft and check every answer.
+                        Posez des questions en langage courant sur les rapports annuels (10-K) d’Apple, NVIDIA, AMD, Microsoft et Tesla, et obtenez des réponses qui citent la section du rapport. La recherche vectorielle est combinée à un graphe de connaissances Neo4j construit par un pipeline d’extraction LLM, pour répondre à des questions entre entreprises comme « quelles deux entreprises partagent un fournisseur ? ». Quatre agents LangGraph rédigent et vérifient chaque réponse.
                     </p>
                     <ul class="facts">
-                        <li><strong>78%</strong> factual correctness on a 151-question eval</li>
-                        <li><strong>12/12</strong> unanswerable questions correctly refused</li>
-                        <li><strong>Hybrid retrieval</strong>: pgvector + Neo4j graph</li>
-                        <li><strong>616</strong> automated test cases</li>
+                        <li><strong>78 %</strong> d’exactitude factuelle sur une évaluation de 151 questions</li>
+                        <li><strong>12/12</strong> questions sans réponse correctement refusées</li>
+                        <li><strong>Recherche hybride</strong> : pgvector + graphe Neo4j</li>
+                        <li><strong>616</strong> cas de test automatisés</li>
                     </ul>
-                    <ul class="tags" aria-label="Built with">
+                    <ul class="tags" aria-label="Construit avec">
                         <li>Python</li><li>LangGraph</li><li>FastAPI</li><li>pgvector</li><li>Neo4j</li><li>Next.js</li>
                     </ul>
                     <div class="project-links">
-                        <a class="btn" href="projects/sec-analyst/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn" href="projects/sec-analyst/" data-pop>Lire l’étude de cas <span aria-hidden="true">&rarr;</span></a>
                         <a class="btn btn-ghost" href="https://github.com/medbm5/sec-analyst" target="_blank" rel="noopener" data-pop>Code <span aria-hidden="true">&nearr;</span></a>
                     </div>
                 </div>
 
-                <figure class="shots" aria-roledescription="carousel" aria-label="SEC Filing Analyst screenshots" tabindex="0">
+                <figure class="shots" aria-roledescription="carousel" aria-label="SEC Filing Analyst : captures d’écran" tabindex="0">
                     <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
                     <div class="shot-frame">
                         <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
                         <img src="img/sec-analyst/graph-traversal-shared-supplier.png" width="1440" height="816" alt="" class="shot-img">
                     </div>
                     <div class="shot-controls">
-                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                        <button type="button" class="shot-prev" aria-label="Capture précédente">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                         <span class="shot-count"></span>
-                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                        <button type="button" class="shot-next" aria-label="Capture suivante">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                     </div>
                     <script type="application/json" class="shot-data">
                         [
-                            {"src": "img/sec-analyst/graph-traversal-shared-supplier.png", "alt": "Graph traversal showing AMD and NVIDIA both depend on TSMC and Samsung", "caption": "Which two share a supplier? The graph knows."},
-                            {"src": "img/sec-analyst/cited-answer-with-agent-trace.png", "alt": "A cited answer with the vector results and live agent trace", "caption": "Every answer cites its filing."},
-                            {"src": "img/sec-analyst/risk-exposure-matrix.png", "alt": "Company by risk exposure matrix", "caption": "Risks across companies, counted."},
-                            {"src": "img/sec-analyst/eval-dashboard.png", "alt": "Evaluation dashboard with accuracy by question type", "caption": "Measured on 151 questions."},
-                            {"src": "img/sec-analyst/admin-corpus-freshness.png", "alt": "Admin page checking filings against SEC EDGAR", "caption": "Ingestion is gated, on purpose."},
-                            {"src": "img/sec-analyst/chat-start-and-corpus.png", "alt": "Start screen with the five indexed 10-K filings", "caption": "Five 10-Ks, ready to question."}
+                            {"src": "img/sec-analyst/graph-traversal-shared-supplier.png", "alt": "Parcours du graphe montrant qu’AMD et NVIDIA dépendent toutes deux de TSMC et Samsung", "caption": "Qui partage un fournisseur ? Le graphe le sait."},
+                            {"src": "img/sec-analyst/cited-answer-with-agent-trace.png", "alt": "Une réponse sourcée avec les résultats vectoriels et la trace des agents en direct", "caption": "Chaque réponse cite son rapport."},
+                            {"src": "img/sec-analyst/risk-exposure-matrix.png", "alt": "Matrice d’exposition aux risques par entreprise", "caption": "Les risques de chaque entreprise, comptés."},
+                            {"src": "img/sec-analyst/eval-dashboard.png", "alt": "Tableau de bord d’évaluation avec la précision par type de question", "caption": "Mesuré sur 151 questions."},
+                            {"src": "img/sec-analyst/admin-corpus-freshness.png", "alt": "Page d’admin qui vérifie les rapports avec SEC EDGAR", "caption": "L’ingestion est contrôlée, exprès."},
+                            {"src": "img/sec-analyst/chat-start-and-corpus.png", "alt": "Écran d’accueil avec les cinq rapports 10-K indexés", "caption": "Cinq 10-K, prêts à être interrogés."}
                         ]
                     </script>
                 </figure>
@@ -321,49 +326,49 @@
 
             <article class="project" aria-labelledby="opencrq-heading">
                 <div class="project-copy">
-                    <p class="hand project-kicker">Risk modelling &middot; Monte Carlo</p>
+                    <p class="hand project-kicker">Modélisation du risque &middot; Monte-Carlo</p>
                     <h3 id="opencrq-heading"><img src="img/opencrq/icon.svg" alt="" width="48" height="48"> <a href="projects/opencrq/" class="project-title-link">OpenCRQ</a></h3>
                     <p class="project-body">
-                        How much could a cyber attack cost a company in a bad year? OpenCRQ turns a 20-question control assessment and a set of loss scenarios into an annual loss distribution: the expected loss, a 1-in-20-year loss and a 1-in-100-year loss. Click any figure and it traces back to dated public data or a named assumption.
+                        Combien une cyberattaque peut-elle coûter à une entreprise lors d’une mauvaise année ? OpenCRQ transforme une évaluation des contrôles en 20 questions et des scénarios de perte en une distribution des pertes annuelles : la perte attendue, la perte d’une année sur 20 et celle d’une année sur 100. Cliquez sur n’importe quel chiffre pour remonter à des données publiques datées ou à une hypothèse nommée.
                     </p>
                     <ul class="facts">
-                        <li><strong>489 ms</strong> for 100,000 simulated years &times; 4 scenarios</li>
-                        <li><strong>Every figure traceable</strong> to source data or a named assumption</li>
-                        <li><strong>What-if on the same random draws</strong>, so the seed doesn't decide</li>
-                        <li><strong>374</strong> backend + <strong>133</strong> frontend tests passing</li>
+                        <li><strong>489 ms</strong> pour 100 000 années simulées &times; 4 scénarios</li>
+                        <li><strong>Chaque chiffre traçable</strong> jusqu’à sa source ou une hypothèse nommée</li>
+                        <li><strong>Simulations « et si » sur les mêmes tirages</strong>, pour que le hasard ne décide pas</li>
+                        <li><strong>374</strong> tests backend + <strong>133</strong> tests frontend qui passent</li>
                     </ul>
-                    <ul class="tags" aria-label="Built with">
+                    <ul class="tags" aria-label="Construit avec">
                         <li>Python</li><li>FastAPI</li><li>NumPy</li><li>pgmpy</li><li>React</li><li>TypeScript</li>
                     </ul>
                     <div class="project-links">
-                        <a class="btn" href="projects/opencrq/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn" href="projects/opencrq/" data-pop>Lire l’étude de cas <span aria-hidden="true">&rarr;</span></a>
                         <a class="btn btn-ghost" href="https://github.com/medbm5/open-CQR" target="_blank" rel="noopener" data-pop>Code <span aria-hidden="true">&nearr;</span></a>
                     </div>
                 </div>
 
-                <figure class="shots" aria-roledescription="carousel" aria-label="OpenCRQ screenshots" tabindex="0">
+                <figure class="shots" aria-roledescription="carousel" aria-label="OpenCRQ : captures d’écran" tabindex="0">
                     <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
                     <div class="shot-frame">
                         <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
                         <img src="img/opencrq/results-loss-curve.png" width="1440" height="816" alt="" class="shot-img">
                     </div>
                     <div class="shot-controls">
-                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                        <button type="button" class="shot-prev" aria-label="Capture précédente">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                         <span class="shot-count"></span>
-                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                        <button type="button" class="shot-next" aria-label="Capture suivante">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                     </div>
                     <script type="application/json" class="shot-data">
                         [
-                            {"src": "img/opencrq/results-loss-curve.png", "alt": "Loss exceedance curve on a log scale", "caption": "The bad year, not just the average."},
-                            {"src": "img/opencrq/provenance-trace-var95.png", "alt": "Derivation trace behind the 1-in-20 year loss", "caption": "Click a number, see where it came from."},
-                            {"src": "img/opencrq/what-if-control-comparison.png", "alt": "What-if comparison of a control change with 95% intervals", "caption": "What would this control save?"},
-                            {"src": "img/opencrq/sensitivity-what-moves-the-number.png", "alt": "Inputs ranked by rank correlation with annual loss", "caption": "What actually moves the number."},
-                            {"src": "img/opencrq/landing-demo-profiles.png", "alt": "Three demo company profiles", "caption": "Three demo companies, one click each."},
-                            {"src": "img/opencrq/threat-landscape-attack-kev.png", "alt": "Threat landscape with ATT&CK groups and a low-confidence base rate", "caption": "Threat data, dated and caveated."}
+                            {"src": "img/opencrq/results-loss-curve.png", "alt": "Courbe de dépassement des pertes en échelle logarithmique", "caption": "La mauvaise année, pas juste la moyenne."},
+                            {"src": "img/opencrq/provenance-trace-var95.png", "alt": "Trace du calcul derrière la perte d’une année sur 20", "caption": "Cliquez sur un chiffre, voyez d’où il vient."},
+                            {"src": "img/opencrq/what-if-control-comparison.png", "alt": "Comparaison « et si » d’un changement de contrôle avec intervalles à 95 %", "caption": "Combien ce contrôle ferait-il économiser ?"},
+                            {"src": "img/opencrq/sensitivity-what-moves-the-number.png", "alt": "Entrées classées par corrélation de rang avec la perte annuelle", "caption": "Ce qui fait vraiment bouger le chiffre."},
+                            {"src": "img/opencrq/landing-demo-profiles.png", "alt": "Trois profils d’entreprise de démo", "caption": "Trois entreprises de démo, un clic chacune."},
+                            {"src": "img/opencrq/threat-landscape-attack-kev.png", "alt": "Panorama des menaces avec les groupes ATT&CK et un taux de base peu fiable", "caption": "Des données de menace, datées et nuancées."}
                         ]
                     </script>
                 </figure>
@@ -371,52 +376,52 @@
 
             <article class="project" aria-labelledby="metamorphosis-heading">
                 <div class="project-copy">
-                    <p class="hand project-kicker">Desktop app &middot; Windows &amp; Linux</p>
+                    <p class="hand project-kicker">Appli de bureau &middot; Windows &amp; Linux</p>
                     <h3 id="metamorphosis-heading"><img src="img/metamorphosis/icon.png" alt="" width="48" height="48"> <a href="projects/metamorphosis/" class="project-title-link">Metamorphosis</a></h3>
                     <p class="project-body">
-                        Convert and edit files without opening an app. Start dragging a file, tap a key, and a ring of options opens under your cursor: drop it on PNG, Compress, Crop or Blur faces and the result lands next to the original, which is never touched. Free, open source and fully offline, with a matching command-line tool.
+                        Convertir et modifier des fichiers sans ouvrir d’appli. Commencez à glisser un fichier, appuyez sur une touche, et un anneau d’options s’ouvre sous votre curseur : lâchez-le sur PNG, Compresser, Recadrer ou Flouter les visages, et le résultat arrive à côté de l’original, qui n’est jamais modifié. Gratuit, open source et entièrement hors ligne, avec un outil en ligne de commande assorti.
                     </p>
                     <ul class="facts">
-                        <li><strong>87</strong> operations: images, PDFs, video, audio, documents, archives</li>
-                        <li><strong>Local AI</strong>: face and text detection, OCR, background removal</li>
-                        <li><strong>Sandboxed recipes</strong> that can only write their own output</li>
-                        <li><strong>23</strong> releases, CI on Windows + Ubuntu, <strong>114</strong> Rust tests</li>
+                        <li><strong>87</strong> opérations : images, PDF, vidéo, audio, documents, archives</li>
+                        <li><strong>IA locale</strong> : détection de visages et de texte, OCR, détourage</li>
+                        <li><strong>Recettes isolées</strong> qui ne peuvent écrire que leur propre résultat</li>
+                        <li><strong>23</strong> versions, CI sur Windows + Ubuntu, <strong>114</strong> tests Rust</li>
                     </ul>
-                    <ul class="tags" aria-label="Built with">
+                    <ul class="tags" aria-label="Construit avec">
                         <li>Rust</li><li>Tauri</li><li>FFmpeg</li><li>PDFium</li><li>ONNX Runtime</li><li>GitHub Actions</li>
                     </ul>
                     <div class="project-links">
-                        <a class="btn" href="projects/metamorphosis/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
-                        <a class="btn btn-ghost" href="https://medbm5.github.io/morph/" target="_blank" rel="noopener" data-pop>Website <span aria-hidden="true">&nearr;</span></a>
+                        <a class="btn" href="projects/metamorphosis/" data-pop>Lire l’étude de cas <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn btn-ghost" href="https://medbm5.github.io/morph/" target="_blank" rel="noopener" data-pop>Site web <span aria-hidden="true">&nearr;</span></a>
                         <a class="btn btn-ghost" href="https://github.com/medbm5/morph" target="_blank" rel="noopener" data-pop>Code <span aria-hidden="true">&nearr;</span></a>
                     </div>
                 </div>
 
-                <figure class="shots" aria-roledescription="carousel" aria-label="Metamorphosis screenshots" tabindex="0">
+                <figure class="shots" aria-roledescription="carousel" aria-label="Metamorphosis : captures d’écran" tabindex="0">
                     <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
                     <div class="shot-frame">
                         <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
                         <img src="img/metamorphosis/convert-ring-on-a-pdf.png" width="1440" height="816" alt="" class="shot-img">
                     </div>
                     <div class="shot-controls">
-                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                        <button type="button" class="shot-prev" aria-label="Capture précédente">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                         <span class="shot-count"></span>
-                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                        <button type="button" class="shot-next" aria-label="Capture suivante">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                     </div>
                     <script type="application/json" class="shot-data">
                         [
-                            {"src": "img/metamorphosis/convert-ring-on-a-pdf.png", "alt": "A PDF dragged onto the Convert ring, hovering PNG", "caption": "Drag, tap Shift, drop on PNG."},
-                            {"src": "img/metamorphosis/tools-ring-on-a-screenshot.png", "alt": "Tools ring on a screenshot with Compress, Crop, Annotate and Add BG", "caption": "Ctrl for tools."},
-                            {"src": "img/metamorphosis/actions-ring-multiple-files.png", "alt": "Actions ring with three files: Share, Float, Copy, Move, Copy path, Terminal", "caption": "Alt for actions, on many files at once."},
-                            {"src": "img/metamorphosis/crop-editor-in-the-app.png", "alt": "Crop editor with aspect presets and the output file name", "caption": "Some tools need a proper editor."},
-                            {"src": "img/metamorphosis/wayland-drop-dock.png", "alt": "Wayland drop dock expanded into the Tools ring", "caption": "Wayland says no to global keys. Fine: a dock."},
-                            {"src": "img/metamorphosis/settings.png", "alt": "Settings with the ring keys, colour, animations and language", "caption": "Settings in plain language."},
-                            {"src": "img/metamorphosis/website-hero.png", "alt": "The Metamorphosis website: Drag a file. Tap a key. Drop it on the ring.", "caption": "It has a website, too."},
-                            {"src": "img/metamorphosis/website-live-ring-demo.png", "alt": "A live, clickable ring demo on the website", "caption": "With the real ring, live on the page."}
+                            {"src": "img/metamorphosis/convert-ring-on-a-pdf.png", "alt": "Un PDF glissé sur l’anneau Convertir, au-dessus de PNG", "caption": "Glissez, appuyez sur Maj, lâchez sur PNG."},
+                            {"src": "img/metamorphosis/tools-ring-on-a-screenshot.png", "alt": "Anneau Outils sur une capture avec Compresser, Recadrer, Annoter et Ajouter un fond", "caption": "Ctrl pour les outils."},
+                            {"src": "img/metamorphosis/actions-ring-multiple-files.png", "alt": "Anneau Actions avec trois fichiers : Partager, Float, Copier, Déplacer, Copier le chemin, Terminal", "caption": "Alt pour les actions, sur plusieurs fichiers à la fois."},
+                            {"src": "img/metamorphosis/crop-editor-in-the-app.png", "alt": "Éditeur de recadrage avec formats prédéfinis et nom du fichier de sortie", "caption": "Certains outils méritent un vrai éditeur."},
+                            {"src": "img/metamorphosis/wayland-drop-dock.png", "alt": "Le dock de dépôt Wayland déployé en anneau Outils", "caption": "Wayland refuse les raccourcis globaux. Pas grave : un dock."},
+                            {"src": "img/metamorphosis/settings.png", "alt": "Réglages avec les touches de l’anneau, la couleur, les animations et la langue", "caption": "Des réglages en langage clair."},
+                            {"src": "img/metamorphosis/website-hero.png", "alt": "Le site de Metamorphosis : Drag a file. Tap a key. Drop it on the ring.", "caption": "Il a aussi un site web."},
+                            {"src": "img/metamorphosis/website-live-ring-demo.png", "alt": "Une démo cliquable de l’anneau sur le site", "caption": "Avec le vrai anneau, en direct sur la page."}
                         ]
                     </script>
                 </figure>
@@ -424,51 +429,51 @@
 
             <article class="project" aria-labelledby="chess-heading">
                 <div class="project-copy">
-                    <p class="hand project-kicker">Desktop app &middot; Windows, macOS, Linux</p>
+                    <p class="hand project-kicker">Appli de bureau &middot; Windows, macOS, Linux</p>
                     <h3 id="chess-heading"><img src="img/chess/icon.png" alt="" width="48" height="48"> <a href="projects/chess-terminal/" class="project-title-link">Chess Terminal</a></h3>
                     <p class="project-body">
-                        Learn chess openings like a game. A coach explains every move, memory tests unlock the next level,
-                        puzzles come from the positions you actually play, and there's a boss at the end of every opening.
-                        It runs entirely on your computer: no account, no server, no telemetry.
+                        Apprendre les ouvertures aux échecs comme un jeu vidéo. Un coach explique chaque coup, des tests de mémoire
+                        débloquent le niveau suivant, les puzzles viennent des positions que vous jouez vraiment, et un boss attend à la
+                        fin de chaque ouverture. Tout tourne sur votre ordinateur : pas de compte, pas de serveur, pas de télémétrie.
                     </p>
                     <ul class="facts">
-                        <li><strong>33 openings</strong>, Beginner to Master</li>
-                        <li><strong>Stockfish</strong> running locally (WASM)</li>
-                        <li><strong>Glicko-2</strong> puzzle rating</li>
-                        <li><strong>SM-2</strong> spaced repetition</li>
+                        <li><strong>33 ouvertures</strong>, de Débutant à Maître</li>
+                        <li><strong>Stockfish</strong> en local (WASM)</li>
+                        <li>Classement des puzzles en <strong>Glicko-2</strong></li>
+                        <li>Répétition espacée <strong>SM-2</strong></li>
                     </ul>
-                    <ul class="tags" aria-label="Built with">
+                    <ul class="tags" aria-label="Construit avec">
                         <li>TypeScript</li><li>React</li><li>Electron</li><li>Stockfish</li><li>Dexie</li><li>Vitest</li>
                     </ul>
                     <div class="project-links">
-                        <a class="btn" href="projects/chess-terminal/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn" href="projects/chess-terminal/" data-pop>Lire l’étude de cas <span aria-hidden="true">&rarr;</span></a>
                         <a class="btn btn-ghost" href="https://github.com/medbm5/Chess-Terminal" target="_blank" rel="noopener" data-pop>Code <span aria-hidden="true">&nearr;</span></a>
                     </div>
                 </div>
 
-                <figure class="shots" aria-roledescription="carousel" aria-label="Chess Terminal screenshots" tabindex="0">
+                <figure class="shots" aria-roledescription="carousel" aria-label="Chess Terminal : captures d’écran" tabindex="0">
                     <figcaption class="hand shot-caption" aria-live="polite"></figcaption>
                     <div class="shot-frame">
                         <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
                         <img src="img/chess/menu.png" width="1442" height="817" alt="" class="shot-img">
                     </div>
                     <div class="shot-controls">
-                        <button type="button" class="shot-prev" aria-label="Previous screenshot">
+                        <button type="button" class="shot-prev" aria-label="Capture précédente">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                         <span class="shot-count"></span>
-                        <button type="button" class="shot-next" aria-label="Next screenshot">
+                        <button type="button" class="shot-next" aria-label="Capture suivante">
                             <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="m9 4 8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                     </div>
                     <script type="application/json" class="shot-data">
                         [
-                            {"src": "img/chess/menu.png", "alt": "Chess Terminal main menu", "caption": "The main menu. Pick your poison."},
-                            {"src": "img/chess/coach.png", "alt": "The coach explaining an opening move", "caption": "The coach explains every single move."},
-                            {"src": "img/chess/coach-dark.png", "alt": "The coach in dark mode with a switch alert", "caption": "Dark mode. Obviously."},
-                            {"src": "img/chess/openings.png", "alt": "The openings map with difficulty tiers", "caption": "Beat the boss, unlock the next tier."},
-                            {"src": "img/chess/memory-test.png", "alt": "A memory test with no hints", "caption": "No hints. One mistake and you're out."},
-                            {"src": "img/chess/puzzles.png", "alt": "A Lichess puzzle on the board", "caption": "Puzzles from the openings you play."}
+                            {"src": "img/chess/menu.png", "alt": "Menu principal de Chess Terminal", "caption": "Le menu principal. Choisissez votre poison."},
+                            {"src": "img/chess/coach.png", "alt": "Le coach explique un coup d’ouverture", "caption": "Le coach explique chaque coup, sans exception."},
+                            {"src": "img/chess/coach-dark.png", "alt": "Le coach en mode sombre avec une alerte de changement", "caption": "Mode sombre. Évidemment."},
+                            {"src": "img/chess/openings.png", "alt": "La carte des ouvertures avec les niveaux de difficulté", "caption": "Bats le boss, débloque le niveau suivant."},
+                            {"src": "img/chess/memory-test.png", "alt": "Un test de mémoire sans indice", "caption": "Pas d’indice. Une erreur et c’est fini."},
+                            {"src": "img/chess/puzzles.png", "alt": "Un puzzle Lichess sur l’échiquier", "caption": "Des puzzles tirés des ouvertures que vous jouez."}
                         ]
                     </script>
                 </figure>
@@ -476,59 +481,59 @@
 
             <article class="project" aria-labelledby="matetoscroll-heading">
                 <div class="project-copy">
-                    <p class="hand project-kicker">Android app &middot; React Native + Kotlin</p>
+                    <p class="hand project-kicker">Appli Android &middot; React Native + Kotlin</p>
                     <h3 id="matetoscroll-heading"><img src="img/matetoscroll/icon.png" alt="" width="48" height="48"> <a href="projects/matetoscroll/" class="project-title-link">MateToScroll</a></h3>
                     <p class="project-body">
-                        An Android app that locks your distracting apps when today's time runs out. Solving chess puzzles fills a minutes bank you can spend to unlock them again. Blocking and time-keeping run in a custom Kotlin Accessibility Service, and the chess side is a full trainer with 30,000 offline puzzles, 33 opening courses and calculation drills.
+                        Une appli Android qui bloque vos applis distrayantes quand votre temps du jour est écoulé. Résoudre des puzzles d’échecs remplit une banque de minutes que vous pouvez dépenser pour les débloquer. Le blocage et le décompte du temps tournent dans un service d’accessibilité Kotlin sur mesure, et la partie échecs est un vrai entraîneur avec 30 000 puzzles hors ligne, 33 cours d’ouvertures et des exercices de calcul.
                     </p>
                     <ul class="facts">
-                        <li><strong>Kotlin Accessibility Service</strong> reads only the app's package name</li>
-                        <li><strong>168 ms</strong> from hitting the limit to the lock screen, on device</li>
-                        <li><strong>30,000 puzzles</strong> bundled offline in 8.1 MB</li>
-                        <li><strong>188</strong> Jest tests + <strong>33</strong> Kotlin JUnit tests</li>
+                        <li>Le <strong>service d’accessibilité Kotlin</strong> ne lit que le nom du paquet de l’appli</li>
+                        <li><strong>168 ms</strong> entre la limite atteinte et l’écran de blocage, sur téléphone</li>
+                        <li><strong>30 000 puzzles</strong> embarqués hors ligne en 8,1 Mo</li>
+                        <li><strong>188</strong> tests Jest + <strong>33</strong> tests JUnit Kotlin</li>
                     </ul>
-                    <ul class="tags" aria-label="Built with">
+                    <ul class="tags" aria-label="Construit avec">
                         <li>React Native</li><li>Expo</li><li>Kotlin</li><li>TypeScript</li><li>SQLite</li><li>Reanimated</li>
                     </ul>
                     <div class="project-links">
-                        <a class="btn" href="projects/matetoscroll/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn" href="projects/matetoscroll/" data-pop>Lire l’étude de cas <span aria-hidden="true">&rarr;</span></a>
                     </div>
                 </div>
 
-                <figure class="phones" aria-label="MateToScroll screenshots">
-                    <img src="img/matetoscroll/lock-screen-spend-bank.png" alt="Lock screen offering to spend banked minutes to unlock an app" loading="lazy">
-                    <img src="img/matetoscroll/tactics-puzzle-board.png" alt="A tactics puzzle on the chess board" loading="lazy">
-                    <img src="img/matetoscroll/home-level-bank-continue.png" alt="Home screen with level, minutes bank and continue button" loading="lazy">
-                    <figcaption class="hand">Out of time? Solve your way back in.</figcaption>
+                <figure class="phones" aria-label="MateToScroll : captures d’écran">
+                    <img src="img/matetoscroll/lock-screen-spend-bank.png" alt="Écran de blocage qui propose de dépenser des minutes en banque pour débloquer une appli" loading="lazy">
+                    <img src="img/matetoscroll/tactics-puzzle-board.png" alt="Un puzzle tactique sur l’échiquier" loading="lazy">
+                    <img src="img/matetoscroll/home-level-bank-continue.png" alt="Écran d’accueil avec le niveau, la banque de minutes et le bouton Continuer" loading="lazy">
+                    <figcaption class="hand">Plus de temps ? Résous des puzzles pour revenir.</figcaption>
                 </figure>
             </article>
 
             <article class="project" aria-labelledby="progressive-overload-heading">
                 <div class="project-copy">
-                    <p class="hand project-kicker">Mobile app &middot; React Native + Supabase</p>
+                    <p class="hand project-kicker">Appli mobile &middot; React Native + Supabase</p>
                     <h3 id="progressive-overload-heading"><img src="img/progressive-overload/icon.png" alt="" width="48" height="48"> <a href="projects/progressive-overload/" class="project-title-link">Progressive Overload</a></h3>
                     <p class="project-body">
-                        A gym tracker that turns every workout into a match you win by beating your last session. Each exercise is a playing card, every set is scored live against your previous best, and wins feed a ranked ladder, weekly streaks and seasons with a body-weight goal. It works fully offline and syncs to Supabase in the background.
+                        Un suivi de muscu qui transforme chaque séance en match, gagné en battant votre séance précédente. Chaque exercice est une carte à jouer, chaque série est notée en direct contre votre meilleur résultat, et les victoires alimentent un classement, des séries hebdomadaires et des saisons avec un objectif de poids. Elle fonctionne entièrement hors ligne et se synchronise avec Supabase en arrière-plan.
                     </p>
                     <ul class="facts">
-                        <li><strong>Live set scoring</strong> against your last best (estimated 1RM)</li>
-                        <li><strong>Offline-first sync</strong>: logging a set never waits on the network</li>
-                        <li><strong>Row-level security</strong> on every Supabase table</li>
-                        <li><strong>121</strong> Jest tests, built in <strong>1 day</strong> from a 22-slice plan</li>
+                        <li><strong>Score des séries en direct</strong> contre votre dernier record (1RM estimé)</li>
+                        <li><strong>Synchro hors ligne d’abord</strong> : noter une série n’attend jamais le réseau</li>
+                        <li><strong>Row-level security</strong> sur chaque table Supabase</li>
+                        <li><strong>121</strong> tests Jest, construit en <strong>1 jour</strong> à partir d’un plan en 22 étapes</li>
                     </ul>
-                    <ul class="tags" aria-label="Built with">
+                    <ul class="tags" aria-label="Construit avec">
                         <li>React Native</li><li>Expo</li><li>TypeScript</li><li>Supabase</li><li>Zustand</li><li>Reanimated</li>
                     </ul>
                     <div class="project-links">
-                        <a class="btn" href="projects/progressive-overload/" data-pop>Read the case study <span aria-hidden="true">&rarr;</span></a>
+                        <a class="btn" href="projects/progressive-overload/" data-pop>Lire l’étude de cas <span aria-hidden="true">&rarr;</span></a>
                     </div>
                 </div>
 
-                <figure class="phones" aria-label="Progressive Overload screenshots">
-                    <img src="img/progressive-overload/hand.png" alt="A workout as a hand of exercise cards, with last session's best and today's target" loading="lazy">
-                    <img src="img/progressive-overload/logging-sets.png" alt="Logging sets with a PR flag and a rest timer" loading="lazy">
-                    <img src="img/progressive-overload/victory.png" alt="Victory screen with rounds won, rank points and XP" loading="lazy">
-                    <figcaption class="hand">Beat last week. Win the match.</figcaption>
+                <figure class="phones" aria-label="Progressive Overload : captures d’écran">
+                    <img src="img/progressive-overload/hand.png" alt="Une séance sous forme de main de cartes d’exercices, avec le record de la dernière séance et l’objectif du jour" loading="lazy">
+                    <img src="img/progressive-overload/logging-sets.png" alt="Saisie des séries avec un badge de record et un minuteur de repos" loading="lazy">
+                    <img src="img/progressive-overload/victory.png" alt="Écran de victoire avec les manches gagnées, les points de classement et l’XP" loading="lazy">
+                    <figcaption class="hand">Bats la semaine dernière. Gagne le match.</figcaption>
                 </figure>
             </article>
         </div>
@@ -536,79 +541,79 @@
 
     <section class="section toolbox" id="toolbox" aria-labelledby="toolbox-heading">
         <div class="wrap">
-            <h2 id="toolbox-heading">What's in the toolbox.</h2>
-            <p class="hand mid sub">The stuff I reach for, and the stuff I've shipped with.</p>
+            <h2 id="toolbox-heading">Ma boîte à outils.</h2>
+            <p class="hand mid sub">Ce que j’utilise tous les jours, et ce avec quoi j’ai livré.</p>
             <dl class="tools">
-                <div class="tool-group"><dt>Languages</dt><dd><ul><li>Python</li><li>TypeScript</li><li>JavaScript</li><li>SQL</li><li>PHP</li><li>Java</li><li>Kotlin</li><li>C#</li></ul></dd></div>
+                <div class="tool-group"><dt>Langages</dt><dd><ul><li>Python</li><li>TypeScript</li><li>JavaScript</li><li>SQL</li><li>PHP</li><li>Java</li><li>Kotlin</li><li>C#</li></ul></dd></div>
                 <div class="tool-group"><dt>Backend</dt><dd><ul><li>FastAPI</li><li>Flask</li><li>Node.js</li><li>Express</li><li>Laravel</li><li>Spring Boot</li><li>REST &amp; SOAP</li><li>CQRS</li><li>Clean Architecture</li></ul></dd></div>
                 <div class="tool-group"><dt>Frontend &amp; mobile</dt><dd><ul><li>React</li><li>Next.js</li><li>Redux Toolkit</li><li>Zustand</li><li>TanStack Query</li><li>Tailwind</li><li>React Native</li><li>Expo</li><li>Electron</li><li>WCAG 2.2 AA</li></ul></dd></div>
-                <div class="tool-group"><dt>AI, GenAI &amp; data</dt><dd><ul><li>RAG</li><li>Azure OpenAI</li><li>OpenAI API</li><li>Azure AI Search</li><li>Semantic Kernel</li><li>LangGraph</li><li>LLM evaluation</li><li>pgvector</li><li>PyTorch</li><li>scikit-learn</li><li>PySpark</li><li>Databricks</li><li>MLflow</li></ul></dd></div>
-                <div class="tool-group"><dt>Healthcare</dt><dd><ul><li>FHIR R4</li><li>HL7 v2 (ADT)</li><li>SMART on FHIR</li><li>Epic</li><li>EMIS</li><li>SystmOne</li><li>Mirth Connect</li></ul></dd></div>
-                <div class="tool-group"><dt>Data &amp; cloud</dt><dd><ul><li>PostgreSQL</li><li>Supabase</li><li>SQL Server</li><li>MongoDB</li><li>Redis</li><li>AWS</li><li>Azure</li><li>Docker</li><li>Kubernetes</li><li>Terraform</li><li>GitHub Actions</li><li>Argo CD</li></ul></dd></div>
+                <div class="tool-group"><dt>IA, GenAI &amp; données</dt><dd><ul><li>RAG</li><li>Azure OpenAI</li><li>OpenAI API</li><li>Azure AI Search</li><li>Semantic Kernel</li><li>LangGraph</li><li>Évaluation de LLM</li><li>pgvector</li><li>PyTorch</li><li>scikit-learn</li><li>PySpark</li><li>Databricks</li><li>MLflow</li></ul></dd></div>
+                <div class="tool-group"><dt>Santé</dt><dd><ul><li>FHIR R4</li><li>HL7 v2 (ADT)</li><li>SMART on FHIR</li><li>Epic</li><li>EMIS</li><li>SystmOne</li><li>Mirth Connect</li></ul></dd></div>
+                <div class="tool-group"><dt>Données &amp; cloud</dt><dd><ul><li>PostgreSQL</li><li>Supabase</li><li>SQL Server</li><li>MongoDB</li><li>Redis</li><li>AWS</li><li>Azure</li><li>Docker</li><li>Kubernetes</li><li>Terraform</li><li>GitHub Actions</li><li>Argo CD</li></ul></dd></div>
             </dl>
         </div>
     </section>
 
     <section class="section road" id="road" aria-labelledby="road-heading">
         <div class="wrap">
-            <h2 id="road-heading">The road so far.</h2>
-            <p class="lede">Lots of maths, then lots of code, then a lot of models. Arabic, French and English along the way.</p>
+            <h2 id="road-heading">Mon parcours.</h2>
+            <p class="lede">Beaucoup de maths, puis beaucoup de code, puis beaucoup de modèles. En arabe, en français et en anglais.</p>
             <ol class="timeline">
                 <li class="stop">
                     <p class="hand when">2017 &ndash; 2019</p>
-                    <h3>MPSI prep classes &middot; CPGE Reda Slaoui</h3>
-                    <p>Two years of intense maths and computer science. This is where I learned to love hard problems.</p>
+                    <h3>Classes prépa MPSI &middot; CPGE Reda Slaoui</h3>
+                    <p>Deux ans de maths et d’informatique intensives. C’est là que j’ai appris à aimer les problèmes difficiles.</p>
                 </li>
                 <li class="stop">
                     <p class="hand when">2019 &ndash; 2022</p>
-                    <h3>Engineering degree &middot; INPT Rabat</h3>
-                    <p>Master's-level degree in Innovation &amp; IT Project Management. Learned to build things and how to plan them.</p>
+                    <h3>Diplôme d’ingénieur &middot; INPT Rabat</h3>
+                    <p>Diplôme d’ingénieur (bac+5) en Innovation et management de projets IT. J’y ai appris à construire et à planifier.</p>
                 </li>
                 <li class="stop">
-                    <p class="hand when">Apr &ndash; Sep 2021</p>
-                    <h3>Software Engineer (intern) &middot; We Beautiful Minds</h3>
-                    <p>Built the Spring Boot APIs and the React/TypeScript front end of a SaaS connecting influencers with their followers, and delivered the MVP.</p>
+                    <p class="hand when">Avr. &ndash; sept. 2021</p>
+                    <h3>Ingénieur logiciel (stage) &middot; We Beautiful Minds</h3>
+                    <p>J’ai construit les API Spring Boot et le front-end React/TypeScript d’un SaaS qui relie les influenceurs à leurs abonnés, et livré le MVP.</p>
                 </li>
                 <li class="stop stop-wide">
-                    <p class="hand when">Apr 2022 &ndash; Sep 2023 &middot; Oct 2024 &ndash; now</p>
-                    <h3>Software &amp; Data Integration Engineer &middot; Masarat App (eKare inSight)</h3>
-                    <p>An AI-based wound measurement platform, in a team of 8. I connected <strong>6+ healthcare systems</strong> (Epic, EMIS, SystmOne, ADT feeds) through FHIR, HL7 and Mirth Connect, built a SMART on FHIR launch from Epic with OAuth 2.0 + PKCE, and led an <strong>Angular &rarr; React migration that cut page load time by 35%</strong>.</p>
+                    <p class="hand when">Avr. 2022 &ndash; sept. 2023 &middot; oct. 2024 &ndash; aujourd’hui</p>
+                    <h3>Ingénieur logiciel et intégration de données &middot; Masarat App (eKare inSight)</h3>
+                    <p>Une plateforme de mesure des plaies basée sur l’IA, dans une équipe de 8. J’ai connecté <strong>plus de 6 systèmes de santé</strong> (Epic, EMIS, SystmOne, flux ADT) via FHIR, HL7 et Mirth Connect, construit un lancement SMART on FHIR depuis Epic avec OAuth 2.0 + PKCE, et mené une <strong>migration Angular &rarr; React qui a réduit le temps de chargement de 35 %</strong>.</p>
                 </li>
                 <li class="stop">
                     <p class="hand when">2023 &ndash; 2024</p>
                     <h3>MSc Machine Learning for Data Science &middot; Université Paris Cité</h3>
-                    <p>Machine learning and data science, plus the theory behind every concept.</p>
+                    <p>Machine learning et data science, avec la théorie derrière chaque concept.</p>
                 </li>
                 <li class="stop stop-wide">
-                    <p class="hand when">Apr &ndash; Sep 2024</p>
-                    <h3>Python AI Engineer (intern) &middot; Allianz Global Investors</h3>
-                    <p>Built the backend of the GenAI Hub: Flask microservices with CQRS and role-based access, and RAG pipelines on Azure OpenAI and Azure AI Search delivering <strong>4 GenAI services</strong>. My presentation to stakeholders led to <strong>budget approval for production</strong>. <a href="projects/genai-hub/">Read the case study &rarr;</a></p>
+                    <p class="hand when">Avr. &ndash; sept. 2024</p>
+                    <h3>Ingénieur IA Python (stage) &middot; Allianz Global Investors</h3>
+                    <p>J’ai construit le backend du GenAI Hub : des microservices Flask avec CQRS et contrôle d’accès par rôle, et des pipelines RAG sur Azure OpenAI et Azure AI Search qui fournissent <strong>4 services GenAI</strong>. Ma présentation aux décideurs a débouché sur un <strong>budget validé pour la production</strong>. <a href="projects/genai-hub/">Lire l’étude de cas &rarr;</a></p>
                 </li>
                 <li class="stop">
                     <p class="hand when">2026</p>
-                    <h3>Freelance Full-Stack Developer &middot; NUR</h3>
-                    <p>A trilingual fintech PWA for a client in Quebec, built end to end. <a href="projects/nur/">Read the case study &rarr;</a></p>
+                    <h3>Développeur full-stack freelance &middot; NUR</h3>
+                    <p>Une PWA fintech trilingue pour un client au Québec, construite de bout en bout. <a href="projects/nur/">Lire l’étude de cas &rarr;</a></p>
                 </li>
             </ol>
 
             <div class="creds">
                 <div class="cred">
-                    <p class="hand cred-kicker">Certified</p>
+                    <p class="hand cred-kicker">Certifications</p>
                     <ul>
                         <li>AWS Solutions Architect &ndash; Associate</li>
                         <li>AWS Developer &ndash; Associate</li>
                         <li>AWS Machine Learning &ndash; Associate</li>
                         <li>AWS AI Practitioner</li>
                         <li>AWS Cloud Practitioner</li>
-                        <li class="cred-soon">Azure AI Engineer Associate (in preparation)</li>
+                        <li class="cred-soon">Azure AI Engineer Associate (en préparation)</li>
                     </ul>
                 </div>
                 <div class="cred">
-                    <p class="hand cred-kicker">Languages</p>
+                    <p class="hand cred-kicker">Langues</p>
                     <ul>
-                        <li>Arabic &middot; native</li>
-                        <li>French &middot; fluent</li>
-                        <li>English &middot; fluent</li>
+                        <li>Arabe &middot; langue maternelle</li>
+                        <li>Français &middot; courant</li>
+                        <li>Anglais &middot; courant</li>
                     </ul>
                 </div>
             </div>
@@ -617,8 +622,8 @@
 
     <section class="connect" id="connect" aria-labelledby="connect-heading">
         <div class="wrap">
-            <h2 id="connect-heading">Let's build something.</h2>
-            <p class="hand big">I'm looking for a full-time job (CDI) in software or AI engineering. Got one? I'd love to hear about it.</p>
+            <h2 id="connect-heading">Construisons quelque chose.</h2>
+            <p class="hand big">Je cherche un CDI en ingénierie logicielle ou IA. Vous avez un poste ? J’adorerais en parler.</p>
             <div class="connect-links">
                 <a href="mailto:medbaamrani1@gmail.com" class="btn" data-pop>medbaamrani1@gmail.com</a>
                 <a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener" class="btn btn-ghost" data-pop>LinkedIn <span aria-hidden="true">&nearr;</span></a>
@@ -630,13 +635,13 @@
 
 <footer class="footer">
     <div class="wrap footer-inner">
-        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Hand-built, no templates harmed.</p>
-        <ul class="socials" aria-label="Social links and email">
+        <p class="mono">&copy; <span id="year">2026</span> Mohamed El Baamrani &middot; Fait main, aucun template n’a été maltraité.</p>
+        <ul class="socials" aria-label="Réseaux sociaux et e-mail">
             <li><a href="https://github.com/medbm5" target="_blank" rel="noopener"><span class="sr-only">GitHub</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></li>
             <li><a href="https://www.linkedin.com/in/medbm/" target="_blank" rel="noopener"><span class="sr-only">LinkedIn</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a></li>
-            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">Email</span>
+            <li><a href="mailto:medbaamrani1@gmail.com"><span class="sr-only">E-mail</span>
                 <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg></a></li>
         </ul>
     </div>
